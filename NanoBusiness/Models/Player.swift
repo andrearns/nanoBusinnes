@@ -9,6 +9,10 @@ final class Player {
     init(node: SKSpriteNode) {
         self.node = node
         self.position = .left
+        self.node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        self.node.physicsBody?.categoryBitMask = CategoryMask.player.rawValue
+        self.node.physicsBody?.collisionBitMask = CategoryMask.tree.rawValue
+        self.node.physicsBody?.contactTestBitMask = CategoryMask.tree.rawValue
     }
     
     func moveLeft() {
