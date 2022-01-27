@@ -15,6 +15,7 @@
 		5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956AC27A1EE70008F265C /* Main.storyboard */; };
 		5B0956B027A1EE73008F265C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956AF27A1EE73008F265C /* Assets.xcassets */; };
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
+		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		5B0956AD27A1EE70008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B0956AF27A1EE73008F265C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				5B0956AC27A1EE70008F265C /* Main.storyboard */,
 				5B0956AF27A1EE73008F265C /* Assets.xcassets */,
 				5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */,
+				5B0956B927A30D49008F265C /* Player.swift */,
 			);
 			path = NanoBusiness;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,
