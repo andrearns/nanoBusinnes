@@ -1,12 +1,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player!
+    var game = Game()
     
     var count = 0
     var counterLabel: SKLabelNode!
+    var gameOverLabel: SKLabelNode!
     
     var cam = SKCameraNode()
     
@@ -25,10 +27,15 @@ class GameScene: SKScene {
     ]
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
         
         counterLabel = self.childNode(withName: "counterLabel") as? SKLabelNode
+        
+        gameOverLabel = self.childNode(withName: "gameOverLabel") as? SKLabelNode
+        gameOverLabel.alpha = 0
         
         tree1 = self.childNode(withName: "tree1") as? SKSpriteNode
         tree2 = self.childNode(withName: "tree2") as? SKSpriteNode
@@ -43,41 +50,65 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            
-            if location.x < 0 {
-                print("Touch left")
-                player.moveLeft()
-            } else if location.x > 0 {
-                print("Touch right")
-                player.moveRight()
+        if game.status == .running {
+            for touch in touches {
+                let location = touch.location(in: self)
+                
+                if location.x < 0 {
+                    print("Touch left")
+                    player.moveLeft()
+                } else if location.x > 0 {
+                    print("Touch right")
+                    player.moveRight()
+                }
+                
+                let actualNode = childNode(withName: "tree\(count + 1)")
+                
+                if player.position == .left {
+                    actualNode?.position.x += 2000
+                } else {
+                    actualNode?.position.x -= 2000
+                }
+                
+                let pastNode = childNode(withName: "tree\(count)")
+                pastNode?.removeFromParent()
+                
+                createNewTreeNode()
+                
+                count += 1
+                counterLabel.text = String(count)
             }
-            
-            let actualNode = childNode(withName: "tree\(count + 1)")
-            
-            if player.position == .left {
-                actualNode?.position.x += 2000
-            } else {
-                actualNode?.position.x -= 2000
-            }
-            
-            let pastNode = childNode(withName: "tree\(count)")
-            pastNode?.removeFromParent()
-            print("node cutted:", actualNode?.name)
-            
-            createNewTreeNode()
-            
-            count += 1
-            counterLabel.text = String(count)
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.categoryBitMask == CategoryMask.player.rawValue && secondBody.categoryBitMask == CategoryMask.tree.rawValue {
+             print("contact")
+            gameOverLabel.alpha = 1
+            game.status = .over
         }
     }
     
     func createNewTreeNode() {
         let oldNode = childNode(withName: "tree\(count + 7)")
         
+        var randomNodeType = nodeTypes.randomElement()
         
-        let randomNodeType = nodeTypes.randomElement()
+        while randomNodeType!.xPosition == -oldNode!.position.x {
+            randomNodeType = nodeTypes.randomElement()
+        }
+        
         let newNode = SKSpriteNode(color: UIColor.green, size: randomNodeType!.size)
         
         newNode.position.x = randomNodeType!.xPosition
@@ -91,10 +122,11 @@ class GameScene: SKScene {
         physicsBody.restitution = 0
         physicsBody.friction = 1
         physicsBody.mass = 1000000
+        physicsBody.categoryBitMask = CategoryMask.tree.rawValue
+        physicsBody.collisionBitMask = CategoryMask.player.rawValue
+        physicsBody.contactTestBitMask = CategoryMask.player.rawValue
         
         newNode.physicsBody = physicsBody
-        
-        print("newNode:", newNode.name)
         
         let tree1 = childNode(withName: "tree\(count + 1)")
         let tree2 = childNode(withName: "tree\(count + 2)")
@@ -116,11 +148,15 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
     }
 }
 
 struct NodeType {
     var size: CGSize
     var xPosition: CGFloat
+}
+
+enum CategoryMask: UInt32 {
+    case player = 0b01 // 1
+    case tree = 0b10 // 2
 }
