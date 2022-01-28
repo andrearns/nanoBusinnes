@@ -18,12 +18,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var tree4: SKSpriteNode!
     var tree5: SKSpriteNode!
     var tree6: SKSpriteNode!
-    var tree7: SKSpriteNode!
     
     let nodeTypes: [NodeType] = [
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120),
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: -120),
-        NodeType(size: CGSize(width: 162.371, height: 198.005), xPosition: 0),
+        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120, texture: SKTexture(imageNamed: "nodedanger")),
+        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: -120, texture: SKTexture(imageNamed: "nodedanger")),
+        NodeType(size: CGSize(width: 162.371, height: 198.005), xPosition: 0, texture: SKTexture(imageNamed: "nodesimpleBlue")),
     ]
     
     override func didMove(to view: SKView) {
@@ -33,9 +32,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player = Player(node: playerNode!)
         
         counterLabel = self.childNode(withName: "counterLabel") as? SKLabelNode
+        counterLabel.zPosition = 10000000
         
         gameOverLabel = self.childNode(withName: "gameOverLabel") as? SKLabelNode
         gameOverLabel.alpha = 0
+        gameOverLabel.zPosition = 10000000
         
         tree1 = self.childNode(withName: "tree1") as? SKSpriteNode
         tree2 = self.childNode(withName: "tree2") as? SKSpriteNode
@@ -43,7 +44,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tree4 = self.childNode(withName: "tree4") as? SKSpriteNode
         tree5 = self.childNode(withName: "tree5") as? SKSpriteNode
         tree6 = self.childNode(withName: "tree6") as? SKSpriteNode
-        tree7 = self.childNode(withName: "tree7") as? SKSpriteNode
         
         self.camera = cam
         addChild(cam)
@@ -95,6 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
+        // Colisão acontece e o jogo acaba
         if firstBody.categoryBitMask == CategoryMask.player.rawValue && secondBody.categoryBitMask == CategoryMask.tree.rawValue {
              print("contact")
             gameOverLabel.alpha = 1
@@ -103,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createNewTreeNode() {
-        let oldNode = childNode(withName: "tree\(count + 7)")
+        let oldNode = childNode(withName: "tree\(count + 6)")
         
         var randomNodeType = nodeTypes.randomElement()
         
@@ -114,8 +115,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let newNode = SKSpriteNode(color: UIColor.green, size: randomNodeType!.size)
         
         newNode.position.x = randomNodeType!.xPosition
-        newNode.position.y = 800
-        newNode.name = "tree\(count + 8)"
+        newNode.position.y = 1000
+        newNode.name = "tree\(count + 7)"
+        newNode.texture = randomNodeType?.texture
         
         let physicsBody = SKPhysicsBody(rectangleOf: randomNodeType!.size)
         physicsBody.allowsRotation = false
@@ -136,12 +138,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tree4 = childNode(withName: "tree\(count + 4)")
         let tree5 = childNode(withName: "tree\(count + 5)")
         let tree6 = childNode(withName: "tree\(count + 6)")
-        let tree7 = childNode(withName: "tree\(count + 7)")
         
         self.addChild(newNode)
         
-        newNode.position.y = tree7!.position.y
-        tree7!.position.y = tree6!.position.y
+        newNode.position.y = tree6!.position.y
         tree6!.position.y = tree5!.position.y
         tree5!.position.y = tree4!.position.y
         tree4!.position.y = tree3!.position.y
@@ -156,6 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 struct NodeType {
     var size: CGSize
     var xPosition: CGFloat
+    var texture: SKTexture
 }
 
 enum CategoryMask: UInt32 {

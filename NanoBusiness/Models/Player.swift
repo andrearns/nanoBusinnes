@@ -21,6 +21,7 @@ final class Player {
         if position != .left {
             node.position.x = -node.position.x
             position = .left
+            node.xScale = 2.066
         }
     }
     
@@ -28,6 +29,7 @@ final class Player {
         if position != .right {
             node.position.x = -node.position.x
             position = .right
+            node.xScale = -2.066
         }
     }
     
