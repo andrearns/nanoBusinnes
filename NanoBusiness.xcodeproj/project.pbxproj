@@ -17,6 +17,8 @@
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
+		5B52701527A76A1800CABE68 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* NodeType.swift */; };
+		5B52701827A76A4A00CABE68 /* CategoryMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701727A76A4A00CABE68 /* CategoryMask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B52701427A76A1800CABE68 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		5B52701727A76A4A00CABE68 /* CategoryMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMask.swift; sourceTree = "<group>"; };
+		5BEBE82E27A486A900241D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,8 @@
 		5B0956A127A1EE70008F265C /* NanoBusiness */ = {
 			isa = PBXGroup;
 			children = (
+				5BEBE82E27A486A900241D4B /* Info.plist */,
+				5B52701627A76A3900CABE68 /* Utils */,
 				5B0956BB27A33BBA008F265C /* Models */,
 				5B0956A227A1EE70008F265C /* AppDelegate.swift */,
 				5B0956A427A1EE70008F265C /* GameScene.sks */,
@@ -81,8 +88,17 @@
 			children = (
 				5B0956B927A30D49008F265C /* Player.swift */,
 				5B0956BC27A33BCA008F265C /* Game.swift */,
+				5B52701427A76A1800CABE68 /* NodeType.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5B52701627A76A3900CABE68 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5B52701727A76A4A00CABE68 /* CategoryMask.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +176,9 @@
 			files = (
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
 				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
+				5B52701827A76A4A00CABE68 /* CategoryMask.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
+				5B52701527A76A1800CABE68 /* NodeType.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,
 			);
@@ -313,18 +331,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.NanoBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -341,18 +361,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.NanoBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

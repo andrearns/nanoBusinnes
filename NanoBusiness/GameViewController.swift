@@ -3,7 +3,12 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    var currentGame: GameScene?
+    
+    @IBOutlet var counterLabel: UILabel!
+    @IBOutlet var gameOverLabel: UILabel!
+    @IBOutlet var retryButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -15,10 +20,18 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
+                
+                currentGame = scene as? GameScene
+                currentGame?.viewController = self
             }
             
             view.ignoresSiblingOrder = true
         }
+    }
+    
+    @IBAction func restartGame(_ sender: Any) {
+        currentGame?.game.status = .running
+        currentGame?.startGame()
     }
 
     override var shouldAutorotate: Bool {

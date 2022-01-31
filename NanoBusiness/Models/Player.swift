@@ -47,6 +47,11 @@ final class Player {
         node.run(attack)
     }
     
+    func moveToInitialPosition() {
+        node.position.x = -216
+        node.position.y = -435.494
+    }
+    
     enum Position {
         case left
         case right

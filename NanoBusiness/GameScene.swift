@@ -2,22 +2,12 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    weak var viewController: GameViewController?
     
     var player: Player!
     var game = Game()
-    
-    var count = 0
-    var counterLabel: SKLabelNode!
-    var gameOverLabel: SKLabelNode!
-    
     var cam = SKCameraNode()
-    
-    var tree1: SKSpriteNode!
-    var tree2: SKSpriteNode!
-    var tree3: SKSpriteNode!
-    var tree4: SKSpriteNode!
-    var tree5: SKSpriteNode!
-    var tree6: SKSpriteNode!
+    var count = 0
     
     let nodeTypes: [NodeType] = [
         NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120, texture: SKTexture(imageNamed: "nodedanger")),
@@ -28,22 +18,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
+        view.showsPhysics = true
+        view.showsNodeCount = true
+        
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
         
-        counterLabel = self.childNode(withName: "counterLabel") as? SKLabelNode
-        counterLabel.zPosition = 10000000
-        
-        gameOverLabel = self.childNode(withName: "gameOverLabel") as? SKLabelNode
-        gameOverLabel.alpha = 0
-        gameOverLabel.zPosition = 10000000
-        
-        tree1 = self.childNode(withName: "tree1") as? SKSpriteNode
-        tree2 = self.childNode(withName: "tree2") as? SKSpriteNode
-        tree3 = self.childNode(withName: "tree3") as? SKSpriteNode
-        tree4 = self.childNode(withName: "tree4") as? SKSpriteNode
-        tree5 = self.childNode(withName: "tree5") as? SKSpriteNode
-        tree6 = self.childNode(withName: "tree6") as? SKSpriteNode
+        self.startGame()
         
         self.camera = cam
         addChild(cam)
@@ -78,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 createNewTreeNode()
                 
                 count += 1
-                counterLabel.text = String(count)
+                viewController?.counterLabel.text = String(count)
             }
         }
     }
@@ -97,8 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Colisão acontece e o jogo acaba
         if firstBody.categoryBitMask == CategoryMask.player.rawValue && secondBody.categoryBitMask == CategoryMask.tree.rawValue {
-             print("contact")
-            gameOverLabel.alpha = 1
+            print("contact")
             game.status = .over
         }
     }
@@ -108,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var randomNodeType = nodeTypes.randomElement()
         
+        // Review: bugging
         while randomNodeType!.xPosition == -oldNode!.position.x {
             randomNodeType = nodeTypes.randomElement()
         }
@@ -123,7 +104,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsBody.allowsRotation = false
         physicsBody.isDynamic = true
         physicsBody.affectedByGravity = false
-        physicsBody.restitution = 0
         physicsBody.friction = 1
         physicsBody.mass = 1000000
         physicsBody.categoryBitMask = CategoryMask.tree.rawValue
@@ -150,16 +130,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        switch game.status {
+        case .over:
+            viewController?.gameOverLabel.alpha = 1
+            viewController?.retryButton.alpha = 1
+        case .running:
+            viewController?.gameOverLabel.alpha = 0
+            viewController?.retryButton.alpha = 0
+        case .start:
+            print("Waiting to start")
+        }
     }
-}
-
-struct NodeType {
-    var size: CGSize
-    var xPosition: CGFloat
-    var texture: SKTexture
-}
-
-enum CategoryMask: UInt32 {
-    case player = 0b01 // 1
-    case tree = 0b10 // 2
+    
+    func startGame() {
+        for i in count...(count + 6) {
+            let node = childNode(withName: "tree\(i)")
+            node?.removeFromParent()
+        }
+    
+        self.count = 0
+        self.viewController?.counterLabel.text = String(count)
+        
+        // Criar os 6 blocos iniciais
+        let initialNodeType = nodeTypes[2]
+        
+        for i in 1...6 {
+            let newNode = SKSpriteNode(color: UIColor.green, size: initialNodeType.size)
+            
+            newNode.position.x = initialNodeType.xPosition
+            newNode.position.y = CGFloat(-629.19 + 199.4 * Double(i))
+            newNode.name = "tree\(i)"
+            newNode.texture = initialNodeType.texture
+            
+            let physicsBody = SKPhysicsBody(rectangleOf: initialNodeType.size)
+            physicsBody.allowsRotation = false
+            physicsBody.isDynamic = true
+            physicsBody.affectedByGravity = false
+            physicsBody.friction = 1
+            physicsBody.mass = 1000000
+            physicsBody.categoryBitMask = CategoryMask.tree.rawValue
+            physicsBody.collisionBitMask = CategoryMask.player.rawValue
+            physicsBody.contactTestBitMask = CategoryMask.player.rawValue
+            
+            newNode.physicsBody = physicsBody
+            
+            self.addChild(newNode)
+        }
+        
+        // Posicionar o player
+        player.moveToInitialPosition()
+    }
 }

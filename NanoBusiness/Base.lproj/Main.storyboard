@@ -1,24 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="NanoBusiness" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-oY-T6S">
+                                <rect key="frame" x="100" y="144" width="214" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Dl0-HW-AeS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHo-Kz-VeU">
+                                <rect key="frame" x="60" y="393" width="294" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7J-98-2ON">
+                                        <rect key="frame" x="0.0" y="70" width="294" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9Ah-44-lSn"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.52941176469999995" green="0.94901960780000005" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="RETRY">
+                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="restartGame:" destination="BV1-FR-VrT" eventType="touchUpInside" id="5gT-U7-qHg"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGA-67-K78">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="3hH-K6-YVN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="BeG-VY-WLT"/>
+                                    <constraint firstAttribute="trailing" secondItem="q7J-98-2ON" secondAttribute="trailing" id="HLm-vP-HGS"/>
+                                    <constraint firstItem="q7J-98-2ON" firstAttribute="leading" secondItem="LHo-Kz-VeU" secondAttribute="leading" id="KCe-7d-CuF"/>
+                                    <constraint firstItem="q7J-98-2ON" firstAttribute="centerX" secondItem="LHo-Kz-VeU" secondAttribute="centerX" id="ZKw-Vj-Ra5"/>
+                                    <constraint firstAttribute="bottom" secondItem="q7J-98-2ON" secondAttribute="bottom" id="ZiT-vY-8dB"/>
+                                    <constraint firstItem="pGA-67-K78" firstAttribute="top" secondItem="LHo-Kz-VeU" secondAttribute="top" id="il5-TR-Pkf"/>
+                                    <constraint firstAttribute="trailing" secondItem="pGA-67-K78" secondAttribute="trailing" id="jf3-ii-wCU"/>
+                                    <constraint firstItem="pGA-67-K78" firstAttribute="leading" secondItem="LHo-Kz-VeU" secondAttribute="leading" id="kY6-Rn-oX1"/>
+                                    <constraint firstItem="pGA-67-K78" firstAttribute="centerX" secondItem="LHo-Kz-VeU" secondAttribute="centerX" id="zFy-jN-g1t"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DoH-oY-T6S" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="100" id="3Wy-Eu-qSh"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="LHo-Kz-VeU" secondAttribute="trailing" constant="60" id="4QC-j6-oev"/>
+                            <constraint firstItem="DoH-oY-T6S" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="100" id="Dbe-aS-aCN"/>
+                            <constraint firstItem="LHo-Kz-VeU" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="60" id="Ihj-No-6fj"/>
+                            <constraint firstItem="DoH-oY-T6S" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="MyS-ZU-fJO"/>
+                            <constraint firstItem="LHo-Kz-VeU" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="Pr8-YK-Wjg"/>
+                            <constraint firstItem="LHo-Kz-VeU" firstAttribute="centerY" secondItem="4qk-I5-YsI" secondAttribute="centerY" id="jqH-7r-H6N"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="DoH-oY-T6S" secondAttribute="trailing" constant="100" id="wKS-pD-LSh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="counterLabel" destination="DoH-oY-T6S" id="203-8G-brT"/>
+                        <outlet property="gameOverLabel" destination="pGA-67-K78" id="qNw-WA-mcJ"/>
+                        <outlet property="retryButton" destination="q7J-98-2ON" id="N94-K4-EkX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="98"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
