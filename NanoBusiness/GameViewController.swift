@@ -8,6 +8,8 @@ class GameViewController: UIViewController {
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var gameOverLabel: UILabel!
     @IBOutlet var retryButton: UIButton!
+    @IBOutlet var timeBarView: UIView!
+    @IBOutlet var timeBarWidthConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +18,7 @@ class GameViewController: UIViewController {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFit
+                scene.scaleMode = .aspectFill
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -27,6 +29,9 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
         }
+        
+        timeBarView.layer.cornerRadius = 6
+        timeBarWidthConstraint.constant = 120
     }
     
     @IBAction func restartGame(_ sender: Any) {

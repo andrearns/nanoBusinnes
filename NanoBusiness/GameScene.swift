@@ -8,6 +8,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var game = Game()
     var cam = SKCameraNode()
     var count = 0
+    var currentTime = TimeInterval(0)
     
     let nodeTypes: [NodeType] = [
         NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120, texture: SKTexture(imageNamed: "nodedanger")),
@@ -43,6 +44,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("Touch right")
                     player.moveRight()
                     player.attackSetup()
+                }
+                
+                if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
+                    viewController?.timeBarWidthConstraint.constant += 2
                 }
                 
                 let actualNode = childNode(withName: "tree\(count + 1)")
@@ -137,6 +142,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .running:
             viewController?.gameOverLabel.alpha = 0
             viewController?.retryButton.alpha = 0
+            
+            if (viewController?.timeBarWidthConstraint.constant)! > 1 {
+                viewController?.timeBarWidthConstraint.constant -= 1/10
+            } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
+                game.status = .over
+            }
+            
         case .start:
             print("Waiting to start")
         }
@@ -150,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
         self.count = 0
         self.viewController?.counterLabel.text = String(count)
+        self.viewController?.timeBarWidthConstraint.constant = 120
         
         // Criar os 6 blocos iniciais
         let initialNodeType = nodeTypes[2]

@@ -50,6 +50,7 @@ final class Player {
     func moveToInitialPosition() {
         node.position.x = -216
         node.position.y = -435.494
+        position = .left
     }
     
     enum Position {
