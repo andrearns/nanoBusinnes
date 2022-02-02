@@ -8,6 +8,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var game = Game()
     var cam = SKCameraNode()
     var count = 0
+    var climbDistance = 0
     var currentTime = TimeInterval(0)
     
     let nodeTypes: [NodeType] = [
@@ -64,7 +65,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 createNewTreeNode()
                 
                 count += 1
-                viewController?.counterLabel.text = String(count)
+                climbDistance += 10
+                viewController?.counterLabel.text = String("\(climbDistance)m")
             }
         }
     }
@@ -85,6 +87,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == CategoryMask.player.rawValue && secondBody.categoryBitMask == CategoryMask.tree.rawValue {
             print("contact")
             game.status = .over
+            let gameOverVC = GameOverViewController(progress: climbDistance, record: 0, coinsCount: 0, gameVC: viewController!)
+            viewController?.modalPresentationStyle = .fullScreen
+            viewController?.present(gameOverVC, animated: true)
         }
     }
     
@@ -135,22 +140,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        switch game.status {
-        case .over:
-            viewController?.gameOverLabel.alpha = 1
-            viewController?.retryButton.alpha = 1
-        case .running:
-            viewController?.gameOverLabel.alpha = 0
-            viewController?.retryButton.alpha = 0
-            
+        if game.status == .running {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
-                viewController?.timeBarWidthConstraint.constant -= 1/10
+                if climbDistance > 0 && climbDistance < 1000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.1
+                } else if climbDistance >= 1000 && climbDistance < 2000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.2
+                } else if climbDistance >= 2000 && climbDistance < 3000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.3
+                } else if climbDistance >= 3000 && climbDistance < 4000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.4
+                } else if climbDistance >= 4000 && climbDistance < 5000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.5
+                } else if climbDistance >= 5000 && climbDistance < 6000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.6
+                } else if climbDistance >= 6000 && climbDistance < 7000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.7
+                } else if climbDistance >= 7000 {
+                    viewController?.timeBarWidthConstraint.constant -= 0.8
+                }
             } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
                 game.status = .over
+                let gameOverVC = GameOverViewController(progress: climbDistance, record: 0, coinsCount: 0, gameVC: viewController!)
+                viewController?.modalPresentationStyle = .fullScreen
+                viewController?.present(gameOverVC, animated: true)
             }
-            
-        case .start:
-            print("Waiting to start")
         }
     }
     
@@ -161,7 +175,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     
         self.count = 0
-        self.viewController?.counterLabel.text = String(count)
+        self.climbDistance = 0
+        self.viewController?.counterLabel.text = String("\(climbDistance)m")
         self.viewController?.timeBarWidthConstraint.constant = 120
         
         // Criar os 6 blocos iniciais
@@ -192,5 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Posicionar o player
         player.moveToInitialPosition()
+        
+        game.status = .running
     }
 }

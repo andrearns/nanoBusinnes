@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Exo-Black.ttf">
+            <string>Exo-Black</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameOverViewController" customModule="NanoBusiness" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="4Ex-D9-aav" id="uwr-sD-2Eu"/>
+                <outlet property="coinsCountLabel" destination="cjw-8B-7vQ" id="voM-sF-b4k"/>
+                <outlet property="progressLabel" destination="gsp-FW-MkI" id="7NO-Ls-iTQ"/>
+                <outlet property="recordLabel" destination="L39-uy-MPE" id="ge0-g8-IM3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-D9-aav">
+                    <rect key="frame" x="32" y="268.5" width="350" height="369"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="gameOverTextImage" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-Dx-LQL">
+                            <rect key="frame" x="0.0" y="-32" width="350" height="65"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEU PROGRESSO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzS-Ey-LpQ">
+                            <rect key="frame" x="79.5" y="49" width="191" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="AdB-gM-xxm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9C-La-FhU" userLabel="Container">
+                            <rect key="frame" x="69" y="81" width="212" height="72"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="labelContainer" translatesAutoresizingMaskIntoConstraints="NO" id="QmZ-e2-0Ga">
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsp-FW-MkI">
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
+                                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                                    <color key="textColor" name="Preto"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="gsp-FW-MkI" firstAttribute="centerY" secondItem="k9C-La-FhU" secondAttribute="centerY" id="2St-NC-isZ"/>
+                                <constraint firstAttribute="width" constant="212" id="3hi-UN-4lK"/>
+                                <constraint firstItem="QmZ-e2-0Ga" firstAttribute="height" secondItem="k9C-La-FhU" secondAttribute="height" id="5vM-QN-jwi"/>
+                                <constraint firstItem="QmZ-e2-0Ga" firstAttribute="width" secondItem="k9C-La-FhU" secondAttribute="width" id="DcQ-Ce-Fna"/>
+                                <constraint firstItem="QmZ-e2-0Ga" firstAttribute="centerX" secondItem="k9C-La-FhU" secondAttribute="centerX" id="DgH-cc-ins"/>
+                                <constraint firstItem="QmZ-e2-0Ga" firstAttribute="centerY" secondItem="k9C-La-FhU" secondAttribute="centerY" id="V1R-Sa-Axv"/>
+                                <constraint firstItem="gsp-FW-MkI" firstAttribute="centerX" secondItem="k9C-La-FhU" secondAttribute="centerX" id="exJ-oW-Eb9"/>
+                                <constraint firstAttribute="height" constant="72" id="gju-Th-cKD"/>
+                                <constraint firstItem="gsp-FW-MkI" firstAttribute="height" secondItem="k9C-La-FhU" secondAttribute="height" id="hrK-yn-5t8"/>
+                                <constraint firstItem="gsp-FW-MkI" firstAttribute="width" secondItem="k9C-La-FhU" secondAttribute="width" id="pCg-CI-4h5"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEU RECORDE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-dO-VAC">
+                            <rect key="frame" x="95.5" y="169" width="159" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="U5I-lK-cwN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-72-eRP" userLabel="Container">
+                            <rect key="frame" x="69" y="201" width="212" height="72"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="labelContainer" translatesAutoresizingMaskIntoConstraints="NO" id="XR3-Ec-g8Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L39-uy-MPE">
+                                    <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
+                                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                                    <color key="textColor" name="Preto"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="L39-uy-MPE" firstAttribute="centerX" secondItem="KBE-72-eRP" secondAttribute="centerX" id="5oU-ki-bn6"/>
+                                <constraint firstItem="L39-uy-MPE" firstAttribute="centerY" secondItem="KBE-72-eRP" secondAttribute="centerY" id="7UM-Z0-pNr"/>
+                                <constraint firstAttribute="height" constant="72" id="Ema-YG-Y3Q"/>
+                                <constraint firstAttribute="width" constant="212" id="MYX-F2-e6c"/>
+                                <constraint firstItem="XR3-Ec-g8Z" firstAttribute="height" secondItem="KBE-72-eRP" secondAttribute="height" id="ad6-L9-AZg"/>
+                                <constraint firstItem="XR3-Ec-g8Z" firstAttribute="centerY" secondItem="KBE-72-eRP" secondAttribute="centerY" id="g6G-Nx-lcR"/>
+                                <constraint firstItem="L39-uy-MPE" firstAttribute="width" secondItem="KBE-72-eRP" secondAttribute="width" id="mId-1O-fn4"/>
+                                <constraint firstItem="L39-uy-MPE" firstAttribute="height" secondItem="KBE-72-eRP" secondAttribute="height" id="roQ-8p-f6G"/>
+                                <constraint firstItem="XR3-Ec-g8Z" firstAttribute="centerX" secondItem="KBE-72-eRP" secondAttribute="centerX" id="yeW-ej-XmN"/>
+                                <constraint firstItem="XR3-Ec-g8Z" firstAttribute="width" secondItem="KBE-72-eRP" secondAttribute="width" id="zve-4P-dFi"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOEDAS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-oG-liq">
+                            <rect key="frame" x="69" y="305" width="107" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="mFW-CD-zUH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                            <color key="textColor" name="Preto"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjw-8B-7vQ">
+                            <rect key="frame" x="265" y="305" width="16" height="32"/>
+                            <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                            <color key="textColor" name="Preto"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="Ejs-e0-eac">
+                            <rect key="frame" x="229" y="305" width="28" height="32"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" name="Laranja"/>
+                    <constraints>
+                        <constraint firstItem="cjw-8B-7vQ" firstAttribute="trailing" secondItem="KBE-72-eRP" secondAttribute="trailing" id="4yU-7a-Yk4"/>
+                        <constraint firstItem="XBw-Dx-LQL" firstAttribute="centerX" secondItem="4Ex-D9-aav" secondAttribute="centerX" id="H2e-7H-90a"/>
+                        <constraint firstItem="gdC-oG-liq" firstAttribute="top" secondItem="KBE-72-eRP" secondAttribute="bottom" constant="32" id="OAc-ra-5yx"/>
+                        <constraint firstItem="KBE-72-eRP" firstAttribute="centerX" secondItem="3Ei-dO-VAC" secondAttribute="centerX" id="OFw-ph-wwP"/>
+                        <constraint firstItem="XBw-Dx-LQL" firstAttribute="top" secondItem="4Ex-D9-aav" secondAttribute="top" constant="-32" id="QVc-m4-0Ln"/>
+                        <constraint firstItem="EzS-Ey-LpQ" firstAttribute="centerX" secondItem="XBw-Dx-LQL" secondAttribute="centerX" id="Rad-pt-V6s"/>
+                        <constraint firstItem="3Ei-dO-VAC" firstAttribute="centerX" secondItem="k9C-La-FhU" secondAttribute="centerX" id="bUc-mH-MVD"/>
+                        <constraint firstItem="k9C-La-FhU" firstAttribute="centerX" secondItem="EzS-Ey-LpQ" secondAttribute="centerX" id="bvV-X6-xax"/>
+                        <constraint firstItem="EzS-Ey-LpQ" firstAttribute="top" secondItem="XBw-Dx-LQL" secondAttribute="bottom" constant="16" id="eUW-Sw-7C1"/>
+                        <constraint firstItem="cjw-8B-7vQ" firstAttribute="leading" secondItem="Ejs-e0-eac" secondAttribute="trailing" constant="8" id="hf6-V1-42a"/>
+                        <constraint firstItem="cjw-8B-7vQ" firstAttribute="centerY" secondItem="Ejs-e0-eac" secondAttribute="centerY" id="iMy-FZ-47H"/>
+                        <constraint firstAttribute="bottom" secondItem="gdC-oG-liq" secondAttribute="bottom" constant="32" id="lf4-FJ-M70"/>
+                        <constraint firstItem="gdC-oG-liq" firstAttribute="leading" secondItem="KBE-72-eRP" secondAttribute="leading" id="onf-2V-k3L"/>
+                        <constraint firstItem="k9C-La-FhU" firstAttribute="top" secondItem="EzS-Ey-LpQ" secondAttribute="bottom" id="qPm-aF-kNt"/>
+                        <constraint firstItem="3Ei-dO-VAC" firstAttribute="top" secondItem="k9C-La-FhU" secondAttribute="bottom" constant="16" id="s0E-mS-IJp"/>
+                        <constraint firstItem="Ejs-e0-eac" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gdC-oG-liq" secondAttribute="trailing" constant="32" id="tsY-qh-uoU"/>
+                        <constraint firstItem="Ejs-e0-eac" firstAttribute="centerY" secondItem="gdC-oG-liq" secondAttribute="centerY" id="txp-0j-xHK"/>
+                        <constraint firstItem="XBw-Dx-LQL" firstAttribute="width" secondItem="4Ex-D9-aav" secondAttribute="width" id="unw-NJ-Wbr"/>
+                        <constraint firstItem="KBE-72-eRP" firstAttribute="top" secondItem="3Ei-dO-VAC" secondAttribute="bottom" id="yhJ-5Q-35c"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnF-xK-SUG">
+                    <rect key="frame" x="32" y="669.5" width="350" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="auQ-Uc-KUZ"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="RETRY">
+                        <fontDescription key="titleFontDescription" name="Exo-Black" family="Exo" pointSize="28"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="retry:" destination="-1" eventType="touchUpInside" id="KQK-3E-TAp"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.50314268773915816" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4Ex-D9-aav" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="1UM-QT-lE0"/>
+                <constraint firstItem="NnF-xK-SUG" firstAttribute="centerX" secondItem="4Ex-D9-aav" secondAttribute="centerX" id="4je-Al-EKJ"/>
+                <constraint firstItem="NnF-xK-SUG" firstAttribute="width" secondItem="4Ex-D9-aav" secondAttribute="width" id="Ufx-N4-b7f"/>
+                <constraint firstItem="4Ex-D9-aav" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Yhx-NX-ZgO"/>
+                <constraint firstItem="NnF-xK-SUG" firstAttribute="top" secondItem="4Ex-D9-aav" secondAttribute="bottom" constant="32" id="hmg-np-bWh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4Ex-D9-aav" secondAttribute="trailing" constant="32" id="p6M-4e-X1p"/>
+                <constraint firstItem="4Ex-D9-aav" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="pbG-qq-Ljw"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="81.696428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="coin" width="28" height="32"/>
+        <image name="gameOverTextImage" width="341.5" height="65"/>
+        <image name="labelContainer" width="211.5" height="72"/>
+        <namedColor name="Laranja">
+            <color red="0.90980392156862744" green="0.41568627450980394" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Preto">
+            <color red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -10,6 +10,7 @@ final class Game {
     enum GameStatus {
         case start
         case running
+        case paused
         case over
     }
 }

@@ -38,7 +38,11 @@ class GameViewController: UIViewController {
         currentGame?.game.status = .running
         currentGame?.startGame()
     }
-
+    
+    @IBAction func pauseGame(_ sender: Any) {
+        currentGame?.game.status = .paused
+    }
+    
     override var shouldAutorotate: Bool {
         return false
     }
