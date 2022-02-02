@@ -4,6 +4,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     var currentGame: GameScene?
+    var backgroundOverlay = UIView()
     
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var gameOverLabel: UILabel!
@@ -32,8 +33,23 @@ class GameViewController: UIViewController {
         
         timeBarView.layer.cornerRadius = 6
         timeBarWidthConstraint.constant = 120
+        
+        backgroundOverlay.frame = view.frame
+        backgroundOverlay.backgroundColor = .black
+        backgroundOverlay.alpha = 0
+        
+        view.addSubview(backgroundOverlay)
     }
     
+    func showGameOver() {
+        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: 0, coinsCount: 0, gameVC: self)
+        gameOverVC.view.frame.size.width = (view.frame.width - 40)
+        gameOverVC.view.center = view.center
+    
+        self.view.addSubview(gameOverVC.view)
+        self.addChild(gameOverVC)
+    }
+
     @IBAction func restartGame(_ sender: Any) {
         currentGame?.game.status = .running
         currentGame?.startGame()
@@ -41,6 +57,13 @@ class GameViewController: UIViewController {
     
     @IBAction func pauseGame(_ sender: Any) {
         currentGame?.game.status = .paused
+        
+        let gamePausedVC = GamePausedViewController(gameVC: self)
+        gamePausedVC.view.frame.size.width = (view.frame.width - 40)
+        gamePausedVC.view.center = view.center
+        
+        self.view.addSubview(gamePausedVC.view)
+        self.addChild(gamePausedVC)
     }
     
     override var shouldAutorotate: Bool {

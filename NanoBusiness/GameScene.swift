@@ -87,9 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == CategoryMask.player.rawValue && secondBody.categoryBitMask == CategoryMask.tree.rawValue {
             print("contact")
             game.status = .over
-            let gameOverVC = GameOverViewController(progress: climbDistance, record: 0, coinsCount: 0, gameVC: viewController!)
-            viewController?.modalPresentationStyle = .fullScreen
-            viewController?.present(gameOverVC, animated: true)
+            viewController?.showGameOver()
         }
     }
     
@@ -161,9 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
                 game.status = .over
-                let gameOverVC = GameOverViewController(progress: climbDistance, record: 0, coinsCount: 0, gameVC: viewController!)
-                viewController?.modalPresentationStyle = .fullScreen
-                viewController?.present(gameOverVC, animated: true)
+                viewController?.showGameOver()
             }
         }
     }

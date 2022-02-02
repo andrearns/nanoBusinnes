@@ -22,6 +22,8 @@
 		5B52701827A76A4A00CABE68 /* CategoryMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701727A76A4A00CABE68 /* CategoryMask.swift */; };
 		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
+		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
+		5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189F27AB069F00EED11C /* GamePausedViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		5B52701727A76A4A00CABE68 /* CategoryMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMask.swift; sourceTree = "<group>"; };
 		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
+		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
+		5B89189F27AB069F00EED11C /* GamePausedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamePausedViewController.xib; sourceTree = "<group>"; };
 		5BEBE82E27A486A900241D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,7 @@
 			children = (
 				5B89189C27AAC88500EED11C /* Game */,
 				5B89189727AAC4BA00EED11C /* GameOver */,
+				5B89189D27AB067800EED11C /* GamePaused */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -140,6 +145,15 @@
 				5B0956AA27A1EE70008F265C /* GameViewController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		5B89189D27AB067800EED11C /* GamePaused */ = {
+			isa = PBXGroup;
+			children = (
+				5B89189E27AB069F00EED11C /* GamePausedViewController.swift */,
+				5B89189F27AB069F00EED11C /* GamePausedViewController.xib */,
+			);
+			path = GamePaused;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */,
 				5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */,
 				5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */,
 				5B0956A527A1EE70008F265C /* GameScene.sks in Resources */,
@@ -224,6 +239,7 @@
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
 				5B52701527A76A1800CABE68 /* NodeType.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
+				5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

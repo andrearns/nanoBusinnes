@@ -6,6 +6,7 @@ class GameOverViewController: UIViewController {
     @IBOutlet var recordLabel: UILabel!
     @IBOutlet var coinsCountLabel: UILabel!
     @IBOutlet var backgroundView: UIView!
+    @IBOutlet var retryButton: UIButton!
     
     var gameViewController: GameViewController
     var progress: Int
@@ -27,15 +28,19 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        retryButton.layer.cornerRadius = 16
         backgroundView.layer.cornerRadius = 16
         coinsCountLabel.text = "\(coinsCount)"
         recordLabel.text = "\(record)m"
         progressLabel.text = "\(progress)m"
+        self.gameViewController.backgroundOverlay.alpha = 0.5
     }
     
     @IBAction func retry(_ sender: Any) {
         self.dismiss(animated: true) {
             self.gameViewController.currentGame?.startGame()
+            self.view.removeFromSuperview()
+            self.gameViewController.backgroundOverlay.alpha = 0
         }
     }
 }
