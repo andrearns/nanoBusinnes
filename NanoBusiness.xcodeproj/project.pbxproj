@@ -24,6 +24,7 @@
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
 		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
 		5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189F27AB069F00EED11C /* GamePausedViewController.xib */; };
+		5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A427AB122300EED11C /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
 		5B89189F27AB069F00EED11C /* GamePausedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamePausedViewController.xib; sourceTree = "<group>"; };
+		5B8918A427AB122300EED11C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		5BEBE82E27A486A900241D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEBE82E27A486A900241D4B /* Info.plist */,
+				5B8918A227AB120000EED11C /* Service */,
 				5B52701627A76A3900CABE68 /* Utils */,
 				5B4C69C127A9BED600DA347C /* View Controllers */,
 				5B0956BB27A33BBA008F265C /* Models */,
@@ -154,6 +157,22 @@
 				5B89189F27AB069F00EED11C /* GamePausedViewController.xib */,
 			);
 			path = GamePaused;
+			sourceTree = "<group>";
+		};
+		5B8918A227AB120000EED11C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A327AB120C00EED11C /* UserDefaults */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5B8918A327AB120C00EED11C /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A427AB122300EED11C /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +257,7 @@
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
 				5B52701527A76A1800CABE68 /* NodeType.swift in Sources */,
+				5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
 				5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,

@@ -6,6 +6,8 @@ class GameViewController: UIViewController {
     var currentGame: GameScene?
     var backgroundOverlay = UIView()
     
+    var record: Int = 0
+    
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var gameOverLabel: UILabel!
     @IBOutlet var retryButton: UIButton!
@@ -39,10 +41,18 @@ class GameViewController: UIViewController {
         backgroundOverlay.alpha = 0
         
         view.addSubview(backgroundOverlay)
+        
+        record = UserDefaultsManager.fetchRecord()
+        print("Current record:", record)
     }
     
     func showGameOver() {
-        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: 0, coinsCount: 0, gameVC: self)
+        if currentGame!.climbDistance > record {
+            UserDefaultsManager.setNewRecord(currentGame!.climbDistance)
+            record = currentGame!.climbDistance
+        }
+        
+        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: 0, gameVC: self)
         gameOverVC.view.frame.size.width = (view.frame.width - 40)
         gameOverVC.view.center = view.center
     
