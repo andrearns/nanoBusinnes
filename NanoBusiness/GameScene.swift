@@ -35,11 +35,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if location.x < 0 {
                     print("Touch left")
                     player.moveLeft()
-//                    player.attackSetup()
                 } else if location.x > 0 {
                     print("Touch right")
                     player.moveRight()
-//                    player.attackSetup()
                 }
                 
                 if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
