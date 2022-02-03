@@ -81,6 +81,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
             print("Game over")
             game.status = .over
+            
+            if player.position == .left {
+                let leftNode = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
+                leftNode.size = CGSize(width: 260.055, height: 201.3)
+                leftNode.position.y = -430.097
+                leftNode.position.x = -210
+                leftNode.zPosition = 10000000000
+                leftNode.name = "deadNode"
+                self.addChild(leftNode)
+            } else {
+                let rightNode = SKSpriteNode(imageNamed: "paredeGameOverDireita")
+                rightNode.size = CGSize(width: 260.055, height: 201.3)
+                rightNode.position.y = -430.097
+                rightNode.position.x = 210
+                rightNode.zPosition = 10000000000
+                rightNode.name = "deadNode"
+                self.addChild(rightNode)
+            }
+            
+            player.node.zPosition = -10
+            
             viewController?.showGameOver()
         }
         // Pega moeda
@@ -137,7 +158,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightNode = childNode(withName: "node\(i)B")
             rightNode?.removeFromParent()
         }
-    
+        
+        let deadNode = childNode(withName: "deadNode")
+        deadNode?.removeFromParent()
+        self.player.node.zPosition = 10000000
         self.count = 0
         self.climbDistance = 0
         self.viewController?.counterLabel.text = String("\(climbDistance)m")

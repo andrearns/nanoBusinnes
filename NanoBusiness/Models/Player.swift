@@ -3,7 +3,7 @@ import SpriteKit
 
 final class Player {
     
-    private var node: SKSpriteNode
+    var node: SKSpriteNode
     var position: Position
     private var attack: SKAction!
     
