@@ -18,13 +18,15 @@
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
 		5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */; };
-		5B52701527A76A1800CABE68 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* NodeType.swift */; };
+		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
 		5B52701827A76A4A00CABE68 /* CategoryMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701727A76A4A00CABE68 /* CategoryMask.swift */; };
 		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
 		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
 		5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189F27AB069F00EED11C /* GamePausedViewController.xib */; };
 		5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A427AB122300EED11C /* UserDefaultsManager.swift */; };
+		5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */; };
+		5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A927AC310900EED11C /* CenarioBlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,13 +42,15 @@
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.ttf"; path = "../../../../../Downloads/Exo/static/Exo-Black.ttf"; sourceTree = "<group>"; };
-		5B52701427A76A1800CABE68 /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
 		5B52701727A76A4A00CABE68 /* CategoryMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMask.swift; sourceTree = "<group>"; };
 		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
 		5B89189F27AB069F00EED11C /* GamePausedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamePausedViewController.xib; sourceTree = "<group>"; };
 		5B8918A427AB122300EED11C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioBlocksSingleton.swift; sourceTree = "<group>"; };
+		5B8918A927AC310900EED11C /* CenarioBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioBlock.swift; sourceTree = "<group>"; };
 		5BEBE82E27A486A900241D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,8 +87,8 @@
 				5BEBE82E27A486A900241D4B /* Info.plist */,
 				5B8918A227AB120000EED11C /* Service */,
 				5B52701627A76A3900CABE68 /* Utils */,
-				5B4C69C127A9BED600DA347C /* View Controllers */,
 				5B0956BB27A33BBA008F265C /* Models */,
+				5B4C69C127A9BED600DA347C /* View Controllers */,
 				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B0956A227A1EE70008F265C /* AppDelegate.swift */,
 				5B0956A827A1EE70008F265C /* GameScene.swift */,
@@ -102,7 +106,8 @@
 			children = (
 				5B0956B927A30D49008F265C /* Player.swift */,
 				5B0956BC27A33BCA008F265C /* Game.swift */,
-				5B52701427A76A1800CABE68 /* NodeType.swift */,
+				5B52701427A76A1800CABE68 /* CenarioNode.swift */,
+				5B8918A927AC310900EED11C /* CenarioBlock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		5B8918A227AB120000EED11C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5B8918A627AC308C00EED11C /* FakeDatabase */,
 				5B8918A327AB120C00EED11C /* UserDefaults */,
 			);
 			path = Service;
@@ -173,6 +179,14 @@
 				5B8918A427AB122300EED11C /* UserDefaultsManager.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		5B8918A627AC308C00EED11C /* FakeDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */,
+			);
+			path = FakeDatabase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,11 +268,13 @@
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
 				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
 				5B52701827A76A4A00CABE68 /* CategoryMask.swift in Sources */,
+				5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
-				5B52701527A76A1800CABE68 /* NodeType.swift in Sources */,
+				5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */,
 				5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
+				5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */,
 				5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,
 			);

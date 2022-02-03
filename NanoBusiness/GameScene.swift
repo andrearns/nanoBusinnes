@@ -11,10 +11,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var climbDistance = 0
     var currentTime = TimeInterval(0)
     
-    let nodeTypes: [NodeType] = [
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120, texture: SKTexture(imageNamed: "nodedanger")),
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: -120, texture: SKTexture(imageNamed: "nodedanger")),
-        NodeType(size: CGSize(width: 162.371, height: 198.005), xPosition: 0, texture: SKTexture(imageNamed: "nodesimpleBlue")),
+    let nodeTypes: [CenarioNode] = [
+        CenarioNode(size: CGSize(width: 400, height: 198.005), xPosition: 120, texture: SKTexture(imageNamed: "nodedanger")),
+        CenarioNode(size: CGSize(width: 400, height: 198.005), xPosition: -120, texture: SKTexture(imageNamed: "nodedanger")),
+        CenarioNode(size: CGSize(width: 162.371, height: 198.005), xPosition: 0, texture: SKTexture(imageNamed: "nodesimpleBlue")),
     ]
     
     override func didMove(to view: SKView) {
