@@ -11,10 +11,11 @@ final class Player {
         self.node = node
         self.position = .left
         self.node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-        self.node.physicsBody?.categoryBitMask = CategoryMask.player.rawValue
-        self.node.physicsBody?.collisionBitMask = CategoryMask.tree.rawValue
-        self.node.physicsBody?.contactTestBitMask = CategoryMask.tree.rawValue
-        attackSetup()
+        self.node.physicsBody?.categoryBitMask = UInt32(2)
+        self.node.physicsBody?.collisionBitMask = UInt32(1)
+        self.node.physicsBody?.contactTestBitMask = UInt32(15)
+        self.node.zPosition = 10000000
+//        attackSetup()
     }
     
     func moveLeft() {
@@ -32,29 +33,24 @@ final class Player {
             node.xScale = -2.066
         }
     }
-    
-    func attackSetup() {
-        
-        var textures = [SKTexture]()
-        
-        textures.append(SKTexture(imageNamed: "playerattack"))
-        textures.append(SKTexture(imageNamed: "player"))
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: false)
-        
-        attack = SKAction.sequence([frames])
-        
-        node.run(attack)
-    }
+//
+//    func attackSetup() {
+//
+//        var textures = [SKTexture]()
+//
+//        textures.append(SKTexture(imageNamed: "playerattack"))
+//        textures.append(SKTexture(imageNamed: "player"))
+//
+//        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: false)
+//
+//        attack = SKAction.sequence([frames])
+//
+//        node.run(attack)
+//    }
     
     func moveToInitialPosition() {
         node.position.x = -216
         node.position.y = -435.494
         position = .left
-    }
-    
-    enum Position {
-        case left
-        case right
     }
 }

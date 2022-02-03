@@ -52,7 +52,7 @@ class GameViewController: UIViewController {
             record = currentGame!.climbDistance
         }
         
-        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: 0, gameVC: self)
+        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: currentGame!.coinsCount, gameVC: self)
         gameOverVC.view.frame.size.width = (view.frame.width - 40)
         gameOverVC.view.center = view.center
     
