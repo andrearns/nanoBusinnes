@@ -6,6 +6,7 @@ class GameViewController: UIViewController {
     var currentGame: GameScene?
     var backgroundOverlay = UIView()
     var gameOverVC: GameOverViewController?
+    var menuVC: MenuViewController!
     
     var record: Int = 0
     
@@ -47,6 +48,11 @@ class GameViewController: UIViewController {
         gameOverVC?.view.frame.size.width = (view.frame.width - 40)
         gameOverVC?.view.center.x = view.center.x
         gameOverVC?.view.center.y = -900
+        
+        menuVC = MenuViewController(gameVC: self)
+        menuVC?.view.frame.size.width = (view.frame.width - 40)
+        menuVC?.view.center.x = view.center.x
+        menuVC?.view.center.y = 1200
     }
     
     func showGameOver() {
@@ -63,14 +69,14 @@ class GameViewController: UIViewController {
     
         self.view.addSubview(gameOverVC!.view)
         self.addChild(gameOverVC!)
+        
+        showMenu()
     }
     
-    func showTapButtons() {
-        
-    }
-    
-    func hideTapButtons() {
-        
+    func showMenu() {
+        menuVC?.view.center.y = view.frame.height - 80
+        self.view.addSubview(menuVC!.view)
+        self.addChild(menuVC!)
     }
 
     @IBAction func pauseGame(_ sender: Any) {
