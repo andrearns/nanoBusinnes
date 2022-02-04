@@ -455,7 +455,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanoBusiness/NanoBusiness.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y2B8GB8AKH;
+				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
@@ -488,7 +488,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanoBusiness/NanoBusiness.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y2B8GB8AKH;
+				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
