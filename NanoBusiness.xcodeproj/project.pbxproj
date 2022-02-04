@@ -444,6 +444,7 @@
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -474,6 +475,7 @@
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
