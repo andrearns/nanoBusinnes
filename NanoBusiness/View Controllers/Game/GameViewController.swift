@@ -10,8 +10,6 @@ class GameViewController: UIViewController {
     var record: Int = 0
     
     @IBOutlet var counterLabel: UILabel!
-    @IBOutlet var gameOverLabel: UILabel!
-    @IBOutlet var retryButton: UIButton!
     @IBOutlet var timeBarView: UIView!
     @IBOutlet var timeBarWidthConstraint: NSLayoutConstraint!
     
@@ -34,7 +32,7 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
         }
         
-        timeBarView.layer.cornerRadius = 6
+        timeBarView.layer.cornerRadius = 19
         timeBarWidthConstraint.constant = 120
         
         backgroundOverlay.frame = view.frame

@@ -35,8 +35,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-D9-aav">
                             <rect key="frame" x="0.0" y="32" width="350" height="369"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEU PROGRESSO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzS-Ey-LpQ">
-                                    <rect key="frame" x="79.5" y="49" width="191" height="32"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzS-Ey-LpQ">
+                                    <rect key="frame" x="113.5" y="49" width="123" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="AdB-gM-xxm"/>
                                     </constraints>
@@ -71,8 +71,8 @@
                                         <constraint firstItem="gsp-FW-MkI" firstAttribute="width" secondItem="k9C-La-FhU" secondAttribute="width" id="pCg-CI-4h5"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEU RECORDE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-dO-VAC">
-                                    <rect key="frame" x="95.5" y="169" width="159" height="32"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-dO-VAC">
+                                    <rect key="frame" x="145.5" y="169" width="59" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="U5I-lK-cwN"/>
                                     </constraints>
@@ -107,8 +107,8 @@
                                         <constraint firstItem="XR3-Ec-g8Z" firstAttribute="width" secondItem="KBE-72-eRP" secondAttribute="width" id="zve-4P-dFi"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOEDAS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-oG-liq">
-                                    <rect key="frame" x="69" y="305" width="107" height="32"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COINS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-oG-liq">
+                                    <rect key="frame" x="69" y="305" width="76" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="mFW-CD-zUH"/>
                                     </constraints>
