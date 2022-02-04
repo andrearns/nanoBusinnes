@@ -76,6 +76,15 @@ class GameViewController: UIViewController {
         self.view.addSubview(menuVC!.view)
         self.addChild(menuVC!)
     }
+    
+    func blinkTimeBar() {
+        UIView.animate(withDuration: 0.1) {
+            self.timeBarView.alpha = 0.3
+        }
+        UIView.animate(withDuration: 0.1) {
+            self.timeBarView.alpha = 1
+        }
+    }
 
     @IBAction func pauseGame(_ sender: Any) {
         currentGame?.game.status = .paused
