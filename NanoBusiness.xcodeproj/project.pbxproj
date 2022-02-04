@@ -16,6 +16,19 @@
 		5B0956B027A1EE73008F265C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956AF27A1EE73008F265C /* Assets.xcassets */; };
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
+		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
+		5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */; };
+		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
+		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
+		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
+		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
+		5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189F27AB069F00EED11C /* GamePausedViewController.xib */; };
+		5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A427AB122300EED11C /* UserDefaultsManager.swift */; };
+		5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */; };
+		5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918A927AC310900EED11C /* CenarioBlock.swift */; };
+		5B8918AC27AC4EF400EED11C /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AB27AC4EF400EED11C /* Position.swift */; };
+		5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AE27ACFC8300EED11C /* MenuViewController.swift */; };
+		5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8918AF27ACFC8300EED11C /* MenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +42,19 @@
 		5B0956AF27A1EE73008F265C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.ttf"; path = "../../../../../Downloads/Exo/static/Exo-Black.ttf"; sourceTree = "<group>"; };
+		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
+		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
+		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
+		5B89189F27AB069F00EED11C /* GamePausedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamePausedViewController.xib; sourceTree = "<group>"; };
+		5B8918A427AB122300EED11C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioBlocksSingleton.swift; sourceTree = "<group>"; };
+		5B8918A927AC310900EED11C /* CenarioBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioBlock.swift; sourceTree = "<group>"; };
+		5B8918AB27AC4EF400EED11C /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		5B8918AE27ACFC8300EED11C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5B8918AF27ACFC8300EED11C /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +87,118 @@
 		5B0956A127A1EE70008F265C /* NanoBusiness */ = {
 			isa = PBXGroup;
 			children = (
+				5B4C69C727A9C32600DA347C /* Fonts */,
+				5B8918A227AB120000EED11C /* Service */,
+				5B52701627A76A3900CABE68 /* Utils */,
+				5B0956BB27A33BBA008F265C /* Models */,
+				5B4C69C127A9BED600DA347C /* View Controllers */,
 				5B0956A227A1EE70008F265C /* AppDelegate.swift */,
+				5B0956A827A1EE70008F265C /* GameScene.swift */,
 				5B0956A427A1EE70008F265C /* GameScene.sks */,
 				5B0956A627A1EE70008F265C /* Actions.sks */,
-				5B0956A827A1EE70008F265C /* GameScene.swift */,
-				5B0956AA27A1EE70008F265C /* GameViewController.swift */,
 				5B0956AC27A1EE70008F265C /* Main.storyboard */,
-				5B0956AF27A1EE73008F265C /* Assets.xcassets */,
 				5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */,
-				5B0956B927A30D49008F265C /* Player.swift */,
+				5B0956AF27A1EE73008F265C /* Assets.xcassets */,
 			);
 			path = NanoBusiness;
+			sourceTree = "<group>";
+		};
+		5B0956BB27A33BBA008F265C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B0956B927A30D49008F265C /* Player.swift */,
+				5B0956BC27A33BCA008F265C /* Game.swift */,
+				5B52701427A76A1800CABE68 /* CenarioNode.swift */,
+				5B8918A927AC310900EED11C /* CenarioBlock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B4C69C127A9BED600DA347C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B89189C27AAC88500EED11C /* Game */,
+				5B8918AD27ACFC6900EED11C /* Menu */,
+				5B89189727AAC4BA00EED11C /* GameOver */,
+				5B89189D27AB067800EED11C /* GamePaused */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5B4C69C727A9C32600DA347C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5B52701627A76A3900CABE68 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918AB27AC4EF400EED11C /* Position.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5B89189727AAC4BA00EED11C /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				5B89189827AAC4E300EED11C /* GameOverViewController.swift */,
+				5B89189927AAC4E300EED11C /* GameOverViewController.xib */,
+			);
+			path = GameOver;
+			sourceTree = "<group>";
+		};
+		5B89189C27AAC88500EED11C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				5B0956AA27A1EE70008F265C /* GameViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		5B89189D27AB067800EED11C /* GamePaused */ = {
+			isa = PBXGroup;
+			children = (
+				5B89189E27AB069F00EED11C /* GamePausedViewController.swift */,
+				5B89189F27AB069F00EED11C /* GamePausedViewController.xib */,
+			);
+			path = GamePaused;
+			sourceTree = "<group>";
+		};
+		5B8918A227AB120000EED11C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A627AC308C00EED11C /* FakeDatabase */,
+				5B8918A327AB120C00EED11C /* UserDefaults */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5B8918A327AB120C00EED11C /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A427AB122300EED11C /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		5B8918A627AC308C00EED11C /* FakeDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */,
+			);
+			path = FakeDatabase;
+			sourceTree = "<group>";
+		};
+		5B8918AD27ACFC6900EED11C /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5B8918AE27ACFC8300EED11C /* MenuViewController.swift */,
+				5B8918AF27ACFC8300EED11C /* MenuViewController.xib */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,11 +259,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */,
 				5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */,
+				5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */,
 				5B0956A527A1EE70008F265C /* GameScene.sks in Resources */,
+				5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */,
 				5B0956B027A1EE73008F265C /* Assets.xcassets in Resources */,
 				5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
+				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,8 +279,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
+				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
+				5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
+				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
+				5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */,
+				5B8918AC27AC4EF400EED11C /* Position.swift in Sources */,
+				5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */,
+				5B8918A527AB122300EED11C /* UserDefaultsManager.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
+				5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */,
+				5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */,
 				5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,22 +437,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoBusiness/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.NanoBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -325,22 +469,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoBusiness/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.NanoBusiness;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

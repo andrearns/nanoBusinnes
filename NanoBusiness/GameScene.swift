@@ -1,126 +1,276 @@
+import Foundation
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    weak var viewController: GameViewController?
     
     var player: Player!
-    
-    var count = 0
-    var counterLabel: SKLabelNode!
-    
+    var game = Game()
     var cam = SKCameraNode()
+    var count = 0
+    var climbDistance = 0
+    var currentTime = TimeInterval(0)
+    var coinsCount = 0
     
-    var tree1: SKSpriteNode!
-    var tree2: SKSpriteNode!
-    var tree3: SKSpriteNode!
-    var tree4: SKSpriteNode!
-    var tree5: SKSpriteNode!
-    var tree6: SKSpriteNode!
-    var tree7: SKSpriteNode!
+    var deadNodeLeft: SKSpriteNode!
+    var deadNodeRight: SKSpriteNode!
     
-    let nodeTypes: [NodeType] = [
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: 120),
-        NodeType(size: CGSize(width: 400, height: 198.005), xPosition: -120),
-        NodeType(size: CGSize(width: 162.371, height: 198.005), xPosition: 0),
-    ]
+    var tapLeftNode: SKSpriteNode!
+    var tapRightNode: SKSpriteNode!
+    var leftTapAnimation: SKAction!
+    var rightTapAnimation: SKAction!
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
         
-        counterLabel = self.childNode(withName: "counterLabel") as? SKLabelNode
-        
-        tree1 = self.childNode(withName: "tree1") as? SKSpriteNode
-        tree2 = self.childNode(withName: "tree2") as? SKSpriteNode
-        tree3 = self.childNode(withName: "tree3") as? SKSpriteNode
-        tree4 = self.childNode(withName: "tree4") as? SKSpriteNode
-        tree5 = self.childNode(withName: "tree5") as? SKSpriteNode
-        tree6 = self.childNode(withName: "tree6") as? SKSpriteNode
-        tree7 = self.childNode(withName: "tree7") as? SKSpriteNode
+        self.startGame()
         
         self.camera = cam
         addChild(cam)
+        
+        deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
+        deadNodeLeft.position.x = -200
+        deadNodeLeft.position.y = -333.5
+        deadNodeLeft.zPosition = 10000000
+        deadNodeLeft.alpha = 0
+        deadNodeLeft.size = CGSize(width: 287.227, height: 222.333)
+        addChild(deadNodeLeft)
+        
+        deadNodeRight = SKSpriteNode(imageNamed: "paredeGameOverDireita")
+        deadNodeRight.position.x = 200
+        deadNodeRight.position.y = -333.5
+        deadNodeRight.zPosition = 10000000
+        deadNodeRight.alpha = 0
+        deadNodeRight.size = CGSize(width: 287.227, height: 222.333)
+        addChild(deadNodeRight)
+        
+        tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
+        tapRightNode = childNode(withName: "tapRight") as? SKSpriteNode
+        
+        setupLeftTapAnimation()
+        setupRightTapAnimation()
+        
+        tapLeftNode.run(leftTapAnimation)
+        tapRightNode.run(rightTapAnimation)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            
-            if location.x < 0 {
-                print("Touch left")
-                player.moveLeft()
-            } else if location.x > 0 {
-                print("Touch right")
-                player.moveRight()
+        if game.status == .running {
+            for touch in touches {
+                let location = touch.location(in: self)
+                
+                if location.x < 0 {
+                    print("Touch left")
+                    player.moveLeft()
+                } else if location.x > 0 {
+                    print("Touch right")
+                    player.moveRight()
+                }
             }
             
-            let actualNode = childNode(withName: "tree\(count + 1)")
-            
-            if player.position == .left {
-                actualNode?.position.x += 2000
-            } else {
-                actualNode?.position.x -= 2000
+            if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
+                viewController?.timeBarWidthConstraint.constant += 2
             }
             
-            let pastNode = childNode(withName: "tree\(count)")
-            pastNode?.removeFromParent()
-            print("node cutted:", actualNode?.name)
+            let currentLeftNode = childNode(withName: "node\(count + 1)A")
+            let currentRightNode = childNode(withName: "node\(count + 1)B")
             
-            createNewTreeNode()
+            currentLeftNode?.position.x += 2000
+            currentRightNode?.position.x += 2000
+            
+            let oldLeftNode = childNode(withName: "node\(count)A")
+            let oldRightNode = childNode(withName: "node\(count)B")
+            
+            oldLeftNode?.removeFromParent()
+            oldRightNode?.removeFromParent()
+            
+            createNewCenarioBlock()
             
             count += 1
-            counterLabel.text = String(count)
+            climbDistance += 10
+            viewController?.counterLabel.text = String("\(climbDistance)m")
         }
     }
     
-    func createNewTreeNode() {
-        let oldNode = childNode(withName: "tree\(count + 7)")
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
         
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
         
-        let randomNodeType = nodeTypes.randomElement()
-        let newNode = SKSpriteNode(color: UIColor.green, size: randomNodeType!.size)
+        // Collision with dangerous node -> Game over
+        if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
+            print("Game over")
+            game.status = .over
+            player.node.zPosition = -10
+            
+            if player.position == .left {
+                deadNodeLeft.alpha = 1
+            } else {
+                deadNodeRight.alpha = 1
+            }
+            
+            UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut) {
+                self.viewController?.showGameOver()
+            }
+        }
+        // Collect coin
+        else if firstBody.categoryBitMask == UInt32(2) && secondBody.categoryBitMask == UInt32(4) {
+            self.coinsCount += 1
+            print("Coins:", coinsCount)
         
-        newNode.position.x = randomNodeType!.xPosition
-        newNode.position.y = 800
-        newNode.name = "tree\(count + 8)"
+            let contactNode = secondBody.node as? SKSpriteNode
+            
+            contactNode?.physicsBody?.categoryBitMask = 8
+            contactNode?.zPosition = 0
+            UIView.animate(withDuration: 0.3) {
+                contactNode!.texture = (self.player.position == .left) ? SKTexture(imageNamed: "paredeVaziaEsquerda") : SKTexture(imageNamed: "paredeVaziaDireita")
+            }
+        }
+    }
+    
+    func createNewCenarioBlock() {
+        let randomBlockType = CenarioBlocksSingleton.shared.cenarioBlocks.randomElement()
         
-        let physicsBody = SKPhysicsBody(rectangleOf: randomNodeType!.size)
+        let newLeftNode = createNewNode(cenarioNode: randomBlockType!.leftNode, yPosition: 778.167, position: .left, count: self.count + 7)
+        let newRightNode = createNewNode(cenarioNode: randomBlockType!.rightNode, yPosition: 778.167, position: .right, count: self.count + 7)
+        
+        self.addChild(newLeftNode)
+        self.addChild(newRightNode)
+        
+        for i in (1...6).reversed() {
+            let leftNode = childNode(withName: "node\(count + i)A") as? SKSpriteNode
+            let rightNode = childNode(withName: "node\(count + i)B") as? SKSpriteNode
+            
+            let leftAboveNode = childNode(withName: "node\(count + i + 1)A") as? SKSpriteNode
+            let rightAboveNode = childNode(withName: "node\(count + i + 1)B") as? SKSpriteNode
+            
+            if i == 6 {
+                newLeftNode.position.y = leftNode!.position.y
+                newRightNode.position.y = rightNode!.position.y
+            } else {
+                leftAboveNode?.position.y = (leftNode?.position.y)!
+                rightAboveNode?.position.y = (rightNode?.position.y)!
+            }
+        }
+    }
+    
+    func startGame() {
+        for i in count...(count + 6) {
+            let leftNode = childNode(withName: "node\(i)A")
+            leftNode?.removeFromParent()
+            
+            let rightNode = childNode(withName: "node\(i)B")
+            rightNode?.removeFromParent()
+        }
+
+        self.player.node.zPosition = 10000000
+        self.player.node.texture = SKTexture(imageNamed: "player-1")
+        
+        deadNodeLeft?.alpha = 0
+        deadNodeRight?.alpha = 0
+        
+        self.count = 0
+        self.coinsCount = 0
+        self.climbDistance = 0
+        self.viewController?.counterLabel.text = String("\(climbDistance)m")
+        self.viewController?.timeBarWidthConstraint.constant = 120
+        
+        // Criar os 6 blocos iniciais
+        let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
+        
+        for i in 1...6 {
+            let yPosition = CGFloat(-555.89 + 221.89 * Double(i - 1))
+            
+            let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
+            let newRightNode = createNewNode(cenarioNode: initialBlockType.rightNode, yPosition: yPosition, position: .right, count: i)
+            
+            self.addChild(newLeftNode)
+            self.addChild(newRightNode)
+        }
+        
+        game.status = .running
+        
+        // Posicionar o player
+        player.moveToInitialPosition()
+    }
+    
+    func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
+        let newNode = SKSpriteNode(color: UIColor.green, size: cenarioNode.size)
+        
+        newNode.position.x = (position == .left) ? -200 : 200
+        newNode.position.y = yPosition
+        newNode.name = (position == .left) ? "node\(count)A" : "node\(count)B"
+        newNode.texture = cenarioNode.texture
+        
+        let physicsBody = SKPhysicsBody(rectangleOf: cenarioNode.size)
         physicsBody.allowsRotation = false
         physicsBody.isDynamic = true
         physicsBody.affectedByGravity = false
-        physicsBody.restitution = 0
         physicsBody.friction = 1
         physicsBody.mass = 1000000
+        physicsBody.categoryBitMask = UInt32(cenarioNode.categoryMask)
+        physicsBody.collisionBitMask = UInt32(cenarioNode.collisionMask)
+        physicsBody.contactTestBitMask = UInt32(cenarioNode.contactMask)
         
         newNode.physicsBody = physicsBody
         
-        print("newNode:", newNode.name)
+        return newNode
+    }
+    
+    func setupRightTapAnimation() {
+        let moveRight = SKAction.move(by: CGVector(dx: 35, dy: 0), duration: 0.4)
+        let moveLeft = SKAction.move(by: CGVector(dx: -35, dy: 0), duration: 0.4)
         
-        let tree1 = childNode(withName: "tree\(count + 1)")
-        let tree2 = childNode(withName: "tree\(count + 2)")
-        let tree3 = childNode(withName: "tree\(count + 3)")
-        let tree4 = childNode(withName: "tree\(count + 4)")
-        let tree5 = childNode(withName: "tree\(count + 5)")
-        let tree6 = childNode(withName: "tree\(count + 6)")
-        let tree7 = childNode(withName: "tree\(count + 7)")
+        self.rightTapAnimation = SKAction.repeatForever(SKAction.sequence([moveRight, moveLeft]))
+    }
+    
+    func setupLeftTapAnimation() {
+        let moveLeft = SKAction.move(by: CGVector(dx: -35, dy: 0), duration: 0.4)
+        let moveRight = SKAction.move(by: CGVector(dx: 35, dy: 0), duration: 0.4)
         
-        self.addChild(newNode)
-        
-        newNode.position.y = tree7!.position.y
-        tree7!.position.y = tree6!.position.y
-        tree6!.position.y = tree5!.position.y
-        tree5!.position.y = tree4!.position.y
-        tree4!.position.y = tree3!.position.y
-        tree3!.position.y = tree2!.position.y
-        tree2!.position.y = tree1!.position.y
+        self.leftTapAnimation = SKAction.repeatForever(SKAction.sequence([moveLeft, moveRight]))
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        if game.status == .running {
+            if (viewController?.timeBarWidthConstraint.constant)! > 1 {
+                switch climbDistance {
+                case 0:
+                    viewController?.timeBarWidthConstraint.constant -= 0
+                case 1...999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.1
+                case 1000...1999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.2
+                case 2000...2999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.3
+                case 3000...3999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.4
+                default:
+                    viewController?.timeBarWidthConstraint.constant -= 0.5
+                }
+            } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
+                game.status = .over
+                viewController?.showGameOver()
+            }
+            
+            if climbDistance == 0 {
+                tapLeftNode.alpha = 1
+                tapRightNode.alpha = 1
+            } else {
+                tapLeftNode.alpha = 0
+                tapRightNode.alpha = 0
+            }
+        }
     }
-}
-
-struct NodeType {
-    var size: CGSize
-    var xPosition: CGFloat
 }
