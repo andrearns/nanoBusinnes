@@ -1,6 +1,6 @@
 import Foundation
 
-final class UserDefaultsManager {
+final class UserDefaultsService {
     
     static func setNewRecord(_ record: Int) {
         let data = try? JSONEncoder().encode(record)

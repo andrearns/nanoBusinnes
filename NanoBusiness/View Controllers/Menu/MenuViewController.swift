@@ -1,6 +1,8 @@
 import UIKit
+import GameKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
+
     var gameVC: GameViewController
     
     init(gameVC: GameViewController) {
@@ -19,6 +21,9 @@ class MenuViewController: UIViewController {
     
     @IBAction func showGameCenter(_ sender: Any) {
         print("Show game center")
+        let viewController = GKGameCenterViewController(leaderboardID: "com.andrearns.everestClimber.leaderboard", playerScope: .global, timeScope: .allTime)
+        viewController.gameCenterDelegate = self
+        present(viewController, animated: true, completion: nil)
     }
     
     @IBAction func startGame(_ sender: Any) {
@@ -34,4 +39,7 @@ class MenuViewController: UIViewController {
         print("Show shop")
     }
     
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        print("Leaderboard closed")
+    }
 }
