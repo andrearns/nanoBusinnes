@@ -12,14 +12,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var climbDistance = 0
     var currentTime = TimeInterval(0)
     var coinsCount = 0
-    var leftDeadNode: SKSpriteNode!
-    var rightDeadNode: SKSpriteNode!
+    var deadNodeLeft: SKSpriteNode!
+    var deadNodeRight: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
-        
-//        view.showsPhysics = true
-//        view.showsNodeCount = true
         
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
@@ -29,23 +26,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.camera = cam
         addChild(cam)
         
-        leftDeadNode = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
-        leftDeadNode.size = CGSize(width: 287.227, height: 222.333)
-        leftDeadNode.position.y = -333.5
-        leftDeadNode.position.x = -200
-        leftDeadNode.zPosition = 10000000000
-        leftDeadNode.name = "deadNode"
-        leftDeadNode.alpha = 0
-        self.addChild(leftDeadNode)
+        deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
+        deadNodeLeft.position.x = -200
+        deadNodeLeft.position.y = -333.5
+        deadNodeLeft.zPosition = 10000000
+        deadNodeLeft.alpha = 0
+        deadNodeLeft.size = CGSize(width: 287.227, height: 222.333)
+        addChild(deadNodeLeft)
         
-        rightDeadNode = SKSpriteNode(imageNamed: "paredeGameOverDireita")
-        rightDeadNode.size = CGSize(width: 287.227, height: 222.333)
-        rightDeadNode.position.y = -333.5
-        rightDeadNode.position.x = 200
-        rightDeadNode.zPosition = 10000000000
-        rightDeadNode.name = "deadNode"
-        rightDeadNode.alpha = 0
-        self.addChild(rightDeadNode)
+        deadNodeRight = SKSpriteNode(imageNamed: "paredeGameOverDireita")
+        deadNodeRight.position.x = 200
+        deadNodeRight.position.y = -333.5
+        deadNodeRight.zPosition = 10000000
+        deadNodeRight.alpha = 0
+        deadNodeRight.size = CGSize(width: 287.227, height: 222.333)
+        addChild(deadNodeRight)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -98,40 +93,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        print("First body category mask:", firstBody.node?.physicsBody?.categoryBitMask)
-        print("Second body category mask:", secondBody.node?.physicsBody?.categoryBitMask)
-    
-        // Colisão acontece e o jogo acaba
+        // Collision with dangerous node -> Game over
         if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
             print("Game over")
             game.status = .over
-            
-            if player.position == .left {
-                leftDeadNode.alpha = 1
-            } else {
-                rightDeadNode.alpha = 1
-            }
-            
             player.node.zPosition = -10
             
-            UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseOut) {
+            if player.position == .left {
+                deadNodeLeft.alpha = 1
+            } else {
+                deadNodeRight.alpha = 1
+            }
+            
+            UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut) {
                 self.viewController?.showGameOver()
             }
         }
-        // Pega moeda
+        // Collect coin
         else if firstBody.categoryBitMask == UInt32(2) && secondBody.categoryBitMask == UInt32(4) {
             self.coinsCount += 1
             print("Coins:", coinsCount)
-            if player.position == .left {
-                let leftCoinNode = secondBody.node as? SKSpriteNode
-                leftCoinNode!.texture = SKTexture(imageNamed: "paredeVaziaEsquerda")
-                leftCoinNode?.physicsBody?.categoryBitMask = 8
-                leftCoinNode?.zPosition = 0
-            } else {
-                let rightCoinNode = secondBody.node as? SKSpriteNode
-                rightCoinNode!.texture = SKTexture(imageNamed: "paredeVaziaDireita")
-                rightCoinNode?.physicsBody?.categoryBitMask = 8
-                rightCoinNode?.zPosition = 0
+        
+            let contactNode = secondBody.node as? SKSpriteNode
+            
+            contactNode?.physicsBody?.categoryBitMask = 8
+            contactNode?.zPosition = 0
+            UIView.animate(withDuration: 0.3) {
+                contactNode!.texture = (self.player.position == .left) ? SKTexture(imageNamed: "paredeVaziaEsquerda") : SKTexture(imageNamed: "paredeVaziaDireita")
             }
         }
     }
@@ -140,39 +128,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let randomBlockType = CenarioBlocksSingleton.shared.cenarioBlocks.randomElement()
         
         let newLeftNode = createNewNode(cenarioNode: randomBlockType!.leftNode, yPosition: 778.167, position: .left, count: self.count + 7)
-        
         let newRightNode = createNewNode(cenarioNode: randomBlockType!.rightNode, yPosition: 778.167, position: .right, count: self.count + 7)
-        
-        let leftNode1 = childNode(withName: "node\(count + 1)A")
-        let leftNode2 = childNode(withName: "node\(count + 2)A")
-        let leftNode3 = childNode(withName: "node\(count + 3)A")
-        let leftNode4 = childNode(withName: "node\(count + 4)A")
-        let leftNode5 = childNode(withName: "node\(count + 5)A")
-        let leftNode6 = childNode(withName: "node\(count + 6)A")
-        
-        let rightNode1 = childNode(withName: "node\(count + 1)B")
-        let rightNode2 = childNode(withName: "node\(count + 2)B")
-        let rightNode3 = childNode(withName: "node\(count + 3)B")
-        let rightNode4 = childNode(withName: "node\(count + 4)B")
-        let rightNode5 = childNode(withName: "node\(count + 5)B")
-        let rightNode6 = childNode(withName: "node\(count + 6)B")
         
         self.addChild(newLeftNode)
         self.addChild(newRightNode)
         
-        newLeftNode.position.y = leftNode6!.position.y
-        leftNode6!.position.y = leftNode5!.position.y
-        leftNode5!.position.y = leftNode4!.position.y
-        leftNode4!.position.y = leftNode3!.position.y
-        leftNode3!.position.y = leftNode2!.position.y
-        leftNode2!.position.y = leftNode1!.position.y
-        
-        newRightNode.position.y = rightNode6!.position.y
-        rightNode6!.position.y = rightNode5!.position.y
-        rightNode5!.position.y = rightNode4!.position.y
-        rightNode4!.position.y = rightNode3!.position.y
-        rightNode3!.position.y = rightNode2!.position.y
-        rightNode2!.position.y = rightNode1!.position.y
+        for i in (1...6).reversed() {
+            let leftNode = childNode(withName: "node\(count + i)A") as? SKSpriteNode
+            let rightNode = childNode(withName: "node\(count + i)B") as? SKSpriteNode
+            
+            let leftAboveNode = childNode(withName: "node\(count + i + 1)A") as? SKSpriteNode
+            let rightAboveNode = childNode(withName: "node\(count + i + 1)B") as? SKSpriteNode
+            
+            if i == 6 {
+                newLeftNode.position.y = leftNode!.position.y
+                newRightNode.position.y = rightNode!.position.y
+            } else {
+                leftAboveNode?.position.y = (leftNode?.position.y)!
+                rightAboveNode?.position.y = (rightNode?.position.y)!
+            }
+        }
     }
     
     func startGame() {
@@ -183,11 +158,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightNode = childNode(withName: "node\(i)B")
             rightNode?.removeFromParent()
         }
-        
-        leftDeadNode?.alpha = 0
-        rightDeadNode?.alpha = 0
-        
+
         self.player.node.zPosition = 10000000
+        self.player.node.texture = SKTexture(imageNamed: "player-1")
+        
+        deadNodeLeft?.alpha = 0
+        deadNodeRight?.alpha = 0
         
         self.count = 0
         self.coinsCount = 0
@@ -208,10 +184,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(newRightNode)
         }
         
+        game.status = .running
+        
         // Posicionar o player
         player.moveToInitialPosition()
-        
-        game.status = .running
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
@@ -242,20 +218,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
                 if climbDistance > 0 && climbDistance < 1000 {
                     viewController?.timeBarWidthConstraint.constant -= 0.1
-                } else if climbDistance >= 1000 && climbDistance < 2000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.2
-                } else if climbDistance >= 2000 && climbDistance < 3000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.3
-                } else if climbDistance >= 3000 && climbDistance < 4000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.4
-                } else if climbDistance >= 4000 && climbDistance < 5000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.5
-                } else if climbDistance >= 5000 && climbDistance < 6000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.6
-                } else if climbDistance >= 6000 && climbDistance < 7000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.7
-                } else if climbDistance >= 7000 {
-                    viewController?.timeBarWidthConstraint.constant -= 0.8
+                } else  {
+                    viewController?.timeBarWidthConstraint.constant -= Double(climbDistance / 10000)
                 }
             } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
                 game.status = .over
