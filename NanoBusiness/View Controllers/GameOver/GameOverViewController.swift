@@ -1,4 +1,5 @@
 import UIKit
+import GameKit
 
 class GameOverViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class GameOverViewController: UIViewController {
     
     func reloadData() {
         coinsCountLabel.text = "\(coinsCount)"
-        recordLabel.text = "\(UserDefaultsManager.fetchRecord())m"
+        recordLabel.text = "\(UserDefaultsService.fetchRecord())m"
         progressLabel.text = "\(progress)m"
     }
 }

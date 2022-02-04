@@ -17,6 +17,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GameCenterService.shared.authenticateLocalPlayer(presentingVC: self)
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
@@ -55,8 +57,9 @@ class GameViewController: UIViewController {
     
     func showGameOver() {
         if currentGame!.climbDistance > record {
-            UserDefaultsManager.setNewRecord(currentGame!.climbDistance)
+            UserDefaultsService.setNewRecord(currentGame!.climbDistance)
             record = currentGame!.climbDistance
+            GameCenterService.shared.updateScore(with: record)
         }
         
         self.backgroundOverlay.alpha = 0.5
