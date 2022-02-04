@@ -42,9 +42,7 @@ class GameViewController: UIViewController {
         
         view.addSubview(backgroundOverlay)
         
-        record = UserDefaultsManager.fetchRecord()
-       
-        gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: currentGame!.coinsCount, gameVC: self)
+        gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, coinsCount: currentGame!.coinsCount, gameVC: self)
         gameOverVC?.view.frame.size.width = (view.frame.width - 40)
         gameOverVC?.view.center.x = view.center.x
         gameOverVC?.view.center.y = -900

@@ -61,7 +61,27 @@ final class CenarioBlocksSingleton {
             CenarioBlock(
                 leftNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredePedraEsquerda"), afterCollisionTexture: SKTexture(imageNamed: "paredeGameOverEsquerda"), categoryMask: 1, collisionMask: 0, contactMask: 0),
                 rightNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeMoedaDireita"), afterCollisionTexture: SKTexture(imageNamed: "paredeVaziaDireita"), categoryMask: 4, collisionMask: 0, contactMask: 0)
-            )
+            ),
+            //11
+            CenarioBlock(
+                leftNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeVaziaEsquerda"), categoryMask: 8, collisionMask: 0, contactMask: 0),
+                rightNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeMoedaDireita"), afterCollisionTexture: SKTexture(imageNamed: "paredeVaziaDireita"), categoryMask: 4, collisionMask: 0, contactMask: 0)
+            ),
+            //12
+            CenarioBlock(
+                leftNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeVaziaEsquerda"), categoryMask: 8, collisionMask: 0, contactMask: 0),
+                rightNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeVaziaDireita"), categoryMask: 8, collisionMask: 0, contactMask: 0)
+            ),
+            //13
+            CenarioBlock(
+                leftNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeMoedaEsquerda"), afterCollisionTexture: SKTexture(imageNamed: "paredeVaziaEsquerda"), categoryMask: 4, collisionMask: 0, contactMask: 0),
+                rightNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredePedraDireita"), afterCollisionTexture: SKTexture(imageNamed: "paredeGameOverDireita"), categoryMask: 1, collisionMask: 0, contactMask: 0)
+            ),
+            //14
+            CenarioBlock(
+                leftNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeVaziaEsquerda"), categoryMask: 8, collisionMask: 0, contactMask: 0),
+                rightNode: CenarioNode(size: CGSize.init(width: 287.227, height: 222.333), texture: SKTexture(imageNamed: "paredeMoedaDireita"), afterCollisionTexture: SKTexture(imageNamed: "paredeVaziaDireita"), categoryMask: 4, collisionMask: 0, contactMask: 0)
+            ),
         ]
     }
     

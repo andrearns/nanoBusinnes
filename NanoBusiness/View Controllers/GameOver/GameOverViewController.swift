@@ -9,12 +9,10 @@ class GameOverViewController: UIViewController {
     
     var gameViewController: GameViewController
     var progress: Int
-    var record: Int
     var coinsCount: Int
     
-    init(progress: Int, record: Int, coinsCount: Int, gameVC: GameViewController) {
+    init(progress: Int, coinsCount: Int, gameVC: GameViewController) {
         self.progress = progress
-        self.record = record
         self.coinsCount = coinsCount
         self.gameViewController = gameVC
         super.init(nibName: "GameOverViewController", bundle: nil)
@@ -26,12 +24,12 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundView.layer.cornerRadius = 16
     }
     
     func reloadData() {
-        backgroundView.layer.cornerRadius = 16
         coinsCountLabel.text = "\(coinsCount)"
-        recordLabel.text = "\(record)m"
+        recordLabel.text = "\(UserDefaultsManager.fetchRecord())m"
         progressLabel.text = "\(progress)m"
     }
 }

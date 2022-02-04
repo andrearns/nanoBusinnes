@@ -245,10 +245,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         if game.status == .running {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
-                if climbDistance > 0 && climbDistance < 1000 {
+                switch climbDistance {
+                case 0:
+                    viewController?.timeBarWidthConstraint.constant -= 0
+                case 1...999:
                     viewController?.timeBarWidthConstraint.constant -= 0.1
-                } else  {
-                    viewController?.timeBarWidthConstraint.constant -= Double(climbDistance / 10000)
+                case 1000...1999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.2
+                case 2000...2999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.3
+                case 3000...3999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.4
+                default:
+                    viewController?.timeBarWidthConstraint.constant -= 0.5
                 }
             } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
                 game.status = .over
