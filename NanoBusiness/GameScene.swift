@@ -70,6 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("Touch right")
                     player.moveRight()
                 }
+                viewController?.blinkTimeBar()
             }
             
             if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
@@ -95,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             viewController?.counterLabel.text = String("\(climbDistance)m")
         }
     }
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
