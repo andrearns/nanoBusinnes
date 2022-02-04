@@ -12,8 +12,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var climbDistance = 0
     var currentTime = TimeInterval(0)
     var coinsCount = 0
+    
     var deadNodeLeft: SKSpriteNode!
     var deadNodeRight: SKSpriteNode!
+    
+    var tapLeftNode: SKSpriteNode!
+    var tapRightNode: SKSpriteNode!
+    var leftTapAnimation: SKAction!
+    var rightTapAnimation: SKAction!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -41,6 +47,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         deadNodeRight.alpha = 0
         deadNodeRight.size = CGSize(width: 287.227, height: 222.333)
         addChild(deadNodeRight)
+        
+        tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
+        tapRightNode = childNode(withName: "tapRight") as? SKSpriteNode
+        
+        setupLeftTapAnimation()
+        setupRightTapAnimation()
+        
+        tapLeftNode.run(leftTapAnimation)
+        tapRightNode.run(rightTapAnimation)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -213,6 +228,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return newNode
     }
     
+    func setupRightTapAnimation() {
+        let moveRight = SKAction.move(by: CGVector(dx: 35, dy: 0), duration: 0.4)
+        let moveLeft = SKAction.move(by: CGVector(dx: -35, dy: 0), duration: 0.4)
+        
+        self.rightTapAnimation = SKAction.repeatForever(SKAction.sequence([moveRight, moveLeft]))
+    }
+    
+    func setupLeftTapAnimation() {
+        let moveLeft = SKAction.move(by: CGVector(dx: -35, dy: 0), duration: 0.4)
+        let moveRight = SKAction.move(by: CGVector(dx: 35, dy: 0), duration: 0.4)
+        
+        self.leftTapAnimation = SKAction.repeatForever(SKAction.sequence([moveLeft, moveRight]))
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         if game.status == .running {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
@@ -224,6 +253,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
                 game.status = .over
                 viewController?.showGameOver()
+            }
+            
+            if climbDistance == 0 {
+                tapLeftNode.alpha = 1
+                tapRightNode.alpha = 1
+            } else {
+                tapLeftNode.alpha = 0
+                tapRightNode.alpha = 0
             }
         }
     }

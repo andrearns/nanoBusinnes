@@ -66,6 +66,14 @@ class GameViewController: UIViewController {
         self.view.addSubview(gameOverVC!.view)
         self.addChild(gameOverVC!)
     }
+    
+    func showTapButtons() {
+        
+    }
+    
+    func hideTapButtons() {
+        
+    }
 
     @IBAction func pauseGame(_ sender: Any) {
         currentGame?.game.status = .paused
