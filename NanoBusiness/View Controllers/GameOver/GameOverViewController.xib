@@ -35,7 +35,7 @@
                             <rect key="frame" x="0.0" y="32" width="350" height="369"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzS-Ey-LpQ">
-                                    <rect key="frame" x="113.5" y="49" width="123" height="32"/>
+                                    <rect key="frame" x="109.5" y="49" width="131" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="AdB-gM-xxm"/>
                                     </constraints>
@@ -46,7 +46,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9C-La-FhU" userLabel="Container">
                                     <rect key="frame" x="69" y="81" width="212" height="72"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="labelContainer" translatesAutoresizingMaskIntoConstraints="NO" id="QmZ-e2-0Ga">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="distancia" translatesAutoresizingMaskIntoConstraints="NO" id="QmZ-e2-0Ga">
                                             <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsp-FW-MkI">
@@ -71,7 +71,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ei-dO-VAC">
-                                    <rect key="frame" x="145.5" y="169" width="59" height="32"/>
+                                    <rect key="frame" x="145" y="169" width="60.5" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="U5I-lK-cwN"/>
                                     </constraints>
@@ -82,7 +82,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-72-eRP" userLabel="Container">
                                     <rect key="frame" x="69" y="201" width="212" height="72"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="labelContainer" translatesAutoresizingMaskIntoConstraints="NO" id="XR3-Ec-g8Z">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="distancia" translatesAutoresizingMaskIntoConstraints="NO" id="XR3-Ec-g8Z">
                                             <rect key="frame" x="0.0" y="0.0" width="212" height="72"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L39-uy-MPE">
@@ -107,7 +107,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COINS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-oG-liq">
-                                    <rect key="frame" x="69" y="305" width="76" height="32"/>
+                                    <rect key="frame" x="69" y="305" width="81.5" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="mFW-CD-zUH"/>
                                     </constraints>
@@ -116,13 +116,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjw-8B-7vQ">
-                                    <rect key="frame" x="265" y="305" width="16" height="32"/>
+                                    <rect key="frame" x="267.5" y="307" width="13.5" height="28"/>
                                     <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
                                     <color key="textColor" name="Preto"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="Ejs-e0-eac">
-                                    <rect key="frame" x="229" y="305" width="28" height="32"/>
+                                    <rect key="frame" x="231.5" y="305" width="28" height="32"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" name="Laranja"/>
@@ -174,8 +174,8 @@
     </objects>
     <resources>
         <image name="coin" width="28" height="32"/>
+        <image name="distancia" width="465" height="106"/>
         <image name="gameOverTextImage" width="341.5" height="65"/>
-        <image name="labelContainer" width="211.5" height="72"/>
         <namedColor name="Laranja">
             <color red="0.90980392156862744" green="0.41568627450980394" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

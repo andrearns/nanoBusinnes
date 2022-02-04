@@ -4,6 +4,7 @@ import GameKit
 class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
 
     var gameVC: GameViewController
+    var gameCenterVC: GKGameCenterViewController?
     
     init(gameVC: GameViewController) {
         self.gameVC = gameVC
@@ -21,9 +22,9 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func showGameCenter(_ sender: Any) {
         print("Show game center")
-        let viewController = GKGameCenterViewController(leaderboardID: "com.andrearns.everestClimber.leaderboard", playerScope: .global, timeScope: .allTime)
-        viewController.gameCenterDelegate = self
-        present(viewController, animated: true, completion: nil)
+        gameCenterVC = GKGameCenterViewController(leaderboardID: "com.andrearns.everestClimber.leaderboard", playerScope: .global, timeScope: .allTime)
+        gameCenterVC!.gameCenterDelegate = self
+        present(gameCenterVC!, animated: true, completion: nil)
     }
     
     @IBAction func startGame(_ sender: Any) {
@@ -41,5 +42,6 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         print("Leaderboard closed")
+        gameCenterVC?.dismiss(animated: true, completion: nil)
     }
 }
