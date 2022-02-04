@@ -1,3 +1,4 @@
+import Foundation
 import SpriteKit
 import GameplayKit
 
@@ -11,6 +12,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var climbDistance = 0
     var currentTime = TimeInterval(0)
     var coinsCount = 0
+    var leftDeadNode: SKSpriteNode!
+    var rightDeadNode: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -25,6 +28,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.camera = cam
         addChild(cam)
+        
+        leftDeadNode = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
+        leftDeadNode.size = CGSize(width: 287.227, height: 222.333)
+        leftDeadNode.position.y = -333.5
+        leftDeadNode.position.x = -200
+        leftDeadNode.zPosition = 10000000000
+        leftDeadNode.name = "deadNode"
+        leftDeadNode.alpha = 0
+        self.addChild(leftDeadNode)
+        
+        rightDeadNode = SKSpriteNode(imageNamed: "paredeGameOverDireita")
+        rightDeadNode.size = CGSize(width: 287.227, height: 222.333)
+        rightDeadNode.position.y = -333.5
+        rightDeadNode.position.x = 200
+        rightDeadNode.zPosition = 10000000000
+        rightDeadNode.name = "deadNode"
+        rightDeadNode.alpha = 0
+        self.addChild(rightDeadNode)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -83,26 +104,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game.status = .over
             
             if player.position == .left {
-                let leftNode = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
-                leftNode.size = CGSize(width: 260.055, height: 201.3)
-                leftNode.position.y = -430.097
-                leftNode.position.x = -210
-                leftNode.zPosition = 10000000000
-                leftNode.name = "deadNode"
-                self.addChild(leftNode)
+                leftDeadNode.alpha = 1
             } else {
-                let rightNode = SKSpriteNode(imageNamed: "paredeGameOverDireita")
-                rightNode.size = CGSize(width: 260.055, height: 201.3)
-                rightNode.position.y = -430.097
-                rightNode.position.x = 210
-                rightNode.zPosition = 10000000000
-                rightNode.name = "deadNode"
-                self.addChild(rightNode)
+                rightDeadNode.alpha = 1
             }
             
             player.node.zPosition = -10
             
-            viewController?.showGameOver()
+            UIView.animate(withDuration: 1.0, delay: 0.2, options: .curveEaseOut) {
+                self.viewController?.showGameOver()
+            }
         }
         // Pega moeda
         else if firstBody.categoryBitMask == UInt32(2) && secondBody.categoryBitMask == UInt32(4) {
@@ -114,9 +125,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createNewCenarioBlock() {
         let randomBlockType = CenarioBlocksSingleton.shared.cenarioBlocks.randomElement()
         
-        let newLeftNode = createNewNode(cenarioNode: randomBlockType!.leftNode, yPosition: 576.404, position: .left, count: self.count + 7)
+        let newLeftNode = createNewNode(cenarioNode: randomBlockType!.leftNode, yPosition: 778.167, position: .left, count: self.count + 7)
         
-        let newRightNode = createNewNode(cenarioNode: randomBlockType!.rightNode, yPosition: 576.404, position: .right, count: self.count + 7)
+        let newRightNode = createNewNode(cenarioNode: randomBlockType!.rightNode, yPosition: 778.167, position: .right, count: self.count + 7)
         
         let leftNode1 = childNode(withName: "node\(count + 1)A")
         let leftNode2 = childNode(withName: "node\(count + 2)A")
@@ -159,10 +170,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rightNode?.removeFromParent()
         }
         
-        let deadNode = childNode(withName: "deadNode")
-        deadNode?.removeFromParent()
+        leftDeadNode?.alpha = 0
+        rightDeadNode?.alpha = 0
+        
         self.player.node.zPosition = 10000000
+        
         self.count = 0
+        self.coinsCount = 0
         self.climbDistance = 0
         self.viewController?.counterLabel.text = String("\(climbDistance)m")
         self.viewController?.timeBarWidthConstraint.constant = 120
@@ -171,7 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
         
         for i in 1...6 {
-            let yPosition = CGFloat(-430.097 + 201.3 * Double(i - 1))
+            let yPosition = CGFloat(-555.834 + 222.333 * Double(i - 1))
             
             let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
             let newRightNode = createNewNode(cenarioNode: initialBlockType.rightNode, yPosition: yPosition, position: .right, count: i)
@@ -189,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
         let newNode = SKSpriteNode(color: UIColor.green, size: cenarioNode.size)
         
-        newNode.position.x = (position == .left) ? -210 : 210
+        newNode.position.x = (position == .left) ? -200 : 200
         newNode.position.y = yPosition
         newNode.name = (position == .left) ? "node\(count)A" : "node\(count)B"
         newNode.texture = cenarioNode.texture

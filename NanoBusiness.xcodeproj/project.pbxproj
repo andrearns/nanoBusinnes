@@ -85,11 +85,11 @@
 			isa = PBXGroup;
 			children = (
 				5BEBE82E27A486A900241D4B /* Info.plist */,
+				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B8918A227AB120000EED11C /* Service */,
 				5B52701627A76A3900CABE68 /* Utils */,
 				5B0956BB27A33BBA008F265C /* Models */,
 				5B4C69C127A9BED600DA347C /* View Controllers */,
-				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B0956A227A1EE70008F265C /* AppDelegate.swift */,
 				5B0956A827A1EE70008F265C /* GameScene.swift */,
 				5B0956A427A1EE70008F265C /* GameScene.sks */,

@@ -11,6 +11,7 @@ final class Player {
         self.node = node
         self.position = .left
         self.node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        self.node.physicsBody?.affectedByGravity = false
         self.node.physicsBody?.categoryBitMask = UInt32(2)
         self.node.physicsBody?.collisionBitMask = UInt32(1)
         self.node.physicsBody?.contactTestBitMask = UInt32(15)
@@ -34,8 +35,8 @@ final class Player {
     }
     
     func moveToInitialPosition() {
-        node.position.x = -216
-        node.position.y = -435.494
+        node.position.x = -215
+        node.position.y = -333.501
         position = .left
     }
 }

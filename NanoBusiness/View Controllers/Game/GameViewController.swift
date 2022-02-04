@@ -5,6 +5,7 @@ import GameplayKit
 class GameViewController: UIViewController {
     var currentGame: GameScene?
     var backgroundOverlay = UIView()
+    var gameOverVC: GameOverViewController?
     
     var record: Int = 0
     
@@ -43,7 +44,11 @@ class GameViewController: UIViewController {
         view.addSubview(backgroundOverlay)
         
         record = UserDefaultsManager.fetchRecord()
-        print("Current record:", record)
+       
+        gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: currentGame!.coinsCount, gameVC: self)
+        gameOverVC?.view.frame.size.width = (view.frame.width - 40)
+        gameOverVC?.view.center.x = view.center.x
+        gameOverVC?.view.center.y = -900
     }
     
     func showGameOver() {
@@ -52,19 +57,16 @@ class GameViewController: UIViewController {
             record = currentGame!.climbDistance
         }
         
-        let gameOverVC = GameOverViewController(progress: currentGame!.climbDistance, record: record, coinsCount: currentGame!.coinsCount, gameVC: self)
-        gameOverVC.view.frame.size.width = (view.frame.width - 40)
-        gameOverVC.view.center = view.center
+        self.backgroundOverlay.alpha = 0.5
+        gameOverVC?.progress = currentGame!.climbDistance
+        gameOverVC?.coinsCount = currentGame!.coinsCount
+        gameOverVC?.view.center.y = view.center.y
+        gameOverVC?.reloadData()
     
-        self.view.addSubview(gameOverVC.view)
-        self.addChild(gameOverVC)
+        self.view.addSubview(gameOverVC!.view)
+        self.addChild(gameOverVC!)
     }
 
-    @IBAction func restartGame(_ sender: Any) {
-        currentGame?.game.status = .running
-        currentGame?.startGame()
-    }
-    
     @IBAction func pauseGame(_ sender: Any) {
         currentGame?.game.status = .paused
         
