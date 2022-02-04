@@ -18,8 +18,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
-        view.showsPhysics = true
-        view.showsNodeCount = true
+//        view.showsPhysics = true
+//        view.showsNodeCount = true
         
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
@@ -60,29 +60,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("Touch right")
                     player.moveRight()
                 }
-                
-                if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
-                    viewController?.timeBarWidthConstraint.constant += 2
-                }
-                
-                let currentLeftNode = childNode(withName: "node\(count + 1)A")
-                let currentRightNode = childNode(withName: "node\(count + 1)B")
-                
-                currentLeftNode?.position.x += 2000
-                currentRightNode?.position.x += 2000
-                
-                let oldLeftNode = childNode(withName: "node\(count)A")
-                let oldRightNode = childNode(withName: "node\(count)B")
-                
-                oldLeftNode?.removeFromParent()
-                oldRightNode?.removeFromParent()
-                
-                createNewCenarioBlock()
-                
-                count += 1
-                climbDistance += 10
-                viewController?.counterLabel.text = String("\(climbDistance)m")
             }
+            
+            if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
+                viewController?.timeBarWidthConstraint.constant += 2
+            }
+            
+            let currentLeftNode = childNode(withName: "node\(count + 1)A")
+            let currentRightNode = childNode(withName: "node\(count + 1)B")
+            
+            currentLeftNode?.position.x += 2000
+            currentRightNode?.position.x += 2000
+            
+            let oldLeftNode = childNode(withName: "node\(count)A")
+            let oldRightNode = childNode(withName: "node\(count)B")
+            
+            oldLeftNode?.removeFromParent()
+            oldRightNode?.removeFromParent()
+            
+            createNewCenarioBlock()
+            
+            count += 1
+            climbDistance += 10
+            viewController?.counterLabel.text = String("\(climbDistance)m")
         }
     }
     
@@ -97,6 +97,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
+        
+        print("First body category mask:", firstBody.node?.physicsBody?.categoryBitMask)
+        print("Second body category mask:", secondBody.node?.physicsBody?.categoryBitMask)
     
         // Colisão acontece e o jogo acaba
         if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
@@ -119,6 +122,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if firstBody.categoryBitMask == UInt32(2) && secondBody.categoryBitMask == UInt32(4) {
             self.coinsCount += 1
             print("Coins:", coinsCount)
+            if player.position == .left {
+                let leftCoinNode = secondBody.node as? SKSpriteNode
+                leftCoinNode!.texture = SKTexture(imageNamed: "paredeVaziaEsquerda")
+                leftCoinNode?.physicsBody?.categoryBitMask = 8
+                leftCoinNode?.zPosition = 0
+            } else {
+                let rightCoinNode = secondBody.node as? SKSpriteNode
+                rightCoinNode!.texture = SKTexture(imageNamed: "paredeVaziaDireita")
+                rightCoinNode?.physicsBody?.categoryBitMask = 8
+                rightCoinNode?.zPosition = 0
+            }
         }
     }
     
@@ -185,7 +199,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
         
         for i in 1...6 {
-            let yPosition = CGFloat(-555.834 + 222.333 * Double(i - 1))
+            let yPosition = CGFloat(-555.89 + 221.89 * Double(i - 1))
             
             let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
             let newRightNode = createNewNode(cenarioNode: initialBlockType.rightNode, yPosition: yPosition, position: .right, count: i)
