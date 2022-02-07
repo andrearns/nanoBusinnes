@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAnalytics
 
 class GamePausedViewController: UIViewController {
 

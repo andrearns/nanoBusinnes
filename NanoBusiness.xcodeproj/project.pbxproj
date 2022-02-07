@@ -29,7 +29,9 @@
 		5B8918AC27AC4EF400EED11C /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AB27AC4EF400EED11C /* Position.swift */; };
 		5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AE27ACFC8300EED11C /* MenuViewController.swift */; };
 		5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8918AF27ACFC8300EED11C /* MenuViewController.xib */; };
+		5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */; };
 		5BF5488727ADBDAD00915F8A /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5488627ADBDAD00915F8A /* GameCenterService.swift */; };
+		E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5BFAE94E6C56448FA0A60B /* Pods_NanoBusiness.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +58,12 @@
 		5B8918AB27AC4EF400EED11C /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		5B8918AE27ACFC8300EED11C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5B8918AF27ACFC8300EED11C /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BF5488427ADBB8400915F8A /* NanoBusiness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NanoBusiness.entitlements; sourceTree = "<group>"; };
 		5BF5488627ADBDAD00915F8A /* GameCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterService.swift; sourceTree = "<group>"; };
+		9C5BFAE94E6C56448FA0A60B /* Pods_NanoBusiness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NanoBusiness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55F30FAD059CB653810EA67 /* Pods-NanoBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoBusiness.release.xcconfig"; path = "Target Support Files/Pods-NanoBusiness/Pods-NanoBusiness.release.xcconfig"; sourceTree = "<group>"; };
+		F6C87A57CEC1AF56EA628387 /* Pods-NanoBusiness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoBusiness.debug.xcconfig"; path = "Target Support Files/Pods-NanoBusiness/Pods-NanoBusiness.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +71,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EE846956415C53D32D25258 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6C87A57CEC1AF56EA628387 /* Pods-NanoBusiness.debug.xcconfig */,
+				A55F30FAD059CB653810EA67 /* Pods-NanoBusiness.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5B09569627A1EE70008F265C = {
 			isa = PBXGroup;
 			children = (
 				5B0956A127A1EE70008F265C /* NanoBusiness */,
 				5B0956A027A1EE70008F265C /* Products */,
+				1EE846956415C53D32D25258 /* Pods */,
+				BE2C08A7B58965B8A4775472 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +108,7 @@
 		5B0956A127A1EE70008F265C /* NanoBusiness */ = {
 			isa = PBXGroup;
 			children = (
+				5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */,
 				5BF5488427ADBB8400915F8A /* NanoBusiness.entitlements */,
 				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B8918A227AB120000EED11C /* Service */,
@@ -214,6 +233,14 @@
 			path = GameCenterService;
 			sourceTree = "<group>";
 		};
+		BE2C08A7B58965B8A4775472 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C5BFAE94E6C56448FA0A60B /* Pods_NanoBusiness.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B0956B627A1EE73008F265C /* Build configuration list for PBXNativeTarget "NanoBusiness" */;
 			buildPhases = (
+				5456003AA185EA00DAF70FED /* [CP] Check Pods Manifest.lock */,
 				5B09569B27A1EE70008F265C /* Sources */,
 				5B09569C27A1EE70008F265C /* Frameworks */,
 				5B09569D27A1EE70008F265C /* Resources */,
+				E08B10116C7BB8410837766D /* [CP] Embed Pods Frameworks */,
+				5BD0636C27B196B30083EE3C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -279,12 +309,74 @@
 				5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */,
 				5B0956B027A1EE73008F265C /* Assets.xcassets in Resources */,
 				5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */,
+				5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5456003AA185EA00DAF70FED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NanoBusiness-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BD0636C27B196B30083EE3C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		E08B10116C7BB8410837766D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NanoBusiness/Pods-NanoBusiness-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NanoBusiness/Pods-NanoBusiness-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NanoBusiness/Pods-NanoBusiness-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B09569B27A1EE70008F265C /* Sources */ = {
@@ -448,6 +540,7 @@
 		};
 		5B0956B727A1EE73008F265C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6C87A57CEC1AF56EA628387 /* Pods-NanoBusiness.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -455,6 +548,7 @@
 				CODE_SIGN_ENTITLEMENTS = NanoBusiness/NanoBusiness.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VWZ6P536SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
@@ -481,6 +575,7 @@
 		};
 		5B0956B827A1EE73008F265C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A55F30FAD059CB653810EA67 /* Pods-NanoBusiness.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

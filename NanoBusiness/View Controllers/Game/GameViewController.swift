@@ -1,6 +1,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import FirebaseAnalytics
 
 class GameViewController: UIViewController {
     var currentGame: GameScene?
@@ -72,6 +73,8 @@ class GameViewController: UIViewController {
         self.addChild(gameOverVC!)
         
         showMenu()
+        
+        Analytics.logEvent("level_end", parameters: ["progress" : "\(currentGame!.climbDistance)m"])
     }
     
     func showMenu() {
@@ -98,6 +101,8 @@ class GameViewController: UIViewController {
         
         self.view.addSubview(gamePausedVC.view)
         self.addChild(gamePausedVC)
+        
+        Analytics.logEvent("level_pause", parameters: nil)
     }
     
     override var shouldAutorotate: Bool {

@@ -1,6 +1,7 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import FirebaseAnalytics
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     weak var viewController: GameViewController?
@@ -204,6 +205,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Posicionar o player
         player.moveToInitialPosition()
+        
+        Analytics.logEvent("level_start", parameters: nil)
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
