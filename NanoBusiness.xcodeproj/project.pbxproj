@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD0636D27B19B520083EE3C /* Analytics */,
-				5BF5488527ADBD7B00915F8A /* GameCenterService */,
+				5BF5488527ADBD7B00915F8A /* GameCenter */,
 				5B8918A627AC308C00EED11C /* FakeDatabase */,
 				5B8918A327AB120C00EED11C /* UserDefaults */,
 			);
@@ -242,12 +242,12 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
-		5BF5488527ADBD7B00915F8A /* GameCenterService */ = {
+		5BF5488527ADBD7B00915F8A /* GameCenter */ = {
 			isa = PBXGroup;
 			children = (
 				5BF5488627ADBDAD00915F8A /* GameCenterService.swift */,
 			);
-			path = GameCenterService;
+			path = GameCenter;
 			sourceTree = "<group>";
 		};
 		BE2C08A7B58965B8A4775472 /* Frameworks */ = {

@@ -10,7 +10,7 @@ final class AnalyticsManager {
         Analytics.logEvent(event.name, parameters: event.asDict)
     }
     
-//    func log(userProperty: AnalyticsUserProperty) {
-//        Analytics.setUserProperty(userProperty.value, forName: userProperty.name)
-//    }
+    func log(userProperty: AnalyticsUserProperty) {
+        Analytics.setUserProperty(userProperty.value, forName: userProperty.name)
+    }
 }

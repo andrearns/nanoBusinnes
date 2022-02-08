@@ -25,6 +25,7 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
         gameCenterVC = GKGameCenterViewController(leaderboardID: "com.andrearns.everestClimber.leaderboard", playerScope: .global, timeScope: .allTime)
         gameCenterVC!.gameCenterDelegate = self
         present(gameCenterVC!, animated: true, completion: nil)
+        AnalyticsManager.shared.log(event: .openGameCenter)
     }
     
     @IBAction func startGame(_ sender: Any) {
@@ -38,10 +39,12 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func showShop(_ sender: Any) {
         print("Show shop")
+        AnalyticsManager.shared.log(event: .openShop)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         print("Leaderboard closed")
         gameCenterVC?.dismiss(animated: true, completion: nil)
+        AnalyticsManager.shared.log(event: .closeGameCenter)
     }
 }

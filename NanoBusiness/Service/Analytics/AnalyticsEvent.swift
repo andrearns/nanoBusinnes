@@ -1,13 +1,15 @@
 import Foundation
 
 enum AnalyticsEvent {
-    case levelStart
-    case levelEnd(Int)
-    case gamePause
-    case gameContinue
-    case openGameCenter
-    case closeGameCenter
-    case newPersonalRecord(Int)
+    case levelStart // OK
+    case levelEnd(climbDistance: Int) // OK
+    case gamePause // OK
+    case gameContinue // OK
+    case openGameCenter // OK
+    case closeGameCenter // OK
+    case openShop // OK
+    case closeShop
+    case changePlayerSkin
     
     var name: String {
         switch self {
@@ -23,8 +25,12 @@ enum AnalyticsEvent {
             return "open_game_center"
         case .closeGameCenter:
             return "close_game_center"
-        case .newPersonalRecord:
-            return "new_personal_record"
+        case .openShop:
+            return "open_shop"
+        case .closeShop:
+            return "close_shop"
+        case .changePlayerSkin:
+            return "change_player_skin"
         }
     }
     
@@ -32,8 +38,8 @@ enum AnalyticsEvent {
         switch self {
         case .levelStart:
             return [:]
-        case .levelEnd(let int):
-            return ["climb_distance" : int as NSObject]
+        case .levelEnd(let climbDistance):
+            return ["climb_distance" : climbDistance as NSObject]
         case .gamePause:
             return [:]
         case .gameContinue:
@@ -42,8 +48,12 @@ enum AnalyticsEvent {
             return [:]
         case .closeGameCenter:
             return [:]
-        case .newPersonalRecord(let int):
-            return ["new_record" : int as NSObject]
+        case .openShop:
+            return [:]
+        case .closeShop:
+            return [:]
+        case .changePlayerSkin:
+            return [:]
         }
     }
 

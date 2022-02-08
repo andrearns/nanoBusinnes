@@ -206,7 +206,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Posicionar o player
         player.moveToInitialPosition()
         
-        Analytics.logEvent("level_start", parameters: nil)
+        AnalyticsManager.shared.log(event: .levelStart)
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {

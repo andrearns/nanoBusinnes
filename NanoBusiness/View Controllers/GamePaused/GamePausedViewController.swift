@@ -32,5 +32,6 @@ class GamePausedViewController: UIViewController {
         self.view.removeFromSuperview()
         gameViewController.backgroundOverlay.alpha = 0
         gameViewController.currentGame?.game.status = .running
+        AnalyticsManager.shared.log(event: .gameContinue)
     }
 }

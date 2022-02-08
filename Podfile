@@ -8,5 +8,6 @@ target 'NanoBusiness' do
   # Pods for NanoBusiness
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'Google-Mobile-Ads-SDK'
 	
 end

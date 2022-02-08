@@ -2,8 +2,11 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import FirebaseAnalytics
+import GoogleMobileAds
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADFullScreenContentDelegate {
+    private var interstitial: GADInterstitialAd?
+    
     var currentGame: GameScene?
     var backgroundOverlay = UIView()
     var gameOverVC: GameOverViewController?
@@ -54,6 +57,21 @@ class GameViewController: UIViewController {
         menuVC?.view.frame.size.width = (view.frame.width - 40)
         menuVC?.view.center.x = view.center.x
         menuVC?.view.center.y = 1200
+        
+        let request = GADRequest()
+        var interstitial: GADInterstitialAd?
+        GADInterstitialAd.load(
+            withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+            request: request,
+            completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
+            }
+        )
     }
     
     func showGameOver() {
@@ -61,6 +79,7 @@ class GameViewController: UIViewController {
             UserDefaultsService.setNewRecord(currentGame!.climbDistance)
             record = currentGame!.climbDistance
             GameCenterService.shared.updateScore(with: record)
+            AnalyticsManager.shared.log(userProperty: .personalRecord(climbDistance: currentGame!.climbDistance))
         }
         
         self.backgroundOverlay.alpha = 0.5
@@ -74,7 +93,9 @@ class GameViewController: UIViewController {
         
         showMenu()
         
-        Analytics.logEvent("level_end", parameters: ["progress" : "\(currentGame!.climbDistance)m"])
+        AnalyticsManager.shared.log(event: .levelEnd(climbDistance: currentGame!.climbDistance))
+        
+        showInterstitial()
     }
     
     func showMenu() {
@@ -102,7 +123,7 @@ class GameViewController: UIViewController {
         self.view.addSubview(gamePausedVC.view)
         self.addChild(gamePausedVC)
         
-        Analytics.logEvent("level_pause", parameters: nil)
+        AnalyticsManager.shared.log(event: .gamePause)
     }
     
     override var shouldAutorotate: Bool {
@@ -120,4 +141,27 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    func showInterstitial() {
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+        }
+    }
+
+    /// Tells the delegate that the ad failed to present full screen content.
+      func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+      }
+
+      /// Tells the delegate that the ad presented full screen content.
+      func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+      }
+
+      /// Tells the delegate that the ad dismissed full screen content.
+      func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+      }
 }
