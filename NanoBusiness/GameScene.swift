@@ -123,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut) {
-                self.viewController?.showGameOver()
+                self.viewController?.showRevive()
             }
         }
         // Collect coin
@@ -265,7 +265,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             } else {
                 game.status = .over
-                viewController?.showGameOver()
+                viewController?.showRevive()
+//                viewController?.showGameOver()
             }
             
             if climbDistance == 0 {

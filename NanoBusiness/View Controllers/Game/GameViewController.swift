@@ -11,6 +11,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     var backgroundOverlay = UIView()
     var gameOverVC: GameOverViewController?
     var menuVC: MenuViewController!
+    var reviveVC: ReviveViewController?
     
     var record: Int = 0
     
@@ -58,6 +59,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         menuVC?.view.center.x = view.center.x
         menuVC?.view.center.y = 1200
         
+        reviveVC = ReviveViewController(gameVC: self)
+        reviveVC?.view.frame.size.width = (view.frame.width - 40)
+        reviveVC?.view.center.x = -600
+        reviveVC?.view.center.y = view.center.y
+        
         let request = GADRequest()
         var interstitial: GADInterstitialAd?
         GADInterstitialAd.load(
@@ -102,6 +108,24 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         menuVC?.view.center.y = view.frame.height - 80
         self.view.addSubview(menuVC!.view)
         self.addChild(menuVC!)
+    }
+    
+    func showRevive() {
+        backgroundOverlay.alpha = 0.5
+        reviveVC?.view.center.x = view.center.x
+        self.view.addSubview(reviveVC!.view)
+        self.addChild(reviveVC!)
+    }
+    
+    func hideRevive() {
+        UIView.animate(withDuration: 1) {
+            self.reviveVC?.view.center.x = 600
+            self.showGameOver()
+        }
+        
+//        self.reviveVC?.view.center.x = -600
+//        self.reviveVC?.view.alpha = 1
+        
     }
     
     func blinkTimeBar() {
