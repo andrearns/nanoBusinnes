@@ -5,6 +5,7 @@ import FirebaseAnalytics
 import GoogleMobileAds
 
 class GameViewController: UIViewController, GADFullScreenContentDelegate {
+    
     private var interstitial: GADInterstitialAd?
     
     var currentGame: GameScene?
@@ -17,6 +18,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     var record: Int = 0
     var coinsCount: Int = 0
+    var gamesPlayed: Int = 0
     
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var timeView: UIView!
@@ -30,6 +32,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         
         record = UserDefaultsService.fetchRecord()
         coinsCount = UserDefaultsService.fetchCoinsCount()
+        gamesPlayed = UserDefaultsService.fetchGamesPlayed()
         
         GameCenterService.shared.authenticateLocalPlayer(presentingVC: self)
         
@@ -87,23 +90,13 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         gamePausedVC?.view.center.x = view.center.x
         gamePausedVC?.view.center.y = -900
         
-        let request = GADRequest()
-        var interstitial: GADInterstitialAd?
-        GADInterstitialAd.load(
-            withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
-            request: request,
-            completionHandler: { [self] ad, error in
-                if let error = error {
-                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                    return
-                }
-                interstitial = ad
-                interstitial?.fullScreenContentDelegate = self
-            }
-        )
+        requestInterstitial()
     }
     
     func startGame() {
+        self.gamesPlayed += 1
+        UserDefaultsService.setGamesPlayed(self.gamesPlayed)
+        
         self.currentGame?.startGame()
         self.hideHome()
         self.hideGameOver()
@@ -157,8 +150,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         showMenu()
         
         AnalyticsManager.shared.log(event: .levelEnd(climbDistance: currentGame!.climbDistance))
-        
-        showInterstitial()
     }
     
     func hideGameOver() {
@@ -232,6 +223,10 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             self.reviveVC?.view.center.x = 600
             self.showGameOver()
         }
+        
+        if self.gamesPlayed % 3 == 0 {
+            showInterstitial()
+        }
     }
     
     func blinkTimeBar() {
@@ -262,6 +257,23 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         showPause()
     }
     
+    func requestInterstitial() {
+        let request = GADRequest()
+
+        GADInterstitialAd.load(
+            withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+            request: request,
+            completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                self.interstitial = ad
+                self.interstitial?.fullScreenContentDelegate = self
+            }
+        )
+    }
+    
     func showInterstitial() {
         if interstitial != nil {
             interstitial!.present(fromRootViewController: self)
@@ -270,20 +282,23 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         }
     }
 
-    /// Tells the delegate that the ad failed to present full screen content.
-      func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    // Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
-      }
+        print("Error:", error.localizedDescription)
+    }
 
-      /// Tells the delegate that the ad presented full screen content.
-      func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    // TadWillPresentFullScreenContent presented full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
-      }
+    }
 
-      /// Tells the delegate that the ad dismissed full screen content.
-      func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    // Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-      }
+        requestInterstitial()
+        
+    }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
