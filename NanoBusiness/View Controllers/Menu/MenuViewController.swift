@@ -17,7 +17,6 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func showGameCenter(_ sender: Any) {

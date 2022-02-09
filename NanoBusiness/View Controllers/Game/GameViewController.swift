@@ -10,11 +10,13 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     var currentGame: GameScene?
     var backgroundOverlay = UIView()
     var gameOverVC: GameOverViewController?
+    var gamePausedVC: GamePausedViewController?
     var menuVC: MenuViewController!
     var reviveVC: ReviveViewController?
     var homeVC: HomeViewController?
     
     var record: Int = 0
+    var coinsCount: Int = 0
     
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var timeView: UIView!
@@ -27,6 +29,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         super.viewDidLoad()
         
         record = UserDefaultsService.fetchRecord()
+        coinsCount = UserDefaultsService.fetchCoinsCount()
         
         GameCenterService.shared.authenticateLocalPlayer(presentingVC: self)
         
@@ -48,6 +51,10 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         
         timeBarView.layer.cornerRadius = 19
         timeBarWidthConstraint.constant = 120
+        
+        self.progressView.alpha = 0
+        self.timeView.alpha = 0
+        self.pauseButton.alpha = 0
         
         backgroundOverlay.frame = view.frame
         backgroundOverlay.backgroundColor = .black
@@ -75,6 +82,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         homeVC?.view.center.x = view.center.x
         homeVC?.view.center.y = -900
         
+        gamePausedVC = GamePausedViewController(gameVC: self)
+        gamePausedVC?.view.frame.size.width = (view.frame.width - 40)
+        gamePausedVC?.view.center.x = view.center.x
+        gamePausedVC?.view.center.y = -900
+        
         let request = GADRequest()
         var interstitial: GADInterstitialAd?
         GADInterstitialAd.load(
@@ -100,17 +112,25 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         self.backgroundOverlay.alpha = 0
     }
     
-    func pauseGame() {
+    func showPause() {
         currentGame?.game.status = .paused
         
-        let gamePausedVC = GamePausedViewController(gameVC: self)
-        gamePausedVC.view.frame.size.width = (view.frame.width - 40)
-        gamePausedVC.view.center = view.center
-        
-        self.view.addSubview(gamePausedVC.view)
-        self.addChild(gamePausedVC)
+        UIView.animate(withDuration: 0.3) {
+            self.hideTapButtons()
+            self.backgroundOverlay.alpha = 0.5
+            self.gamePausedVC?.view.center.y = self.view.center.y
+            self.view.addSubview(self.gamePausedVC!.view)
+            self.addChild(self.gamePausedVC!)
+        }
         
         AnalyticsManager.shared.log(event: .gamePause)
+    }
+    
+    func hidePause() {
+        UIView.animate(withDuration: 0.3) {
+            self.gamePausedVC?.view.center.y = -1200
+            self.backgroundOverlay.alpha = 0
+        }
     }
     
     func showGameOver() {
@@ -118,13 +138,17 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             UserDefaultsService.setNewRecord(currentGame!.climbDistance)
             record = currentGame!.climbDistance
             GameCenterService.shared.updateScore(with: record)
+            homeVC?.reloadRecord()
             AnalyticsManager.shared.log(userProperty: .personalRecord(climbDistance: currentGame!.climbDistance))
         }
+        
+        self.coinsCount += currentGame?.coinsCount ?? 0
+        UserDefaultsService.setCoinsCount(coinsCount)
         
         self.backgroundOverlay.alpha = 0.5
         gameOverVC?.progress = currentGame!.climbDistance
         gameOverVC?.coinsCount = currentGame!.coinsCount
-        gameOverVC?.view.center.y = view.center.y
+        gameOverVC?.view.center.y = view.center.y - 40
         gameOverVC?.reloadData()
     
         self.view.addSubview(gameOverVC!.view)
@@ -138,10 +162,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hideGameOver() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5) {
             self.gameOverVC!.view.center.y = -900
-            self.gameOverVC!.view.removeFromSuperview()
-            self.backgroundOverlay.alpha = 0
         }
     }
     
@@ -151,7 +173,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         hideTopElements()
         
         UIView.animate(withDuration: 0.5) {
-            self.homeVC?.view.center.y = 200
+            self.backgroundOverlay.alpha = 0
+            self.homeVC?.view.center.y = 250
             self.view.addSubview(self.homeVC!.view)
             self.addChild(self.homeVC!)
         }
@@ -168,7 +191,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func showTopElements() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.5) {
             self.progressView.alpha = 1
             self.timeView.alpha = 1
             self.pauseButton.alpha = 1
@@ -176,7 +199,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hideTopElements() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.5) {
             self.progressView.alpha = 0
             self.timeView.alpha = 0
             self.pauseButton.alpha = 0
@@ -219,9 +242,24 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             self.timeBarView.alpha = 1
         }
     }
+    
+    func showTapButtons() {
+        UIView.animate(withDuration: 0.3) {
+            self.currentGame?.tapRightNode.alpha = 1
+            self.currentGame?.tapLeftNode.alpha = 1
+        }
+    }
+    
+    func hideTapButtons() {
+        UIView.animate(withDuration: 0.3) {
+            self.currentGame?.tapRightNode.alpha = 0
+            self.currentGame?.tapLeftNode.alpha = 0
+        }
+    }
+    
 
     @IBAction func pauseGame(_ sender: Any) {
-        pauseGame()
+        showPause()
     }
     
     func showInterstitial() {
