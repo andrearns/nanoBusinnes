@@ -22,6 +22,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        record = UserDefaultsService.fetchRecord()
+        
         GameCenterService.shared.authenticateLocalPlayer(presentingVC: self)
         
         if let view = self.view as! SKView? {

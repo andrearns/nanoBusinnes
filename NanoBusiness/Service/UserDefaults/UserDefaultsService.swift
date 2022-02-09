@@ -4,7 +4,7 @@ final class UserDefaultsService {
     
     static func setNewRecord(_ record: Int) {
         let data = try? JSONEncoder().encode(record)
-        UserDefaults.standard.set(data, forKey: "Record")
+        return UserDefaults.standard.set(data, forKey: "Record")
     }
     
     static func fetchRecord() -> Int {
