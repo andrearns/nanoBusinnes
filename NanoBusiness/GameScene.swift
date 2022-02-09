@@ -122,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 deadNodeRight.alpha = 1
             }
             
-            UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut) {
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut) {
                 self.viewController?.showRevive()
             }
         }

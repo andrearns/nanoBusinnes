@@ -115,17 +115,14 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         reviveVC?.view.center.x = view.center.x
         self.view.addSubview(reviveVC!.view)
         self.addChild(reviveVC!)
+        reviveVC?.configureTimer()
     }
     
     func hideRevive() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
             self.reviveVC?.view.center.x = 600
             self.showGameOver()
         }
-        
-//        self.reviveVC?.view.center.x = -600
-//        self.reviveVC?.view.alpha = 1
-        
     }
     
     func blinkTimeBar() {
