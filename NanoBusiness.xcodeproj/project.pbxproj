@@ -21,6 +21,8 @@
 		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
 		5B86F1C727B443B400CD1FED /* ReviveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1C527B443B300CD1FED /* ReviveViewController.swift */; };
 		5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1C627B443B300CD1FED /* ReviveViewController.xib */; };
+		5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */; };
+		5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */; };
 		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
 		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
@@ -55,6 +57,8 @@
 		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
 		5B86F1C527B443B300CD1FED /* ReviveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveViewController.swift; sourceTree = "<group>"; };
 		5B86F1C627B443B300CD1FED /* ReviveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviveViewController.xib; sourceTree = "<group>"; };
+		5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +154,10 @@
 		5B4C69C127A9BED600DA347C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B86F1C427B443A000CD1FED /* Revive */,
 				5B89189C27AAC88500EED11C /* Game */,
+				5B86F1CA27B46D4D00CD1FED /* Shop */,
+				5B86F1C927B46D4300CD1FED /* Home */,
+				5B86F1C427B443A000CD1FED /* Revive */,
 				5B8918AD27ACFC6900EED11C /* Menu */,
 				5B89189727AAC4BA00EED11C /* GameOver */,
 				5B89189D27AB067800EED11C /* GamePaused */,
@@ -182,6 +188,22 @@
 				5B86F1C627B443B300CD1FED /* ReviveViewController.xib */,
 			);
 			path = Revive;
+			sourceTree = "<group>";
+		};
+		5B86F1C927B46D4300CD1FED /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */,
+				5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5B86F1CA27B46D4D00CD1FED /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shop;
 			sourceTree = "<group>";
 		};
 		5B89189727AAC4BA00EED11C /* GameOver */ = {
@@ -344,6 +366,7 @@
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
 				5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */,
+				5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +440,7 @@
 			files = (
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
 				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
+				5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */,
 				5BD0637127B19D240083EE3C /* AnalyticsUserProperty.swift in Sources */,
 				5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,

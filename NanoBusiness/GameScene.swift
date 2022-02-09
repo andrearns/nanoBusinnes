@@ -28,10 +28,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
         
-        self.startGame()
-        
         self.camera = cam
         addChild(cam)
+        
+        prepareCenario()
         
         deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
         deadNodeLeft.position.x = -200
@@ -51,6 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
         tapRightNode = childNode(withName: "tapRight") as? SKSpriteNode
+        
+        tapLeftNode.alpha = 0
+        tapRightNode.alpha = 0
         
         setupLeftTapAnimation()
         setupRightTapAnimation()
@@ -168,6 +171,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        prepareCenario()
+        
+        self.count = 0
+        self.coinsCount = 0
+        self.climbDistance = 0
+        self.viewController?.counterLabel.text = String("\(climbDistance)m")
+        self.viewController?.timeBarWidthConstraint.constant = 120
+        
+        game.status = .running
+        
+        viewController?.showTopElements()
+        
+        AnalyticsManager.shared.log(event: .levelStart)
+    }
+    
+    func prepareCenario() {
         for i in count...(count + 6) {
             let leftNode = childNode(withName: "node\(i)A")
             leftNode?.removeFromParent()
@@ -175,18 +194,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightNode = childNode(withName: "node\(i)B")
             rightNode?.removeFromParent()
         }
-
-        self.player.node.zPosition = 10000000
-        self.player.node.texture = SKTexture(imageNamed: "player-1")
         
         deadNodeLeft?.alpha = 0
         deadNodeRight?.alpha = 0
-        
-        self.count = 0
-        self.coinsCount = 0
-        self.climbDistance = 0
-        self.viewController?.counterLabel.text = String("\(climbDistance)m")
-        self.viewController?.timeBarWidthConstraint.constant = 120
         
         // Criar os 6 blocos iniciais
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
@@ -201,12 +211,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(newRightNode)
         }
         
-        game.status = .running
-        
         // Posicionar o player
+        self.player.node.zPosition = 10000000
+        self.player.node.texture = SKTexture(imageNamed: "player-1")
         player.moveToInitialPosition()
-        
-        AnalyticsManager.shared.log(event: .levelStart)
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
@@ -266,7 +274,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 game.status = .over
                 viewController?.showRevive()
-//                viewController?.showGameOver()
             }
             
             if climbDistance == 0 {
@@ -276,6 +283,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 tapLeftNode.alpha = 0
                 tapRightNode.alpha = 0
             }
+        } else if game.status == .start {
+            viewController?.showHome()
         }
     }
 }

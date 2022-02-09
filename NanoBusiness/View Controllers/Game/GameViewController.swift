@@ -12,9 +12,13 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     var gameOverVC: GameOverViewController?
     var menuVC: MenuViewController!
     var reviveVC: ReviveViewController?
+    var homeVC: HomeViewController?
     
     var record: Int = 0
     
+    @IBOutlet var pauseButton: UIButton!
+    @IBOutlet var timeView: UIView!
+    @IBOutlet var progressView: UIView!
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var timeBarView: UIView!
     @IBOutlet var timeBarWidthConstraint: NSLayoutConstraint!
@@ -66,6 +70,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         reviveVC?.view.center.x = -600
         reviveVC?.view.center.y = view.center.y
         
+        homeVC = HomeViewController()
+        homeVC?.view.frame.size.width = (view.frame.width - 40)
+        homeVC?.view.center.x = view.center.x
+        homeVC?.view.center.y = -900
+        
         let request = GADRequest()
         var interstitial: GADInterstitialAd?
         GADInterstitialAd.load(
@@ -80,6 +89,28 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
                 interstitial?.fullScreenContentDelegate = self
             }
         )
+    }
+    
+    func startGame() {
+        self.currentGame?.startGame()
+        self.hideHome()
+        self.hideGameOver()
+        self.hideMenu()
+        self.showTopElements()
+        self.backgroundOverlay.alpha = 0
+    }
+    
+    func pauseGame() {
+        currentGame?.game.status = .paused
+        
+        let gamePausedVC = GamePausedViewController(gameVC: self)
+        gamePausedVC.view.frame.size.width = (view.frame.width - 40)
+        gamePausedVC.view.center = view.center
+        
+        self.view.addSubview(gamePausedVC.view)
+        self.addChild(gamePausedVC)
+        
+        AnalyticsManager.shared.log(event: .gamePause)
     }
     
     func showGameOver() {
@@ -106,10 +137,63 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         showInterstitial()
     }
     
+    func hideGameOver() {
+        UIView.animate(withDuration: 1) {
+            self.gameOverVC!.view.center.y = -900
+            self.gameOverVC!.view.removeFromSuperview()
+            self.backgroundOverlay.alpha = 0
+        }
+    }
+    
+    func showHome() {
+        print("Show home")
+        showMenu()
+        hideTopElements()
+        
+        UIView.animate(withDuration: 0.5) {
+            self.homeVC?.view.center.y = 200
+            self.view.addSubview(self.homeVC!.view)
+            self.addChild(self.homeVC!)
+        }
+    }
+    
+    func hideHome() {
+        print("Show home")
+        hideMenu()
+        showTopElements()
+        
+        UIView.animate(withDuration: 0.5) {
+            self.homeVC?.view.center.y = -600
+        }
+    }
+    
+    func showTopElements() {
+        UIView.animate(withDuration: 0.3) {
+            self.progressView.alpha = 1
+            self.timeView.alpha = 1
+            self.pauseButton.alpha = 1
+        }
+    }
+    
+    func hideTopElements() {
+        UIView.animate(withDuration: 0.3) {
+            self.progressView.alpha = 0
+            self.timeView.alpha = 0
+            self.pauseButton.alpha = 0
+        }
+    }
+    
     func showMenu() {
         menuVC?.view.center.y = view.frame.height - 80
         self.view.addSubview(menuVC!.view)
         self.addChild(menuVC!)
+    }
+    
+    func hideMenu() {
+        UIView.animate(withDuration: 1) {
+            self.menuVC.view.center.y = 1200
+            self.menuVC.view.removeFromSuperview()
+        }
     }
     
     func showRevive() {
@@ -137,32 +221,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
 
     @IBAction func pauseGame(_ sender: Any) {
-        currentGame?.game.status = .paused
-        
-        let gamePausedVC = GamePausedViewController(gameVC: self)
-        gamePausedVC.view.frame.size.width = (view.frame.width - 40)
-        gamePausedVC.view.center = view.center
-        
-        self.view.addSubview(gamePausedVC.view)
-        self.addChild(gamePausedVC)
-        
-        AnalyticsManager.shared.log(event: .gamePause)
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+        pauseGame()
     }
     
     func showInterstitial() {
@@ -187,4 +246,20 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
       func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
       }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }

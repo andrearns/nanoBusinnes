@@ -25,7 +25,11 @@ class GamePausedViewController: UIViewController {
     }
     
     @IBAction func goHome(_ sender: Any) {
-        
+        self.view.removeFromSuperview()
+        gameViewController.backgroundOverlay.alpha = 0
+        gameViewController.showHome()
+        gameViewController.currentGame?.tapRightNode.alpha = 0
+        gameViewController.currentGame?.tapLeftNode.alpha = 0
     }
     
     @IBAction func playGame(_ sender: Any) {

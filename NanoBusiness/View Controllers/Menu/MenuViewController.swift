@@ -29,14 +29,7 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     @IBAction func startGame(_ sender: Any) {
-        self.gameVC.currentGame?.startGame()
-        UIView.animate(withDuration: 1) {
-            self.view.center.y = 1200
-            self.view.removeFromSuperview()
-            self.gameVC.gameOverVC!.view.center.y = -900
-            self.gameVC.gameOverVC!.view.removeFromSuperview()
-            self.gameVC.backgroundOverlay.alpha = 0
-        }
+        gameVC.startGame()
     }
     
     @IBAction func showShop(_ sender: Any) {
