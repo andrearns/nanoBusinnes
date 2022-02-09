@@ -75,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
-                viewController?.timeBarWidthConstraint.constant += 2
+                viewController?.timeBarWidthConstraint.constant += 6
             }
             
             let currentLeftNode = childNode(withName: "node\(count + 1)A")
@@ -251,19 +251,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
                 switch climbDistance {
                 case 0:
-                    viewController?.timeBarWidthConstraint.constant -= 0
+                    print("Waiting game to start")
                 case 1...999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.1
-                case 1000...1999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.2
-                case 2000...2999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.3
-                case 3000...3999:
                     viewController?.timeBarWidthConstraint.constant -= 0.4
+                case 1000...1999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.525
+                case 2000...2999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.65
+                case 3000...3999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.775
                 default:
-                    viewController?.timeBarWidthConstraint.constant -= 0.5
+                    viewController?.timeBarWidthConstraint.constant -= 0.9
                 }
-            } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
+            } else {
                 game.status = .over
                 viewController?.showGameOver()
             }
