@@ -25,6 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Sounds
     var audioPlayer: AVAudioPlayer?
+    var hurtSoundAction = SKAction.playSoundFileNamed("hurt", waitForCompletion: true)
+    var coinSoundAction = SKAction.playSoundFileNamed("coin", waitForCompletion: true)
+    var changeVolumeAction = SKAction.changeVolume(to: 0.5, duration: 0)
     
     // Haptics
     let stepFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -152,7 +155,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             let contactNode = secondBody.node as? SKSpriteNode
             
-            run(coinSound)
+            let effectAudioGroup = SKAction.group([coinSoundAction, changeVolumeAction])
+            run(effectAudioGroup)
             
             contactNode?.physicsBody?.categoryBitMask = 8
             contactNode?.zPosition = 0
@@ -312,6 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOverFeedback() {
         gameOverImpactGenerator.prepare()
         gameOverImpactGenerator.impactOccurred()
+        run(hurtSoundAction)
     }
     
     override func update(_ currentTime: TimeInterval) {

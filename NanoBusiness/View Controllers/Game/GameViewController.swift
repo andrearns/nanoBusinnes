@@ -308,6 +308,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         } else {
             print("Ad wasn't ready")
         }
+        currentGame?.audioPlayer?.stop()
     }
 
     // Tells the delegate that the ad failed to present full screen content.
@@ -325,6 +326,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         requestInterstitial()
+        currentGame?.audioPlayer?.play()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

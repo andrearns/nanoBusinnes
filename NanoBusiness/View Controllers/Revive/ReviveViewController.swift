@@ -63,6 +63,7 @@ final class ReviveViewController: UIViewController, GADFullScreenContentDelegate
     }
     
     @IBAction func watchRewardVideo(_ sender: Any) {
+        self.gameVC?.currentGame?.audioPlayer?.stop()
         showAd {
             print("Reward gained")
             self.closeRevive()
