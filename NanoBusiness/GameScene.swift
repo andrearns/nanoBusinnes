@@ -117,7 +117,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
             print("Game over")
             game.status = .over
-            player.node.zPosition = -10
+            
+            player.node.alpha = 0
             
             if player.position == .left {
                 deadNodeLeft.alpha = 1
@@ -125,8 +126,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 deadNodeRight.alpha = 1
             }
             
-            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut) {
+            if viewController!.numberOfTimesAdRewardWasCollected < 2 {
                 self.viewController?.showRevive()
+            } else {
+                self.viewController?.showGameOver()
             }
         }
         // Collect coin
@@ -173,6 +176,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func startGame() {
         prepareCenario()
         
+        player.node.alpha = 1
+        
         self.count = 0
         self.coinsCount = 0
         self.climbDistance = 0
@@ -184,6 +189,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         viewController?.showTopElements()
         
         AnalyticsManager.shared.log(event: .levelStart)
+    }
+    
+    func revive() {
+        
     }
     
     func prepareCenario() {
@@ -215,6 +224,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.player.node.zPosition = 10000000
         self.player.node.texture = SKTexture(imageNamed: "player-1")
         player.moveToInitialPosition()
+    }
+    
+    func prepareCenarioForRevival() {
+        let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
+        
+        for i in count...(count + 3) {
+            let leftNode = childNode(withName: "node\(i)A") as? SKSpriteNode
+            leftNode?.texture = initialBlockType.leftNode.texture
+            leftNode!.physicsBody?.categoryBitMask = UInt32(initialBlockType.leftNode.categoryMask)
+            leftNode!.physicsBody?.contactTestBitMask = UInt32(initialBlockType.leftNode.contactMask)
+            leftNode!.physicsBody?.collisionBitMask = UInt32(initialBlockType.leftNode.collisionMask)
+            
+            let rightNode = childNode(withName: "node\(i)B") as? SKSpriteNode
+            rightNode?.texture = initialBlockType.rightNode.texture
+            rightNode!.physicsBody?.categoryBitMask = UInt32(initialBlockType.rightNode.categoryMask)
+            rightNode!.physicsBody?.contactTestBitMask = UInt32(initialBlockType.rightNode.contactMask)
+            rightNode!.physicsBody?.collisionBitMask = UInt32(initialBlockType.rightNode.collisionMask)
+        }
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
@@ -274,14 +301,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 game.status = .over
                 viewController?.showRevive()
-            }
-            
-            if climbDistance == 0 {
-                tapLeftNode.alpha = 1
-                tapRightNode.alpha = 1
-            } else {
-                tapLeftNode.alpha = 0
-                tapRightNode.alpha = 0
             }
         } else if game.status == .start {
             viewController?.showHome()

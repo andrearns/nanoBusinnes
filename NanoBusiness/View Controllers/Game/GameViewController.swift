@@ -19,6 +19,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     var record: Int = 0
     var coinsCount: Int = 0
     var gamesPlayed: Int = 0
+    var numberOfTimesAdRewardWasCollected = 0
     
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var timeView: UIView!
@@ -94,6 +95,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func startGame() {
+        numberOfTimesAdRewardWasCollected = 0
         self.gamesPlayed += 1
         UserDefaultsService.setGamesPlayed(self.gamesPlayed)
         
@@ -103,6 +105,26 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         self.hideMenu()
         self.showTopElements()
         self.backgroundOverlay.alpha = 0
+    }
+    
+    func revivePlayer() {
+        self.hideGameOver()
+        self.hideMenu()
+        self.showTopElements()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.timeBarWidthConstraint.constant = 236
+            self.backgroundOverlay.alpha = 0
+            self.currentGame?.deadNodeLeft.alpha = 0
+            self.currentGame?.deadNodeRight.alpha = 0
+            self.currentGame?.player.node.alpha = 1
+            self.currentGame?.player.moveToInitialPosition()
+            self.currentGame?.prepareCenarioForRevival()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.currentGame?.game.status = .running
+        }
     }
     
     func showPause() {
@@ -138,14 +160,16 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         self.coinsCount += currentGame?.coinsCount ?? 0
         UserDefaultsService.setCoinsCount(coinsCount)
         
-        self.backgroundOverlay.alpha = 0.5
-        gameOverVC?.progress = currentGame!.climbDistance
-        gameOverVC?.coinsCount = currentGame!.coinsCount
-        gameOverVC?.view.center.y = view.center.y - 40
-        gameOverVC?.reloadData()
-    
-        self.view.addSubview(gameOverVC!.view)
-        self.addChild(gameOverVC!)
+        UIView.animate(withDuration: 0.5) {
+            self.backgroundOverlay.alpha = 0.5
+            self.gameOverVC?.progress = self.currentGame!.climbDistance
+            self.gameOverVC?.coinsCount = self.currentGame!.coinsCount
+            self.gameOverVC?.view.center.y = self.view.center.y - 40
+            self.gameOverVC?.reloadData()
+        
+            self.view.addSubview(self.gameOverVC!.view)
+            self.addChild(self.gameOverVC!)
+        }
         
         showMenu()
         
@@ -211,11 +235,13 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func showRevive() {
-        backgroundOverlay.alpha = 0.5
-        reviveVC?.view.center.x = view.center.x
-        self.view.addSubview(reviveVC!.view)
-        self.addChild(reviveVC!)
-        reviveVC?.configureTimer()
+        UIView.animate(withDuration: 0.5, delay: 0.5) {
+            self.backgroundOverlay.alpha = 0.5
+            self.reviveVC?.view.center.x = self.view.center.x
+            self.view.addSubview(self.reviveVC!.view)
+            self.addChild(self.reviveVC!)
+            self.reviveVC?.configureTimer()
+        }
     }
     
     func hideRevive() {
