@@ -23,6 +23,11 @@
 		5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1C627B443B300CD1FED /* ReviveViewController.xib */; };
 		5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */; };
 		5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */; };
+		5B86F1D427B58F9500CD1FED /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D027B58F9000CD1FED /* gameOver.mp3 */; };
+		5B86F1D527B58F9500CD1FED /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D127B58F9200CD1FED /* background.mp3 */; };
+		5B86F1D627B58F9500CD1FED /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D227B58F9400CD1FED /* coin.mp3 */; };
+		5B86F1D727B58F9500CD1FED /* step.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D327B58F9500CD1FED /* step.mp3 */; };
+		5B86F1D927B5949D00CD1FED /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D827B5949D00CD1FED /* hurt.wav */; };
 		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
 		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
@@ -59,6 +64,11 @@
 		5B86F1C627B443B300CD1FED /* ReviveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviveViewController.xib; sourceTree = "<group>"; };
 		5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		5B86F1D027B58F9000CD1FED /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
+		5B86F1D127B58F9200CD1FED /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		5B86F1D227B58F9400CD1FED /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		5B86F1D327B58F9500CD1FED /* step.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = step.mp3; sourceTree = "<group>"; };
+		5B86F1D827B5949D00CD1FED /* hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt.wav; sourceTree = "<group>"; };
 		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 			children = (
 				5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */,
 				5BF5488427ADBB8400915F8A /* NanoBusiness.entitlements */,
+				5B86F1CF27B58F7900CD1FED /* Sounds */,
 				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B8918A227AB120000EED11C /* Service */,
 				5B52701627A76A3900CABE68 /* Utils */,
@@ -204,6 +215,18 @@
 			children = (
 			);
 			path = Shop;
+			sourceTree = "<group>";
+		};
+		5B86F1CF27B58F7900CD1FED /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5B86F1D827B5949D00CD1FED /* hurt.wav */,
+				5B86F1D127B58F9200CD1FED /* background.mp3 */,
+				5B86F1D227B58F9400CD1FED /* coin.mp3 */,
+				5B86F1D027B58F9000CD1FED /* gameOver.mp3 */,
+				5B86F1D327B58F9500CD1FED /* step.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		5B89189727AAC4BA00EED11C /* GameOver */ = {
@@ -356,6 +379,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */,
+				5B86F1D427B58F9500CD1FED /* gameOver.mp3 in Resources */,
+				5B86F1D727B58F9500CD1FED /* step.mp3 in Resources */,
 				5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */,
 				5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */,
 				5B0956A527A1EE70008F265C /* GameScene.sks in Resources */,
@@ -365,7 +390,10 @@
 				5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
+				5B86F1D627B58F9500CD1FED /* coin.mp3 in Resources */,
 				5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */,
+				5B86F1D927B5949D00CD1FED /* hurt.wav in Resources */,
+				5B86F1D527B58F9500CD1FED /* background.mp3 in Resources */,
 				5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

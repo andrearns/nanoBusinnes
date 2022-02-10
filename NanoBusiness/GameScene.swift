@@ -2,6 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 import FirebaseAnalytics
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     weak var viewController: GameViewController?
@@ -21,6 +22,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var tapRightNode: SKSpriteNode!
     var leftTapAnimation: SKAction!
     var rightTapAnimation: SKAction!
+    
+    // Sounds
+    var audioPlayer: AVAudioPlayer?
+    
+    // Haptics
+    let stepFeedbackGenerator = UINotificationFeedbackGenerator()
+    let gameOverImpactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -60,6 +68,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         tapLeftNode.run(leftTapAnimation)
         tapRightNode.run(rightTapAnimation)
+        
+        playSound(sound: "background", type: "mp3", volume: 0.5)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,6 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("Touch right")
                     player.moveRight()
                 }
+                stepFeedback()
                 viewController?.blinkTimeBar()
             }
             
@@ -126,6 +137,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 deadNodeRight.alpha = 1
             }
             
+            gameOverFeedback()
+            
             if viewController!.numberOfTimesAdRewardWasCollected < 2 {
                 self.viewController?.showRevive()
             } else {
@@ -139,10 +152,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             let contactNode = secondBody.node as? SKSpriteNode
             
+            run(coinSound)
+            
             contactNode?.physicsBody?.categoryBitMask = 8
             contactNode?.zPosition = 0
             UIView.animate(withDuration: 0.3) {
                 contactNode!.texture = (self.player.position == .left) ? SKTexture(imageNamed: "paredeVaziaEsquerda") : SKTexture(imageNamed: "paredeVaziaDireita")
+            }
+        }
+    }
+    
+    func playSound(sound: String, type: String, volume: Float, loops: Int = -1) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type) {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer?.volume = volume
+                audioPlayer?.numberOfLoops = loops
+                audioPlayer?.play()
+            } catch {
+                print("ERROR")
             }
         }
     }
@@ -277,6 +305,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.leftTapAnimation = SKAction.repeatForever(SKAction.sequence([moveLeft, moveRight]))
     }
     
+    func stepFeedback() {
+        stepFeedbackGenerator.notificationOccurred(.success)
+    }
+    
+    func gameOverFeedback() {
+        gameOverImpactGenerator.prepare()
+        gameOverImpactGenerator.impactOccurred()
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         if game.status == .running {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
@@ -300,6 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             } else {
                 game.status = .over
+                gameOverFeedback()
                 viewController?.showRevive()
             }
         } else if game.status == .start {
