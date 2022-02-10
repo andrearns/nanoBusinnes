@@ -191,10 +191,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AnalyticsManager.shared.log(event: .levelStart)
     }
     
-    func revive() {
-        
-    }
-    
     func prepareCenario() {
         for i in count...(count + 6) {
             let leftNode = childNode(withName: "node\(i)A")
@@ -297,6 +293,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     viewController?.timeBarWidthConstraint.constant -= 0.775
                 default:
                     viewController?.timeBarWidthConstraint.constant -= 0.9
+                }
+                
+                if climbDistance != 0 {
+                    viewController?.hideTapButtons()
                 }
             } else {
                 game.status = .over

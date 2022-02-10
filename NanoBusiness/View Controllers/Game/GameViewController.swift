@@ -105,6 +105,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         self.hideMenu()
         self.showTopElements()
         self.backgroundOverlay.alpha = 0
+        self.showTapButtons()
     }
     
     func revivePlayer() {
