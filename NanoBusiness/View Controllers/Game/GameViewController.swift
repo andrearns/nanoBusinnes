@@ -143,6 +143,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hidePause() {
+        currentGame?.game.status = .running
         UIView.animate(withDuration: 0.3) {
             self.gamePausedVC?.view.center.y = -1200
             self.backgroundOverlay.alpha = 0
@@ -324,7 +325,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         requestInterstitial()
-        
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

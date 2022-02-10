@@ -31,7 +31,7 @@ class GamePausedViewController: UIViewController {
     
     @IBAction func playGame(_ sender: Any) {
         self.view.removeFromSuperview()
-        gameViewController.startGame()
+        gameViewController.hidePause()
         AnalyticsManager.shared.log(event: .gameContinue)
     }
 }

@@ -72,7 +72,6 @@ final class ReviveViewController: UIViewController, GADFullScreenContentDelegate
         self.loadReward()
     }
     
-    
     func loadReward() {
         let request = GADRequest()
         GADRewardedAd.load(
