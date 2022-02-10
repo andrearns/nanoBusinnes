@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPv-II-lRN" userLabel="ProgressView">
-                                <rect key="frame" x="128" y="78" width="158" height="51"/>
+                                <rect key="frame" x="128" y="98" width="158" height="51"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="novaPlacaDistancia" translatesAutoresizingMaskIntoConstraints="NO" id="LCS-mX-HH2">
                                         <rect key="frame" x="-1" y="-1" width="160" height="53"/>
@@ -49,7 +49,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0E-k4-Rs4" userLabel="TimeView">
-                                <rect key="frame" x="84" y="40" width="246" height="48"/>
+                                <rect key="frame" x="84" y="60" width="246" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="newTimeBarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="J0v-TP-5DD">
                                         <rect key="frame" x="0.0" y="0.0" width="246" height="48"/>
@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miB-Xv-LJR">
-                                <rect key="frame" x="338" y="40" width="48" height="48"/>
+                                <rect key="frame" x="346" y="60" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="miB-Xv-LJR" secondAttribute="height" multiplier="1:1" id="P5S-Tu-08H"/>
                                 </constraints>
@@ -91,12 +91,13 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="w0E-k4-Rs4" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="-4" id="Bzg-8Y-fs4"/>
+                            <constraint firstItem="w0E-k4-Rs4" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="16" id="Bzg-8Y-fs4"/>
                             <constraint firstItem="miB-Xv-LJR" firstAttribute="centerY" secondItem="J0v-TP-5DD" secondAttribute="centerY" id="LS9-50-PMT"/>
-                            <constraint firstItem="miB-Xv-LJR" firstAttribute="leading" secondItem="J0v-TP-5DD" secondAttribute="trailing" constant="8" symbolic="YES" id="eCg-Ii-eq4"/>
                             <constraint firstItem="w0E-k4-Rs4" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="fDo-1q-teh"/>
                             <constraint firstItem="EPv-II-lRN" firstAttribute="centerX" secondItem="J0v-TP-5DD" secondAttribute="centerX" id="fnB-xy-Eng"/>
-                            <constraint firstItem="EPv-II-lRN" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="34" id="yUc-tS-VD7"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="miB-Xv-LJR" secondAttribute="trailing" constant="20" id="nay-X5-Bur"/>
+                            <constraint firstItem="miB-Xv-LJR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J0v-TP-5DD" secondAttribute="trailing" id="w3b-5E-tjB"/>
+                            <constraint firstItem="EPv-II-lRN" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="54" id="yUc-tS-VD7"/>
                             <constraint firstItem="miB-Xv-LJR" firstAttribute="height" secondItem="J0v-TP-5DD" secondAttribute="height" id="ydz-SN-QhK"/>
                         </constraints>
                     </view>

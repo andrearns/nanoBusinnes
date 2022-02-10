@@ -248,7 +248,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func hideRevive() {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
-            self.reviveVC?.view.center.x = 600
+            self.reviveVC?.view.center.x = 1200
             self.showGameOver()
         }
         
