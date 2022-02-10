@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Exo-Black.ttf">
+            <string>Exo-Black</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="NanoBusiness" customModuleProvider="target">
+            <connections>
+                <outlet property="recordLabel" destination="eDU-GN-gS0" id="YHE-u3-vQO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="326"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="n8z-PC-yoW">
+                    <rect key="frame" x="0.0" y="82" width="300" height="130"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="rXT-O7-M0P"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYw-FQ-HFy">
+                    <rect key="frame" x="71" y="0.0" width="158" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="GcC-yD-mpt"/>
+                        <constraint firstAttribute="width" secondItem="IYw-FQ-HFy" secondAttribute="height" multiplier="79:25" id="TOU-DD-VJQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="18"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="REMOVE ADS" backgroundImage="removeAdsButton"/>
+                    <connections>
+                        <action selector="removeAds:" destination="-1" eventType="touchUpInside" id="24K-3a-gCS"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="distancia" translatesAutoresizingMaskIntoConstraints="NO" id="Sox-4a-miZ">
+                    <rect key="frame" x="40.5" y="276" width="219" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Sox-4a-miZ" secondAttribute="height" multiplier="465:106" id="Uz0-j2-1Af"/>
+                        <constraint firstAttribute="height" constant="50" id="kgS-gc-9bv"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDU-GN-gS0">
+                    <rect key="frame" x="40.5" y="276" width="219" height="50"/>
+                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAv-o8-x5I">
+                    <rect key="frame" x="30" y="244" width="240" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="kKi-gf-d4g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Sox-4a-miZ" firstAttribute="top" secondItem="RAv-o8-x5I" secondAttribute="bottom" constant="4" id="1ru-SO-wj8"/>
+                <constraint firstItem="RAv-o8-x5I" firstAttribute="top" secondItem="n8z-PC-yoW" secondAttribute="bottom" constant="32" id="2hA-Ak-OAJ"/>
+                <constraint firstItem="RAv-o8-x5I" firstAttribute="width" secondItem="n8z-PC-yoW" secondAttribute="width" multiplier="0.8" id="3CC-Rk-BXh"/>
+                <constraint firstItem="IYw-FQ-HFy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gv5-1T-7DI"/>
+                <constraint firstItem="eDU-GN-gS0" firstAttribute="centerX" secondItem="Sox-4a-miZ" secondAttribute="centerX" id="Jd8-XA-WTJ"/>
+                <constraint firstItem="n8z-PC-yoW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OZN-e5-9lV"/>
+                <constraint firstItem="eDU-GN-gS0" firstAttribute="centerY" secondItem="Sox-4a-miZ" secondAttribute="centerY" id="Sh1-Ur-dzy"/>
+                <constraint firstItem="Sox-4a-miZ" firstAttribute="centerX" secondItem="n8z-PC-yoW" secondAttribute="centerX" id="UNK-rN-Fr9"/>
+                <constraint firstItem="eDU-GN-gS0" firstAttribute="height" secondItem="Sox-4a-miZ" secondAttribute="height" id="Wjn-w7-r83"/>
+                <constraint firstItem="RAv-o8-x5I" firstAttribute="centerX" secondItem="n8z-PC-yoW" secondAttribute="centerX" id="diw-L2-7xy"/>
+                <constraint firstItem="IYw-FQ-HFy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fkX-Hk-Bac"/>
+                <constraint firstAttribute="bottom" secondItem="Sox-4a-miZ" secondAttribute="bottom" id="gEn-LQ-fCQ"/>
+                <constraint firstItem="n8z-PC-yoW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="gtU-OJ-Z3g"/>
+                <constraint firstItem="n8z-PC-yoW" firstAttribute="top" secondItem="IYw-FQ-HFy" secondAttribute="bottom" constant="32" id="h5n-DG-6fU"/>
+                <constraint firstItem="eDU-GN-gS0" firstAttribute="width" secondItem="Sox-4a-miZ" secondAttribute="width" id="mo9-dl-GXl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-95.089285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="distancia" width="465" height="106"/>
+        <image name="logo" width="632" height="249"/>
+        <image name="removeAdsButton" width="330" height="108"/>
+    </resources>
+</document>

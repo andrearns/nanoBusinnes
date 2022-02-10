@@ -4,7 +4,7 @@ final class Game {
     var status: GameStatus
     
     init() {
-        self.status = .running
+        self.status = .start
     }
     
     enum GameStatus {

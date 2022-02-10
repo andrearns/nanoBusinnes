@@ -103,8 +103,11 @@
                     <navigationItem key="navigationItem" id="a6D-ce-8ty"/>
                     <connections>
                         <outlet property="counterLabel" destination="DoH-oY-T6S" id="203-8G-brT"/>
+                        <outlet property="pauseButton" destination="miB-Xv-LJR" id="2xB-BJ-QgY"/>
+                        <outlet property="progressView" destination="EPv-II-lRN" id="Nqj-nd-91Z"/>
                         <outlet property="timeBarView" destination="svJ-OL-9FG" id="unj-jQ-RPH"/>
                         <outlet property="timeBarWidthConstraint" destination="4ZF-JV-hX3" id="Wo8-40-KQe"/>
+                        <outlet property="timeView" destination="w0E-k4-Rs4" id="22S-xg-aYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

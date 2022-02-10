@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAnalytics
 
 class GamePausedViewController: UIViewController {
 
@@ -24,12 +25,13 @@ class GamePausedViewController: UIViewController {
     }
     
     @IBAction func goHome(_ sender: Any) {
-        
+        self.view.removeFromSuperview()
+        gameViewController.showHome()
     }
     
     @IBAction func playGame(_ sender: Any) {
         self.view.removeFromSuperview()
-        gameViewController.backgroundOverlay.alpha = 0
-        gameViewController.currentGame?.game.status = .running
+        gameViewController.startGame()
+        AnalyticsManager.shared.log(event: .gameContinue)
     }
 }

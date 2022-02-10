@@ -1,0 +1,6 @@
+framework module Pods_NanoBusiness {
+  umbrella header "Pods-NanoBusiness-umbrella.h"
+
+  export *
+  module * { export * }
+}

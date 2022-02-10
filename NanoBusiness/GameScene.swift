@@ -1,6 +1,7 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import FirebaseAnalytics
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     weak var viewController: GameViewController?
@@ -27,10 +28,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let playerNode = self.childNode(withName: "player") as? SKSpriteNode
         player = Player(node: playerNode!)
         
-        self.startGame()
-        
         self.camera = cam
         addChild(cam)
+        
+        prepareCenario()
         
         deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
         deadNodeLeft.position.x = -200
@@ -50,6 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
         tapRightNode = childNode(withName: "tapRight") as? SKSpriteNode
+        
+        tapLeftNode.alpha = 0
+        tapRightNode.alpha = 0
         
         setupLeftTapAnimation()
         setupRightTapAnimation()
@@ -74,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if (viewController?.timeBarWidthConstraint.constant)! <= 234 {
-                viewController?.timeBarWidthConstraint.constant += 2
+                viewController?.timeBarWidthConstraint.constant += 6
             }
             
             let currentLeftNode = childNode(withName: "node\(count + 1)A")
@@ -113,7 +117,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(2) {
             print("Game over")
             game.status = .over
-            player.node.zPosition = -10
+            
+            player.node.alpha = 0
             
             if player.position == .left {
                 deadNodeLeft.alpha = 1
@@ -121,7 +126,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 deadNodeRight.alpha = 1
             }
             
-            UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut) {
+            if viewController!.numberOfTimesAdRewardWasCollected < 2 {
+                self.viewController?.showRevive()
+            } else {
                 self.viewController?.showGameOver()
             }
         }
@@ -167,6 +174,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        prepareCenario()
+        
+        player.node.alpha = 1
+        
+        self.count = 0
+        self.coinsCount = 0
+        self.climbDistance = 0
+        self.viewController?.counterLabel.text = String("\(climbDistance)m")
+        self.viewController?.timeBarWidthConstraint.constant = 120
+        
+        game.status = .running
+        
+        viewController?.showTopElements()
+        
+        AnalyticsManager.shared.log(event: .levelStart)
+    }
+    
+    func revive() {
+        
+    }
+    
+    func prepareCenario() {
         for i in count...(count + 6) {
             let leftNode = childNode(withName: "node\(i)A")
             leftNode?.removeFromParent()
@@ -174,18 +203,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightNode = childNode(withName: "node\(i)B")
             rightNode?.removeFromParent()
         }
-
-        self.player.node.zPosition = 10000000
-        self.player.node.texture = SKTexture(imageNamed: "player-1")
         
         deadNodeLeft?.alpha = 0
         deadNodeRight?.alpha = 0
-        
-        self.count = 0
-        self.coinsCount = 0
-        self.climbDistance = 0
-        self.viewController?.counterLabel.text = String("\(climbDistance)m")
-        self.viewController?.timeBarWidthConstraint.constant = 120
         
         // Criar os 6 blocos iniciais
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
@@ -200,10 +220,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(newRightNode)
         }
         
-        game.status = .running
-        
         // Posicionar o player
+        self.player.node.zPosition = 10000000
+        self.player.node.texture = SKTexture(imageNamed: "player-1")
         player.moveToInitialPosition()
+    }
+    
+    func prepareCenarioForRevival() {
+        let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
+        
+        for i in count...(count + 3) {
+            let leftNode = childNode(withName: "node\(i)A") as? SKSpriteNode
+            leftNode?.texture = initialBlockType.leftNode.texture
+            leftNode!.physicsBody?.categoryBitMask = UInt32(initialBlockType.leftNode.categoryMask)
+            leftNode!.physicsBody?.contactTestBitMask = UInt32(initialBlockType.leftNode.contactMask)
+            leftNode!.physicsBody?.collisionBitMask = UInt32(initialBlockType.leftNode.collisionMask)
+            
+            let rightNode = childNode(withName: "node\(i)B") as? SKSpriteNode
+            rightNode?.texture = initialBlockType.rightNode.texture
+            rightNode!.physicsBody?.categoryBitMask = UInt32(initialBlockType.rightNode.categoryMask)
+            rightNode!.physicsBody?.contactTestBitMask = UInt32(initialBlockType.rightNode.contactMask)
+            rightNode!.physicsBody?.collisionBitMask = UInt32(initialBlockType.rightNode.collisionMask)
+        }
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
@@ -248,30 +286,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
                 switch climbDistance {
                 case 0:
-                    viewController?.timeBarWidthConstraint.constant -= 0
+                    print("Waiting game to start")
                 case 1...999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.1
-                case 1000...1999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.2
-                case 2000...2999:
-                    viewController?.timeBarWidthConstraint.constant -= 0.3
-                case 3000...3999:
                     viewController?.timeBarWidthConstraint.constant -= 0.4
+                case 1000...1999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.525
+                case 2000...2999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.65
+                case 3000...3999:
+                    viewController?.timeBarWidthConstraint.constant -= 0.775
                 default:
-                    viewController?.timeBarWidthConstraint.constant -= 0.5
+                    viewController?.timeBarWidthConstraint.constant -= 0.9
                 }
-            } else if (viewController?.timeBarWidthConstraint.constant)! < 1 {
-                game.status = .over
-                viewController?.showGameOver()
-            }
-            
-            if climbDistance == 0 {
-                tapLeftNode.alpha = 1
-                tapRightNode.alpha = 1
             } else {
-                tapLeftNode.alpha = 0
-                tapRightNode.alpha = 0
+                game.status = .over
+                viewController?.showRevive()
             }
+        } else if game.status == .start {
+            viewController?.showHome()
         }
     }
 }
