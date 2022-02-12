@@ -33,6 +33,13 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func showShop(_ sender: Any) {
         print("Show shop")
+        let shopVC = ShopViewController(gameVC: gameVC)
+        let shopView = shopVC.view
+        shopView!.frame.size.width = gameVC.view.frame.width
+        shopView?.center.x = gameVC.view.center.x
+        gameVC.showShop()
+        gameVC.view.addSubview(shopView!)
+        gameVC.addChild(shopVC)
         AnalyticsManager.shared.log(event: .openShop)
     }
     

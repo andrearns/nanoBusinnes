@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var changeVolumeAction = SKAction.changeVolume(to: 0.5, duration: 0)
     
     // Haptics
-    let stepFeedbackGenerator = UINotificationFeedbackGenerator()
+    let stepFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     let gameOverImpactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     override func didMove(to view: SKView) {
@@ -133,7 +133,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             game.status = .over
             
             player.node.alpha = 0
-            firstBody.node?.alpha = 0
             
             if player.position == .left {
                 deadNodeLeft.alpha = 1
@@ -251,7 +250,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Posicionar o player
         self.player.node.zPosition = 10000000
-        self.player.node.texture = SKTexture(imageNamed: "player-1")
+        
+        let selectedSkin = SkinsSingleton.shared.skins.first { skin in
+            skin.name == UserDefaultsService.fetchSelectedSkinName()
+        }
+        
+        self.player.node.texture = SKTexture(imageNamed: selectedSkin!.spriteImageName)
+        
         player.moveToInitialPosition()
     }
     
@@ -311,7 +316,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func stepFeedback() {
-        stepFeedbackGenerator.notificationOccurred(.success)
+        stepFeedbackGenerator.prepare()
+        stepFeedbackGenerator.impactOccurred()
     }
     
     func gameOverFeedback() {
@@ -346,8 +352,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 gameOverFeedback()
                 viewController?.showRevive()
             }
-        } else if game.status == .start {
-            viewController?.showHome()
         }
     }
 }

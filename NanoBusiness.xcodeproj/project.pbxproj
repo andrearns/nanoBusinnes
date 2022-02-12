@@ -17,6 +17,10 @@
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
+		5B2889EB27B6D73F00F9975C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889E927B6D73F00F9975C /* ShopViewController.swift */; };
+		5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2889EA27B6D73F00F9975C /* ShopViewController.xib */; };
+		5B2889EE27B6D90800F9975C /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889ED27B6D90800F9975C /* Skin.swift */; };
+		5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889F027B7028400F9975C /* SkinsSingleton.swift */; };
 		5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */; };
 		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
 		5B86F1C727B443B400CD1FED /* ReviveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1C527B443B300CD1FED /* ReviveViewController.swift */; };
@@ -58,6 +62,10 @@
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B2889E927B6D73F00F9975C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		5B2889EA27B6D73F00F9975C /* ShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopViewController.xib; sourceTree = "<group>"; };
+		5B2889ED27B6D90800F9975C /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		5B2889F027B7028400F9975C /* SkinsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsSingleton.swift; sourceTree = "<group>"; };
 		5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.ttf"; path = "../../../../../Downloads/Exo/static/Exo-Black.ttf"; sourceTree = "<group>"; };
 		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
 		5B86F1C527B443B300CD1FED /* ReviveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +166,7 @@
 				5B0956BC27A33BCA008F265C /* Game.swift */,
 				5B52701427A76A1800CABE68 /* CenarioNode.swift */,
 				5B8918A927AC310900EED11C /* CenarioBlock.swift */,
+				5B2889ED27B6D90800F9975C /* Skin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +222,8 @@
 		5B86F1CA27B46D4D00CD1FED /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				5B2889E927B6D73F00F9975C /* ShopViewController.swift */,
+				5B2889EA27B6D73F00F9975C /* ShopViewController.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -278,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */,
+				5B2889F027B7028400F9975C /* SkinsSingleton.swift */,
 			);
 			path = FakeDatabase;
 			sourceTree = "<group>";
@@ -390,6 +402,7 @@
 				5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
+				5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */,
 				5B86F1D627B58F9500CD1FED /* coin.mp3 in Resources */,
 				5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */,
 				5B86F1D927B5949D00CD1FED /* hurt.wav in Resources */,
@@ -474,10 +487,13 @@
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
 				5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */,
+				5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */,
+				5B2889EE27B6D90800F9975C /* Skin.swift in Sources */,
 				5B86F1C727B443B400CD1FED /* ReviveViewController.swift in Sources */,
 				5B8918AC27AC4EF400EED11C /* Position.swift in Sources */,
 				5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */,
 				5B8918A527AB122300EED11C /* UserDefaultsService.swift in Sources */,
+				5B2889EB27B6D73F00F9975C /* ShopViewController.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
 				5BD0637327B19E5D0083EE3C /* AnalyticsManager.swift in Sources */,
 				5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */,

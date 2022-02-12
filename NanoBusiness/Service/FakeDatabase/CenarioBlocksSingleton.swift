@@ -84,5 +84,4 @@ final class CenarioBlocksSingleton {
             ),
         ]
     }
-    
 }

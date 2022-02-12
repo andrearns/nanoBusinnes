@@ -92,6 +92,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         gamePausedVC?.view.center.y = -900
         
         requestInterstitial()
+        
+        showHome()
     }
     
     func startGame() {
@@ -198,7 +200,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hideHome() {
-        print("Show home")
+        print("Hide home")
         hideMenu()
         showTopElements()
         
@@ -234,6 +236,18 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             self.menuVC.view.center.y = 1200
             self.menuVC.view.removeFromSuperview()
         }
+    }
+    
+    func showShop() {
+        hideGameOver()
+        hideHome()
+        hideTopElements()
+        backgroundOverlay.alpha = 0
+        currentGame?.player.moveToInitialPosition()
+    }
+    
+    func hideShop() {
+        
     }
     
     func showRevive() {
