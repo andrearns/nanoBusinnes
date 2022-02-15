@@ -45,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         prepareCenario()
         
         deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
-        deadNodeLeft.position.x = -220
+        deadNodeLeft.position.x = -200
         deadNodeLeft.position.y = -304.85
         deadNodeLeft.zPosition = 10000000
         deadNodeLeft.alpha = 0
@@ -53,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(deadNodeLeft)
         
         deadNodeRight = SKSpriteNode(imageNamed: "paredeGameOverDireita")
-        deadNodeRight.position.x = 220
+        deadNodeRight.position.x = 200
         deadNodeRight.position.y = -304.85
         deadNodeRight.zPosition = 10000000
         deadNodeRight.alpha = 0
@@ -281,7 +281,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
         let newNode = SKSpriteNode(color: UIColor.green, size: cenarioNode.size)
         
-        newNode.position.x = (position == .left) ? -220 : 220
+        newNode.position.x = (position == .left) ? -200 : 200
         newNode.position.y = yPosition
         newNode.name = (position == .left) ? "node\(count)A" : "node\(count)B"
         newNode.texture = cenarioNode.texture
