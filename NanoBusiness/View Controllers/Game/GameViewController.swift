@@ -94,6 +94,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestInterstitial()
         
         showHome()
+        
+        UserDefaultsService.setNewRecord(8000)
     }
     
     func startGame() {
@@ -176,6 +178,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         }
         
         showMenu()
+        
+        GameCenterService.shared.updateAchievements(reviveCount: numberOfTimesAdRewardWasCollected)
         
         AnalyticsManager.shared.log(event: .levelEnd(climbDistance: currentGame!.climbDistance))
     }

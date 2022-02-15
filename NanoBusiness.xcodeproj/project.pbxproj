@@ -21,6 +21,8 @@
 		5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2889EA27B6D73F00F9975C /* ShopViewController.xib */; };
 		5B2889EE27B6D90800F9975C /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889ED27B6D90800F9975C /* Skin.swift */; };
 		5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889F027B7028400F9975C /* SkinsSingleton.swift */; };
+		5B467E2727BC619800848990 /* GameCenterAchivement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467E2627BC619800848990 /* GameCenterAchivement.swift */; };
+		5B467E2927BC721700848990 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B467E2827BC721700848990 /* GameKit.framework */; };
 		5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */; };
 		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
 		5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B714C5827BAE4D000EA6092 /* AdSupport.framework */; };
@@ -68,6 +70,8 @@
 		5B2889EA27B6D73F00F9975C /* ShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopViewController.xib; sourceTree = "<group>"; };
 		5B2889ED27B6D90800F9975C /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		5B2889F027B7028400F9975C /* SkinsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsSingleton.swift; sourceTree = "<group>"; };
+		5B467E2627BC619800848990 /* GameCenterAchivement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterAchivement.swift; sourceTree = "<group>"; };
+		5B467E2827BC721700848990 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.ttf"; path = "../../../../../Downloads/Exo/static/Exo-Black.ttf"; sourceTree = "<group>"; };
 		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
 		5B714C5827BAE4D000EA6092 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -110,6 +114,7 @@
 				5B714C5B27BAE4DB00EA6092 /* AppTrackingTransparency.framework in Frameworks */,
 				E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */,
 				5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */,
+				5B467E2927BC721700848990 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF5488627ADBDAD00915F8A /* GameCenterService.swift */,
+				5B467E2627BC619800848990 /* GameCenterAchivement.swift */,
 			);
 			path = GameCenter;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 		BE2C08A7B58965B8A4775472 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B467E2827BC721700848990 /* GameKit.framework */,
 				5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */,
 				5B714C5827BAE4D000EA6092 /* AdSupport.framework */,
 				9C5BFAE94E6C56448FA0A60B /* Pods_NanoBusiness.framework */,
@@ -493,6 +500,7 @@
 				5BD0637127B19D240083EE3C /* AnalyticsUserProperty.swift in Sources */,
 				5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
+				5B467E2727BC619800848990 /* GameCenterAchivement.swift in Sources */,
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
 				5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */,
 				5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */,
@@ -665,9 +673,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow the app to customize your ads experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -699,9 +709,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow the app to customize your ads experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

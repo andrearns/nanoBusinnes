@@ -11,22 +11,20 @@
 			</array>
 		</dict>
 	</array>
-	<key>FacebookAppID</key>
-	<string>1075736709662160</string>
-	<key>FacebookDisplayName</key>
-	<string>Everest Climber</string>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<string>FALSE</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<string>FALSE</string>
-	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
-	<false/>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookAppID</key>
+	<string>1075736709662160</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookDisplayName</key>
+	<string>Everest Climber</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1375805976559563~8150168785</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Please allow the app to customize your ads experience</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
