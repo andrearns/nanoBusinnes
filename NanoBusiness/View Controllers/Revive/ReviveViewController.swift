@@ -76,7 +76,7 @@ final class ReviveViewController: UIViewController, GADFullScreenContentDelegate
     func loadReward() {
         let request = GADRequest()
         GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-3940256099942544/1712485313",
+            withAdUnitID: AdMobKeys.rewardId,
             request: request,
             completionHandler: { (ad, error) in
                 if error != nil {

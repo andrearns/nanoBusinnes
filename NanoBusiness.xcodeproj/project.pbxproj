@@ -21,6 +21,7 @@
 		5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2889EA27B6D73F00F9975C /* ShopViewController.xib */; };
 		5B2889EE27B6D90800F9975C /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889ED27B6D90800F9975C /* Skin.swift */; };
 		5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889F027B7028400F9975C /* SkinsSingleton.swift */; };
+		5B419AB427BD842B00FFA5B3 /* AdMobKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */; };
 		5B467E2727BC619800848990 /* GameCenterAchivement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467E2627BC619800848990 /* GameCenterAchivement.swift */; };
 		5B467E2927BC721700848990 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B467E2827BC721700848990 /* GameKit.framework */; };
 		5B467E2B27BC74EE00848990 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B467E2A27BC74EE00848990 /* coin.mp3 */; };
@@ -70,6 +71,7 @@
 		5B2889EA27B6D73F00F9975C /* ShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopViewController.xib; sourceTree = "<group>"; };
 		5B2889ED27B6D90800F9975C /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		5B2889F027B7028400F9975C /* SkinsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsSingleton.swift; sourceTree = "<group>"; };
+		5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobKeys.swift; sourceTree = "<group>"; };
 		5B467E2627BC619800848990 /* GameCenterAchivement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterAchivement.swift; sourceTree = "<group>"; };
 		5B467E2827BC721700848990 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5B467E2A27BC74EE00848990 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5B419AB227BD841B00FFA5B3 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */,
+			);
+			path = AdMob;
+			sourceTree = "<group>";
+		};
 		5B4C69C127A9BED600DA347C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +290,7 @@
 		5B8918A227AB120000EED11C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5B419AB227BD841B00FFA5B3 /* AdMob */,
 				5BD0636D27B19B520083EE3C /* Analytics */,
 				5BF5488527ADBD7B00915F8A /* GameCenter */,
 				5B8918A627AC308C00EED11C /* FakeDatabase */,
@@ -495,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
+				5B419AB427BD842B00FFA5B3 /* AdMobKeys.swift in Sources */,
 				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
 				5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */,
 				5BD0637127B19D240083EE3C /* AnalyticsUserProperty.swift in Sources */,

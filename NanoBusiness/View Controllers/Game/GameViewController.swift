@@ -305,7 +305,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         let request = GADRequest()
 
         GADInterstitialAd.load(
-            withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+            withAdUnitID: AdMobKeys.interstitialID,
             request: request,
             completionHandler: { [self] ad, error in
                 if let error = error {
