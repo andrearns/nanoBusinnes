@@ -94,8 +94,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestInterstitial()
         
         showHome()
-        
-        UserDefaultsService.setNewRecord(8000)
     }
     
     func startGame() {

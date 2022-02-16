@@ -18,6 +18,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deadNodeLeft: SKSpriteNode!
     var deadNodeRight: SKSpriteNode!
     
+    let blockHeight: Double = 222.8835
+    let blockWidth: Double = 254
+    let blockXPosition: Double = 180
+    
     var tapLeftNode: SKSpriteNode!
     var tapRightNode: SKSpriteNode!
     var leftTapAnimation: SKAction!
@@ -45,19 +49,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         prepareCenario()
         
         deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
-        deadNodeLeft.position.x = -200
-        deadNodeLeft.position.y = -304.85
+        deadNodeLeft.position.x = -blockXPosition
+        deadNodeLeft.position.y = -333.92
         deadNodeLeft.zPosition = 10000000
         deadNodeLeft.alpha = 0
-        deadNodeLeft.size = CGSize(width: 287.227, height: 252.04)
+        deadNodeLeft.size = CGSize(width: blockWidth, height: blockHeight)
         addChild(deadNodeLeft)
         
         deadNodeRight = SKSpriteNode(imageNamed: "paredeGameOverDireita")
-        deadNodeRight.position.x = 200
-        deadNodeRight.position.y = -304.85
+        deadNodeRight.position.x = blockXPosition
+        deadNodeRight.position.y = -333.92
         deadNodeRight.zPosition = 10000000
         deadNodeRight.alpha = 0
-        deadNodeRight.size = CGSize(width: 287.227, height: 252.04)
+        deadNodeRight.size = CGSize(width: blockWidth, height: blockHeight)
         addChild(deadNodeRight)
         
         tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
@@ -239,7 +243,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
         
         for i in 1...6 {
-            let yPosition = CGFloat(-555.85 + 251 * Double(i - 1))
+            let yPosition = CGFloat(-555.85 + (blockHeight - 0.6) * Double(i - 1))
             
             let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
             let newRightNode = createNewNode(cenarioNode: initialBlockType.rightNode, yPosition: yPosition, position: .right, count: i)
@@ -279,14 +283,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
-        let newNode = SKSpriteNode(color: UIColor.green, size: cenarioNode.size)
+        let newNode = SKSpriteNode(color: UIColor.green, size: CGSize(width: blockWidth, height: blockHeight))
         
-        newNode.position.x = (position == .left) ? -200 : 200
+        newNode.position.x = (position == .left) ? -blockXPosition : blockXPosition
         newNode.position.y = yPosition
         newNode.name = (position == .left) ? "node\(count)A" : "node\(count)B"
         newNode.texture = cenarioNode.texture
         
-        let physicsBody = SKPhysicsBody(rectangleOf: cenarioNode.size)
+        let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blockWidth, height: blockHeight))
         physicsBody.allowsRotation = false
         physicsBody.isDynamic = true
         physicsBody.affectedByGravity = false
