@@ -3,6 +3,7 @@ import Firebase
 import FBSDKCoreKit
 import AdSupport
 import AppTrackingTransparency
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(
                             application,
                             didFinishLaunchingWithOptions: launchOptions)
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         FirebaseApp.configure()
         

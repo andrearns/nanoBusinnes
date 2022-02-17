@@ -18,7 +18,9 @@
                 <outlet property="currentSkinCoinCostLabel" destination="iYw-Sc-eAU" id="Wom-b1-yDh"/>
                 <outlet property="currentSkinDescriptionLabel" destination="gRv-Fd-QoQ" id="XZb-8t-yPl"/>
                 <outlet property="currentSkinNameLabel" destination="Esk-7A-2Nh" id="GxR-9n-opp"/>
+                <outlet property="priceView" destination="n7n-1o-tQe" id="LZK-Tn-mSV"/>
                 <outlet property="selectOrBuyButton" destination="4om-rg-CWP" id="p4j-H3-njm"/>
+                <outlet property="unlockedLabel" destination="yol-MI-mQH" id="8Zm-de-r5Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -148,7 +150,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="priceBox" translatesAutoresizingMaskIntoConstraints="NO" id="BlB-wd-LQq">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="91"/>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7n-1o-tQe">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7n-1o-tQe" userLabel="PriceView">
                                     <rect key="frame" x="30" y="29.5" width="140" height="32"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="vIz-7E-2UY">
@@ -176,16 +178,26 @@
                                         <constraint firstAttribute="trailing" secondItem="iYw-Sc-eAU" secondAttribute="trailing" id="wUc-ee-jyy"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNLOCKED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yol-MI-mQH">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="91"/>
+                                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="24"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="yol-MI-mQH" firstAttribute="centerY" secondItem="YdD-RA-pPO" secondAttribute="centerY" id="260-S4-nJE"/>
                                 <constraint firstItem="BlB-wd-LQq" firstAttribute="centerX" secondItem="YdD-RA-pPO" secondAttribute="centerX" id="6Ac-Xu-wKe"/>
                                 <constraint firstItem="n7n-1o-tQe" firstAttribute="height" secondItem="BlB-wd-LQq" secondAttribute="height" multiplier="0.351648" id="7WV-HB-Zjn"/>
                                 <constraint firstItem="n7n-1o-tQe" firstAttribute="width" secondItem="BlB-wd-LQq" secondAttribute="width" multiplier="0.7" id="B9v-2f-yCA"/>
+                                <constraint firstItem="yol-MI-mQH" firstAttribute="width" secondItem="YdD-RA-pPO" secondAttribute="width" id="F52-ks-6dS"/>
+                                <constraint firstItem="yol-MI-mQH" firstAttribute="centerX" secondItem="YdD-RA-pPO" secondAttribute="centerX" id="Kmu-5E-sCL"/>
                                 <constraint firstItem="BlB-wd-LQq" firstAttribute="height" secondItem="YdD-RA-pPO" secondAttribute="height" id="Lar-77-GC9"/>
                                 <constraint firstItem="BlB-wd-LQq" firstAttribute="width" secondItem="YdD-RA-pPO" secondAttribute="width" id="Pwx-g5-dYC"/>
                                 <constraint firstItem="BlB-wd-LQq" firstAttribute="centerY" secondItem="YdD-RA-pPO" secondAttribute="centerY" id="YHM-SG-lBr"/>
                                 <constraint firstItem="n7n-1o-tQe" firstAttribute="centerX" secondItem="BlB-wd-LQq" secondAttribute="centerX" id="Yjd-CD-87P"/>
+                                <constraint firstItem="yol-MI-mQH" firstAttribute="height" secondItem="YdD-RA-pPO" secondAttribute="height" id="cQx-ha-gzN"/>
                                 <constraint firstItem="n7n-1o-tQe" firstAttribute="centerY" secondItem="BlB-wd-LQq" secondAttribute="centerY" id="otP-jG-li9"/>
                                 <constraint firstAttribute="width" secondItem="YdD-RA-pPO" secondAttribute="height" multiplier="200:91" id="zSq-uN-NmM"/>
                             </constraints>
