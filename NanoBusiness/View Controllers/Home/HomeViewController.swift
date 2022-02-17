@@ -11,10 +11,6 @@ final class HomeViewController: UIViewController {
         reloadRecord()
     }
     
-    @IBAction func removeAds(_ sender: Any) {
-        print("Remove Ads")
-    }
-    
     func reloadRecord() {
         record = UserDefaultsService.fetchRecord()
         self.recordLabel.text = "\(record)m"

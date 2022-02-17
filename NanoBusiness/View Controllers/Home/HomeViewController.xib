@@ -29,19 +29,6 @@
                         <constraint firstAttribute="height" constant="130" id="rXT-O7-M0P"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYw-FQ-HFy">
-                    <rect key="frame" x="71" y="0.0" width="158" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="GcC-yD-mpt"/>
-                        <constraint firstAttribute="width" secondItem="IYw-FQ-HFy" secondAttribute="height" multiplier="79:25" id="TOU-DD-VJQ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Exo-Black" family="Exo" pointSize="18"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="REMOVE ADS" backgroundImage="removeAdsButton"/>
-                    <connections>
-                        <action selector="removeAds:" destination="-1" eventType="touchUpInside" id="24K-3a-gCS"/>
-                    </connections>
-                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="distancia" translatesAutoresizingMaskIntoConstraints="NO" id="Sox-4a-miZ">
                     <rect key="frame" x="40.5" y="276" width="219" height="50"/>
                     <constraints>
@@ -70,17 +57,14 @@
                 <constraint firstItem="Sox-4a-miZ" firstAttribute="top" secondItem="RAv-o8-x5I" secondAttribute="bottom" constant="4" id="1ru-SO-wj8"/>
                 <constraint firstItem="RAv-o8-x5I" firstAttribute="top" secondItem="n8z-PC-yoW" secondAttribute="bottom" constant="32" id="2hA-Ak-OAJ"/>
                 <constraint firstItem="RAv-o8-x5I" firstAttribute="width" secondItem="n8z-PC-yoW" secondAttribute="width" multiplier="0.8" id="3CC-Rk-BXh"/>
-                <constraint firstItem="IYw-FQ-HFy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gv5-1T-7DI"/>
                 <constraint firstItem="eDU-GN-gS0" firstAttribute="centerX" secondItem="Sox-4a-miZ" secondAttribute="centerX" id="Jd8-XA-WTJ"/>
                 <constraint firstItem="n8z-PC-yoW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OZN-e5-9lV"/>
                 <constraint firstItem="eDU-GN-gS0" firstAttribute="centerY" secondItem="Sox-4a-miZ" secondAttribute="centerY" id="Sh1-Ur-dzy"/>
                 <constraint firstItem="Sox-4a-miZ" firstAttribute="centerX" secondItem="n8z-PC-yoW" secondAttribute="centerX" id="UNK-rN-Fr9"/>
                 <constraint firstItem="eDU-GN-gS0" firstAttribute="height" secondItem="Sox-4a-miZ" secondAttribute="height" id="Wjn-w7-r83"/>
                 <constraint firstItem="RAv-o8-x5I" firstAttribute="centerX" secondItem="n8z-PC-yoW" secondAttribute="centerX" id="diw-L2-7xy"/>
-                <constraint firstItem="IYw-FQ-HFy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fkX-Hk-Bac"/>
                 <constraint firstAttribute="bottom" secondItem="Sox-4a-miZ" secondAttribute="bottom" id="gEn-LQ-fCQ"/>
                 <constraint firstItem="n8z-PC-yoW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="gtU-OJ-Z3g"/>
-                <constraint firstItem="n8z-PC-yoW" firstAttribute="top" secondItem="IYw-FQ-HFy" secondAttribute="bottom" constant="32" id="h5n-DG-6fU"/>
                 <constraint firstItem="eDU-GN-gS0" firstAttribute="width" secondItem="Sox-4a-miZ" secondAttribute="width" id="mo9-dl-GXl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -90,6 +74,5 @@
     <resources>
         <image name="distancia" width="465" height="106"/>
         <image name="logo" width="632" height="249"/>
-        <image name="removeAdsButton" width="330" height="108"/>
     </resources>
 </document>
