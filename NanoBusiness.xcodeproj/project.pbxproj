@@ -17,12 +17,26 @@
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
+		5B2889EB27B6D73F00F9975C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889E927B6D73F00F9975C /* ShopViewController.swift */; };
+		5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2889EA27B6D73F00F9975C /* ShopViewController.xib */; };
+		5B2889EE27B6D90800F9975C /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889ED27B6D90800F9975C /* Skin.swift */; };
+		5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889F027B7028400F9975C /* SkinsSingleton.swift */; };
+		5B419AB427BD842B00FFA5B3 /* AdMobKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */; };
+		5B467E2727BC619800848990 /* GameCenterAchivement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467E2627BC619800848990 /* GameCenterAchivement.swift */; };
+		5B467E2927BC721700848990 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B467E2827BC721700848990 /* GameKit.framework */; };
+		5B467E2B27BC74EE00848990 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B467E2A27BC74EE00848990 /* coin.mp3 */; };
 		5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */; };
 		5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52701427A76A1800CABE68 /* CenarioNode.swift */; };
+		5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B714C5827BAE4D000EA6092 /* AdSupport.framework */; };
+		5B714C5B27BAE4DB00EA6092 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */; };
 		5B86F1C727B443B400CD1FED /* ReviveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1C527B443B300CD1FED /* ReviveViewController.swift */; };
 		5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1C627B443B300CD1FED /* ReviveViewController.xib */; };
 		5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */; };
 		5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */; };
+		5B86F1D427B58F9500CD1FED /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D027B58F9000CD1FED /* gameOver.mp3 */; };
+		5B86F1D527B58F9500CD1FED /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D127B58F9200CD1FED /* background.mp3 */; };
+		5B86F1D727B58F9500CD1FED /* step.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D327B58F9500CD1FED /* step.mp3 */; };
+		5B86F1D927B5949D00CD1FED /* hurt.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B86F1D827B5949D00CD1FED /* hurt.wav */; };
 		5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189827AAC4E300EED11C /* GameOverViewController.swift */; };
 		5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B89189927AAC4E300EED11C /* GameOverViewController.xib */; };
 		5B8918A027AB069F00EED11C /* GamePausedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89189E27AB069F00EED11C /* GamePausedViewController.swift */; };
@@ -53,12 +67,26 @@
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B2889E927B6D73F00F9975C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		5B2889EA27B6D73F00F9975C /* ShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopViewController.xib; sourceTree = "<group>"; };
+		5B2889ED27B6D90800F9975C /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		5B2889F027B7028400F9975C /* SkinsSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsSingleton.swift; sourceTree = "<group>"; };
+		5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobKeys.swift; sourceTree = "<group>"; };
+		5B467E2627BC619800848990 /* GameCenterAchivement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterAchivement.swift; sourceTree = "<group>"; };
+		5B467E2827BC721700848990 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		5B467E2A27BC74EE00848990 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
 		5B4C69C827A9C3AD00DA347C /* Exo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Exo-Black.ttf"; path = "../../../../../Downloads/Exo/static/Exo-Black.ttf"; sourceTree = "<group>"; };
 		5B52701427A76A1800CABE68 /* CenarioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenarioNode.swift; sourceTree = "<group>"; };
+		5B714C5827BAE4D000EA6092 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		5B86F1C527B443B300CD1FED /* ReviveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveViewController.swift; sourceTree = "<group>"; };
 		5B86F1C627B443B300CD1FED /* ReviveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviveViewController.xib; sourceTree = "<group>"; };
 		5B86F1CB27B46D7200CD1FED /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5B86F1CC27B46D7200CD1FED /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		5B86F1D027B58F9000CD1FED /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
+		5B86F1D127B58F9200CD1FED /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		5B86F1D327B58F9500CD1FED /* step.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = step.mp3; sourceTree = "<group>"; };
+		5B86F1D827B5949D00CD1FED /* hurt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurt.wav; sourceTree = "<group>"; };
 		5B89189827AAC4E300EED11C /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		5B89189927AAC4E300EED11C /* GameOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		5B89189E27AB069F00EED11C /* GamePausedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePausedViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +113,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B714C5B27BAE4DB00EA6092 /* AppTrackingTransparency.framework in Frameworks */,
 				E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */,
+				5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */,
+				5B467E2927BC721700848990 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +155,7 @@
 			children = (
 				5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */,
 				5BF5488427ADBB8400915F8A /* NanoBusiness.entitlements */,
+				5B86F1CF27B58F7900CD1FED /* Sounds */,
 				5B4C69C727A9C32600DA347C /* Fonts */,
 				5B8918A227AB120000EED11C /* Service */,
 				5B52701627A76A3900CABE68 /* Utils */,
@@ -147,8 +179,17 @@
 				5B0956BC27A33BCA008F265C /* Game.swift */,
 				5B52701427A76A1800CABE68 /* CenarioNode.swift */,
 				5B8918A927AC310900EED11C /* CenarioBlock.swift */,
+				5B2889ED27B6D90800F9975C /* Skin.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5B419AB227BD841B00FFA5B3 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				5B419AB327BD842B00FFA5B3 /* AdMobKeys.swift */,
+			);
+			path = AdMob;
 			sourceTree = "<group>";
 		};
 		5B4C69C127A9BED600DA347C /* View Controllers */ = {
@@ -202,8 +243,22 @@
 		5B86F1CA27B46D4D00CD1FED /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				5B2889E927B6D73F00F9975C /* ShopViewController.swift */,
+				5B2889EA27B6D73F00F9975C /* ShopViewController.xib */,
 			);
 			path = Shop;
+			sourceTree = "<group>";
+		};
+		5B86F1CF27B58F7900CD1FED /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5B86F1D827B5949D00CD1FED /* hurt.wav */,
+				5B467E2A27BC74EE00848990 /* coin.mp3 */,
+				5B86F1D127B58F9200CD1FED /* background.mp3 */,
+				5B86F1D027B58F9000CD1FED /* gameOver.mp3 */,
+				5B86F1D327B58F9500CD1FED /* step.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		5B89189727AAC4BA00EED11C /* GameOver */ = {
@@ -235,6 +290,7 @@
 		5B8918A227AB120000EED11C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5B419AB227BD841B00FFA5B3 /* AdMob */,
 				5BD0636D27B19B520083EE3C /* Analytics */,
 				5BF5488527ADBD7B00915F8A /* GameCenter */,
 				5B8918A627AC308C00EED11C /* FakeDatabase */,
@@ -255,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				5B8918A727AC30C000EED11C /* CenarioBlocksSingleton.swift */,
+				5B2889F027B7028400F9975C /* SkinsSingleton.swift */,
 			);
 			path = FakeDatabase;
 			sourceTree = "<group>";
@@ -282,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF5488627ADBDAD00915F8A /* GameCenterService.swift */,
+				5B467E2627BC619800848990 /* GameCenterAchivement.swift */,
 			);
 			path = GameCenter;
 			sourceTree = "<group>";
@@ -289,6 +347,9 @@
 		BE2C08A7B58965B8A4775472 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B467E2827BC721700848990 /* GameKit.framework */,
+				5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */,
+				5B714C5827BAE4D000EA6092 /* AdSupport.framework */,
 				9C5BFAE94E6C56448FA0A60B /* Pods_NanoBusiness.framework */,
 			);
 			name = Frameworks;
@@ -356,6 +417,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8918A127AB069F00EED11C /* GamePausedViewController.xib in Resources */,
+				5B86F1D427B58F9500CD1FED /* gameOver.mp3 in Resources */,
+				5B86F1D727B58F9500CD1FED /* step.mp3 in Resources */,
 				5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */,
 				5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */,
 				5B0956A527A1EE70008F265C /* GameScene.sks in Resources */,
@@ -364,8 +427,12 @@
 				5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */,
 				5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
+				5B467E2B27BC74EE00848990 /* coin.mp3 in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
+				5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */,
 				5B86F1C827B443B400CD1FED /* ReviveViewController.xib in Resources */,
+				5B86F1D927B5949D00CD1FED /* hurt.wav in Resources */,
+				5B86F1D527B58F9500CD1FED /* background.mp3 in Resources */,
 				5B86F1CE27B46D7200CD1FED /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,17 +506,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0956BA27A30D49008F265C /* Player.swift in Sources */,
+				5B419AB427BD842B00FFA5B3 /* AdMobKeys.swift in Sources */,
 				5B0956BD27A33BCA008F265C /* Game.swift in Sources */,
 				5B86F1CD27B46D7200CD1FED /* HomeViewController.swift in Sources */,
 				5BD0637127B19D240083EE3C /* AnalyticsUserProperty.swift in Sources */,
 				5B8918A827AC30C000EED11C /* CenarioBlocksSingleton.swift in Sources */,
 				5B0956A927A1EE70008F265C /* GameScene.swift in Sources */,
+				5B467E2727BC619800848990 /* GameCenterAchivement.swift in Sources */,
 				5B89189A27AAC4E300EED11C /* GameOverViewController.swift in Sources */,
 				5B52701527A76A1800CABE68 /* CenarioNode.swift in Sources */,
+				5B2889F127B7028400F9975C /* SkinsSingleton.swift in Sources */,
+				5B2889EE27B6D90800F9975C /* Skin.swift in Sources */,
 				5B86F1C727B443B400CD1FED /* ReviveViewController.swift in Sources */,
 				5B8918AC27AC4EF400EED11C /* Position.swift in Sources */,
 				5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */,
 				5B8918A527AB122300EED11C /* UserDefaultsService.swift in Sources */,
+				5B2889EB27B6D73F00F9975C /* ShopViewController.swift in Sources */,
 				5B0956AB27A1EE70008F265C /* GameViewController.swift in Sources */,
 				5BD0637327B19E5D0083EE3C /* AnalyticsManager.swift in Sources */,
 				5B8918AA27AC310A00EED11C /* CenarioBlock.swift in Sources */,
@@ -613,9 +685,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow the app to customize your ads experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -647,9 +721,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoBusiness/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Everest Climber";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow the app to customize your ads experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

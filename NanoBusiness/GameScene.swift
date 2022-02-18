@@ -2,6 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 import FirebaseAnalytics
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     weak var viewController: GameViewController?
@@ -17,10 +18,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deadNodeLeft: SKSpriteNode!
     var deadNodeRight: SKSpriteNode!
     
+    let blockHeight: Double = 222.8835
+    let blockWidth: Double = 254
+    let blockXPosition: Double = 180
+    
     var tapLeftNode: SKSpriteNode!
     var tapRightNode: SKSpriteNode!
     var leftTapAnimation: SKAction!
     var rightTapAnimation: SKAction!
+    
+    // Sounds
+    var audioPlayer: AVAudioPlayer?
+    var hurtSoundAction = SKAction.playSoundFileNamed("hurt", waitForCompletion: true)
+    var coinSoundAction = SKAction.playSoundFileNamed("coin", waitForCompletion: true)
+    var changeVolumeAction = SKAction.changeVolume(to: 0.5, duration: 0)
+    
+    // Haptics
+    let stepFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    let gameOverImpactGenerator = UIImpactFeedbackGenerator(style: .heavy)
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -34,19 +49,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         prepareCenario()
         
         deadNodeLeft = SKSpriteNode(imageNamed: "paredeGameOverEsquerda")
-        deadNodeLeft.position.x = -200
-        deadNodeLeft.position.y = -333.5
+        deadNodeLeft.position.x = -blockXPosition
+        deadNodeLeft.position.y = -333.92
         deadNodeLeft.zPosition = 10000000
         deadNodeLeft.alpha = 0
-        deadNodeLeft.size = CGSize(width: 287.227, height: 222.333)
+        deadNodeLeft.size = CGSize(width: blockWidth, height: blockHeight)
         addChild(deadNodeLeft)
         
         deadNodeRight = SKSpriteNode(imageNamed: "paredeGameOverDireita")
-        deadNodeRight.position.x = 200
-        deadNodeRight.position.y = -333.5
+        deadNodeRight.position.x = blockXPosition
+        deadNodeRight.position.y = -333.92
         deadNodeRight.zPosition = 10000000
         deadNodeRight.alpha = 0
-        deadNodeRight.size = CGSize(width: 287.227, height: 222.333)
+        deadNodeRight.size = CGSize(width: blockWidth, height: blockHeight)
         addChild(deadNodeRight)
         
         tapLeftNode = childNode(withName: "tapLeft") as? SKSpriteNode
@@ -60,6 +75,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         tapLeftNode.run(leftTapAnimation)
         tapRightNode.run(rightTapAnimation)
+        
+        playSound(sound: "background", type: "mp3", volume: 0.5)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("Touch right")
                     player.moveRight()
                 }
+                stepFeedback()
                 viewController?.blinkTimeBar()
             }
             
@@ -126,6 +144,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 deadNodeRight.alpha = 1
             }
             
+            gameOverFeedback()
+            
             if viewController!.numberOfTimesAdRewardWasCollected < 2 {
                 self.viewController?.showRevive()
             } else {
@@ -139,10 +159,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             let contactNode = secondBody.node as? SKSpriteNode
             
+            let effectAudioGroup = SKAction.group([coinSoundAction, changeVolumeAction])
+            run(effectAudioGroup)
+            
             contactNode?.physicsBody?.categoryBitMask = 8
             contactNode?.zPosition = 0
             UIView.animate(withDuration: 0.3) {
                 contactNode!.texture = (self.player.position == .left) ? SKTexture(imageNamed: "paredeVaziaEsquerda") : SKTexture(imageNamed: "paredeVaziaDireita")
+            }
+        }
+    }
+    
+    func playSound(sound: String, type: String, volume: Float, loops: Int = -1) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type) {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer?.volume = volume
+                audioPlayer?.numberOfLoops = loops
+                audioPlayer?.play()
+            } catch {
+                print("ERROR")
             }
         }
     }
@@ -191,10 +227,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         AnalyticsManager.shared.log(event: .levelStart)
     }
     
-    func revive() {
-        
-    }
-    
     func prepareCenario() {
         for i in count...(count + 6) {
             let leftNode = childNode(withName: "node\(i)A")
@@ -211,7 +243,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
         
         for i in 1...6 {
-            let yPosition = CGFloat(-555.89 + 221.89 * Double(i - 1))
+            let yPosition = CGFloat(-555.85 + (blockHeight - 0.6) * Double(i - 1))
             
             let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
             let newRightNode = createNewNode(cenarioNode: initialBlockType.rightNode, yPosition: yPosition, position: .right, count: i)
@@ -222,7 +254,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Posicionar o player
         self.player.node.zPosition = 10000000
-        self.player.node.texture = SKTexture(imageNamed: "player-1")
+        
+        let selectedSkin = SkinsSingleton.shared.skins.first { skin in
+            skin.name == UserDefaultsService.fetchSelectedSkinName()
+        }
+        
+        self.player.node.texture = SKTexture(imageNamed: selectedSkin!.spriteImageName)
+        
         player.moveToInitialPosition()
     }
     
@@ -245,14 +283,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createNewNode(cenarioNode: CenarioNode, yPosition: CGFloat, position: Position, count: Int) -> SKSpriteNode {
-        let newNode = SKSpriteNode(color: UIColor.green, size: cenarioNode.size)
+        let newNode = SKSpriteNode(color: UIColor.green, size: CGSize(width: blockWidth, height: blockHeight))
         
-        newNode.position.x = (position == .left) ? -200 : 200
+        newNode.position.x = (position == .left) ? -blockXPosition : blockXPosition
         newNode.position.y = yPosition
         newNode.name = (position == .left) ? "node\(count)A" : "node\(count)B"
         newNode.texture = cenarioNode.texture
         
-        let physicsBody = SKPhysicsBody(rectangleOf: cenarioNode.size)
+        let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blockWidth, height: blockHeight))
         physicsBody.allowsRotation = false
         physicsBody.isDynamic = true
         physicsBody.affectedByGravity = false
@@ -281,6 +319,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.leftTapAnimation = SKAction.repeatForever(SKAction.sequence([moveLeft, moveRight]))
     }
     
+    func stepFeedback() {
+        stepFeedbackGenerator.prepare()
+        stepFeedbackGenerator.impactOccurred()
+    }
+    
+    func gameOverFeedback() {
+        gameOverImpactGenerator.prepare()
+        gameOverImpactGenerator.impactOccurred()
+        run(hurtSoundAction)
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         if game.status == .running {
             if (viewController?.timeBarWidthConstraint.constant)! > 1 {
@@ -298,12 +347,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 default:
                     viewController?.timeBarWidthConstraint.constant -= 0.9
                 }
+                
+                if climbDistance != 0 {
+                    viewController?.hideTapButtons()
+                }
             } else {
                 game.status = .over
+                gameOverFeedback()
                 viewController?.showRevive()
             }
-        } else if game.status == .start {
-            viewController?.showHome()
         }
     }
 }

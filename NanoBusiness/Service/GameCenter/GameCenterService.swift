@@ -34,4 +34,41 @@ final class GameCenterService {
             })
         }
     }
+    
+    func updateAchievements(reviveCount: Int) {
+        let gameCenterAchievementsList = GameCenterAchievement.allCases
+        
+        for i in 0..<gameCenterAchievementsList.count {
+            updateAchievement(gameCenterAchievement: gameCenterAchievementsList[i], reviveCount: reviveCount)
+        }
+    }
+    
+    private func updateAchievement(gameCenterAchievement: GameCenterAchievement, reviveCount: Int) {
+        let achievement = GKAchievement(identifier: gameCenterAchievement.identifier)
+        
+        if !achievement.isCompleted {
+            var progress: Double = 0
+            switch gameCenterAchievement.category {
+            case .distance:
+                progress = Double(UserDefaultsService.fetchRecord() * 100 / gameCenterAchievement.goal)
+            case .coins:
+                progress = Double(UserDefaultsService.fetchCoinsCount() * 100 / gameCenterAchievement.goal)
+            case .revive:
+                progress = Double(reviveCount * 100 / gameCenterAchievement.goal)
+            }
+            
+            if progress >= 100 {
+                achievement.percentComplete = 100
+                achievement.showsCompletionBanner = true
+            } else {
+                achievement.percentComplete = progress
+            }
+            
+            GKAchievement.report([achievement]) { error in
+                if error != nil {
+                    print(error!.localizedDescription as String)
+                }
+            }
+        }
+    }
 }

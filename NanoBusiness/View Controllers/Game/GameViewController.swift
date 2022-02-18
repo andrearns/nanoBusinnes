@@ -92,6 +92,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         gamePausedVC?.view.center.y = -900
         
         requestInterstitial()
+        
+        showHome()
     }
     
     func startGame() {
@@ -105,6 +107,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         self.hideMenu()
         self.showTopElements()
         self.backgroundOverlay.alpha = 0
+        self.showTapButtons()
     }
     
     func revivePlayer() {
@@ -142,6 +145,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hidePause() {
+        currentGame?.game.status = .running
         UIView.animate(withDuration: 0.3) {
             self.gamePausedVC?.view.center.y = -1200
             self.backgroundOverlay.alpha = 0
@@ -173,6 +177,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         
         showMenu()
         
+        GameCenterService.shared.updateAchievements(reviveCount: numberOfTimesAdRewardWasCollected)
+        
         AnalyticsManager.shared.log(event: .levelEnd(climbDistance: currentGame!.climbDistance))
     }
     
@@ -196,7 +202,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func hideHome() {
-        print("Show home")
+        print("Hide home")
         hideMenu()
         showTopElements()
         
@@ -234,6 +240,18 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         }
     }
     
+    func showShop() {
+        hideGameOver()
+        hideHome()
+        hideTopElements()
+        backgroundOverlay.alpha = 0
+        currentGame?.player.moveToInitialPosition()
+    }
+    
+    func hideShop() {
+        
+    }
+    
     func showRevive() {
         UIView.animate(withDuration: 0.5, delay: 0.5) {
             self.backgroundOverlay.alpha = 0.5
@@ -246,7 +264,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func hideRevive() {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
-            self.reviveVC?.view.center.x = 600
+            self.reviveVC?.view.center.x = 1200
             self.showGameOver()
         }
         
@@ -287,7 +305,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         let request = GADRequest()
 
         GADInterstitialAd.load(
-            withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+            withAdUnitID: AdMobKeys.interstitialID,
             request: request,
             completionHandler: { [self] ad, error in
                 if let error = error {
@@ -306,6 +324,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         } else {
             print("Ad wasn't ready")
         }
+        currentGame?.audioPlayer?.stop()
     }
 
     // Tells the delegate that the ad failed to present full screen content.
@@ -323,7 +342,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         requestInterstitial()
-        
+        currentGame?.audioPlayer?.play()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

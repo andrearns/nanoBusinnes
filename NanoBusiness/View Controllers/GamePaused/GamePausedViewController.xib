@@ -42,10 +42,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-zr-snA">
-                            <rect key="frame" x="50" y="122" width="200" height="80"/>
+                            <rect key="frame" x="44" y="122" width="212" height="80"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhF-Qz-e1h">
-                                    <rect key="frame" x="95.5" y="1.5" width="88.5" height="77"/>
+                                    <rect key="frame" x="107.5" y="1.5" width="88.5" height="77"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="NhF-Qz-e1h" secondAttribute="height" multiplier="92:80" id="AT5-rk-bwz"/>
                                     </constraints>
@@ -75,6 +75,7 @@
                                 <constraint firstItem="NhF-Qz-e1h" firstAttribute="height" secondItem="LpE-Fz-PFR" secondAttribute="height" multiplier="0.9625" id="LXD-GF-Gql"/>
                                 <constraint firstItem="LpE-Fz-PFR" firstAttribute="centerY" secondItem="Pxd-zr-snA" secondAttribute="centerY" id="XPT-oj-UX9"/>
                                 <constraint firstAttribute="height" constant="80" id="mqz-8W-I3N"/>
+                                <constraint firstAttribute="width" constant="212" id="qCC-dW-Ieh"/>
                                 <constraint firstAttribute="trailing" secondItem="NhF-Qz-e1h" secondAttribute="trailing" constant="16" id="sX8-a9-caK"/>
                             </constraints>
                         </view>
@@ -89,7 +90,6 @@
                         <constraint firstItem="vkc-QY-DJ2" firstAttribute="centerX" secondItem="U4W-jk-K10" secondAttribute="centerX" id="qAf-u2-Oun"/>
                         <constraint firstItem="vkc-QY-DJ2" firstAttribute="height" secondItem="U4W-jk-K10" secondAttribute="height" id="s5B-HC-L5A"/>
                         <constraint firstAttribute="trailing" secondItem="ivZ-vX-0cY" secondAttribute="trailing" constant="32" id="u31-9v-1JJ"/>
-                        <constraint firstItem="Pxd-zr-snA" firstAttribute="width" secondItem="U4W-jk-K10" secondAttribute="width" multiplier="0.666667" id="wiy-SL-Fo4"/>
                         <constraint firstItem="Pxd-zr-snA" firstAttribute="top" secondItem="ivZ-vX-0cY" secondAttribute="bottom" constant="32" id="zNb-TS-MqB"/>
                         <constraint firstItem="Pxd-zr-snA" firstAttribute="centerX" secondItem="U4W-jk-K10" secondAttribute="centerX" id="zbw-TU-Q2c"/>
                     </constraints>
