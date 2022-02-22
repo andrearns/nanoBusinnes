@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B00A08527C5594500C53380 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B00A08427C5594500C53380 /* StoreKit.framework */; };
 		5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956A227A1EE70008F265C /* AppDelegate.swift */; };
 		5B0956A527A1EE70008F265C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956A427A1EE70008F265C /* GameScene.sks */; };
 		5B0956A727A1EE70008F265C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956A627A1EE70008F265C /* Actions.sks */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B00A08427C5594500C53380 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5B09569F27A1EE70008F265C /* NanoBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0956A227A1EE70008F265C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B0956A427A1EE70008F265C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			files = (
 				5B714C5B27BAE4DB00EA6092 /* AppTrackingTransparency.framework in Frameworks */,
 				E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */,
+				5B00A08527C5594500C53380 /* StoreKit.framework in Frameworks */,
 				5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */,
 				5B467E2927BC721700848990 /* GameKit.framework in Frameworks */,
 			);
@@ -347,6 +350,7 @@
 		BE2C08A7B58965B8A4775472 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B00A08427C5594500C53380 /* StoreKit.framework */,
 				5B467E2827BC721700848990 /* GameKit.framework */,
 				5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */,
 				5B714C5827BAE4D000EA6092 /* AdSupport.framework */,
@@ -698,7 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -734,7 +738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

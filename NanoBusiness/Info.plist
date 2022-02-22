@@ -18,7 +18,14 @@
 	<key>FacebookAppID</key>
 	<string>1075736709662160</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
-	<string>FALSE</string>
+	<string>TRUE</string>
+	<key>FacebookClientToken</key>
+	<string>00e76b0998bfd78bc02c0a965f252757
+00e76b0998bfd78bc02c0a965f252757
+00e76b0998bfd78bc02c0a965f252757
+00e76b0998bfd78bc02c0a965f252757
+00e76b0998bfd78bc02c0a965f252757
+00e76b0998bfd78bc02c0a965f252757</string>
 	<key>FacebookDisplayName</key>
 	<string>Everest Climber</string>
 	<key>GADApplicationIdentifier</key>

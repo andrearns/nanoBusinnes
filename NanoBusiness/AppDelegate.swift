@@ -65,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func requestDataPermission() {
             if #available(iOS 14, *) {
                 
-                
                 ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                     switch status {
                     case .authorized:
@@ -74,12 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         Settings.setAdvertiserTrackingEnabled(true)
                         Settings.shared.isAutoLogAppEventsEnabled = true
                         Settings.shared.isAdvertiserIDCollectionEnabled = true
-                        
                         print("Authorized")
                     case .denied:
                         // Tracking authorization dialog was
                         // shown and permission is denied
-                        
                         Settings.setAdvertiserTrackingEnabled(false)
                         Settings.shared.isAutoLogAppEventsEnabled = false
                         Settings.shared.isAdvertiserIDCollectionEnabled = false
@@ -98,4 +95,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 }
-
