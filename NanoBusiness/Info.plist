@@ -31,7 +31,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1375805976559563~8150168785</string>
 	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
-	<false/>
+	<true/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

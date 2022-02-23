@@ -4,6 +4,7 @@ import FBSDKCoreKit
 import AdSupport
 import AppTrackingTransparency
 import GoogleMobileAds
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             application,
                             didFinishLaunchingWithOptions: launchOptions)
         
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
         FirebaseApp.configure()
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         print("App launched 🚀")
         
@@ -73,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         Settings.setAdvertiserTrackingEnabled(true)
                         Settings.shared.isAutoLogAppEventsEnabled = true
                         Settings.shared.isAdvertiserIDCollectionEnabled = true
+                        Analytics.setAnalyticsCollectionEnabled(true)
                         print("Authorized")
                     case .denied:
                         // Tracking authorization dialog was
@@ -80,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         Settings.setAdvertiserTrackingEnabled(false)
                         Settings.shared.isAutoLogAppEventsEnabled = false
                         Settings.shared.isAdvertiserIDCollectionEnabled = false
+                        Analytics.setAnalyticsCollectionEnabled(false)
                         print("Denied")
                     case .notDetermined:
                         // Tracking authorization dialog has not been shown
