@@ -248,10 +248,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         currentGame?.player.moveToInitialPosition()
     }
     
-    func hideShop() {
-        
-    }
-    
     func showRevive() {
         UIView.animate(withDuration: 0.5, delay: 0.5) {
             self.backgroundOverlay.alpha = 0.5
@@ -319,12 +315,14 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func showInterstitial() {
-        if interstitial != nil {
-            interstitial!.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
+        if !UserDefaults.standard.bool(forKey: "ads_removed") {
+            if interstitial != nil {
+                interstitial!.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+            currentGame?.audioPlayer?.stop()
         }
-        currentGame?.audioPlayer?.stop()
     }
 
     // Tells the delegate that the ad failed to present full screen content.

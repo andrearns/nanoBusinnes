@@ -56,5 +56,4 @@ enum AnalyticsEvent {
             return [:]
         }
     }
-
 }

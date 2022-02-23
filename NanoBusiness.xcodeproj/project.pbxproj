@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B00A08527C5594500C53380 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B00A08427C5594500C53380 /* StoreKit.framework */; };
 		5B0956A327A1EE70008F265C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956A227A1EE70008F265C /* AppDelegate.swift */; };
 		5B0956A527A1EE70008F265C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956A427A1EE70008F265C /* GameScene.sks */; };
 		5B0956A727A1EE70008F265C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956A627A1EE70008F265C /* Actions.sks */; };
@@ -17,6 +18,7 @@
 		5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0956B127A1EE73008F265C /* LaunchScreen.storyboard */; };
 		5B0956BA27A30D49008F265C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956B927A30D49008F265C /* Player.swift */; };
 		5B0956BD27A33BCA008F265C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0956BC27A33BCA008F265C /* Game.swift */; };
+		5B24D67E27C6AC4000688FCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B24D67D27C6AC4000688FCC /* GoogleService-Info.plist */; };
 		5B2889EB27B6D73F00F9975C /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889E927B6D73F00F9975C /* ShopViewController.swift */; };
 		5B2889EC27B6D73F00F9975C /* ShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2889EA27B6D73F00F9975C /* ShopViewController.xib */; };
 		5B2889EE27B6D90800F9975C /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2889ED27B6D90800F9975C /* Skin.swift */; };
@@ -47,7 +49,6 @@
 		5B8918AC27AC4EF400EED11C /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AB27AC4EF400EED11C /* Position.swift */; };
 		5B8918B027ACFC8400EED11C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8918AE27ACFC8300EED11C /* MenuViewController.swift */; };
 		5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8918AF27ACFC8300EED11C /* MenuViewController.xib */; };
-		5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */; };
 		5BD0636F27B19B6E0083EE3C /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0636E27B19B6E0083EE3C /* AnalyticsEvent.swift */; };
 		5BD0637127B19D240083EE3C /* AnalyticsUserProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0637027B19D240083EE3C /* AnalyticsUserProperty.swift */; };
 		5BD0637327B19E5D0083EE3C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0637227B19E5C0083EE3C /* AnalyticsManager.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B00A08427C5594500C53380 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5B09569F27A1EE70008F265C /* NanoBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0956A227A1EE70008F265C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B0956A427A1EE70008F265C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		5B0956B227A1EE73008F265C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0956B927A30D49008F265C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		5B0956BC27A33BCA008F265C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5B24D67D27C6AC4000688FCC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B2889E927B6D73F00F9975C /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		5B2889EA27B6D73F00F9975C /* ShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopViewController.xib; sourceTree = "<group>"; };
 		5B2889ED27B6D90800F9975C /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
@@ -97,7 +100,6 @@
 		5B8918AB27AC4EF400EED11C /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		5B8918AE27ACFC8300EED11C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5B8918AF27ACFC8300EED11C /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
-		5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BD0636E27B19B6E0083EE3C /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		5BD0637027B19D240083EE3C /* AnalyticsUserProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsUserProperty.swift; sourceTree = "<group>"; };
 		5BD0637227B19E5C0083EE3C /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			files = (
 				5B714C5B27BAE4DB00EA6092 /* AppTrackingTransparency.framework in Frameworks */,
 				E5D003FD85250BDF703D565B /* Pods_NanoBusiness.framework in Frameworks */,
+				5B00A08527C5594500C53380 /* StoreKit.framework in Frameworks */,
 				5B714C5927BAE4D100EA6092 /* AdSupport.framework in Frameworks */,
 				5B467E2927BC721700848990 /* GameKit.framework in Frameworks */,
 			);
@@ -153,7 +156,7 @@
 		5B0956A127A1EE70008F265C /* NanoBusiness */ = {
 			isa = PBXGroup;
 			children = (
-				5BD0636A27B18E260083EE3C /* GoogleService-Info.plist */,
+				5B24D67D27C6AC4000688FCC /* GoogleService-Info.plist */,
 				5BF5488427ADBB8400915F8A /* NanoBusiness.entitlements */,
 				5B86F1CF27B58F7900CD1FED /* Sounds */,
 				5B4C69C727A9C32600DA347C /* Fonts */,
@@ -347,6 +350,7 @@
 		BE2C08A7B58965B8A4775472 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B00A08427C5594500C53380 /* StoreKit.framework */,
 				5B467E2827BC721700848990 /* GameKit.framework */,
 				5B714C5A27BAE4DB00EA6092 /* AppTrackingTransparency.framework */,
 				5B714C5827BAE4D000EA6092 /* AdSupport.framework */,
@@ -422,10 +426,10 @@
 				5B0956AE27A1EE70008F265C /* Main.storyboard in Resources */,
 				5B4C69C927A9C3AD00DA347C /* Exo-Black.ttf in Resources */,
 				5B0956A527A1EE70008F265C /* GameScene.sks in Resources */,
+				5B24D67E27C6AC4000688FCC /* GoogleService-Info.plist in Resources */,
 				5B8918B127ACFC8400EED11C /* MenuViewController.xib in Resources */,
 				5B0956B027A1EE73008F265C /* Assets.xcassets in Resources */,
 				5B0956B327A1EE73008F265C /* LaunchScreen.storyboard in Resources */,
-				5BD0636B27B18E260083EE3C /* GoogleService-Info.plist in Resources */,
 				5B0956A727A1EE70008F265C /* Actions.sks in Resources */,
 				5B467E2B27BC74EE00848990 /* coin.mp3 in Resources */,
 				5B89189B27AAC4E300EED11C /* GameOverViewController.xib in Resources */,
@@ -698,7 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -734,7 +738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrearns.MountainClimber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
