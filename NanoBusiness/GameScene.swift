@@ -101,9 +101,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let currentLeftNode = childNode(withName: "node\(count + 1)A")
             let currentRightNode = childNode(withName: "node\(count + 1)B")
-            
-            currentLeftNode?.position.x += 2000
-            currentRightNode?.position.x += 2000
+
+            currentLeftNode?.position.x = 2000
+            currentRightNode?.position.x = 2000
             
             let oldLeftNode = childNode(withName: "node\(count)A")
             let oldRightNode = childNode(withName: "node\(count)B")
@@ -200,8 +200,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let rightAboveNode = childNode(withName: "node\(count + i + 1)B") as? SKSpriteNode
             
             if i == 6 {
-                newLeftNode.position.y = leftNode!.position.y
-                newRightNode.position.y = rightNode!.position.y
+                newLeftNode.position.y = (leftNode?.position.y)!
+                newRightNode.position.y = (rightNode?.position.y)!
             } else {
                 leftAboveNode?.position.y = (leftNode?.position.y)!
                 rightAboveNode?.position.y = (rightNode?.position.y)!
@@ -242,7 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Criar os 6 blocos iniciais
         let initialBlockType = CenarioBlocksSingleton.shared.cenarioBlocks[8]
         
-        for i in 1...6 {
+        for i in 0...6 {
             let yPosition = CGFloat(-555.85 + (blockHeight - 0.6) * Double(i - 1))
             
             let newLeftNode =  createNewNode(cenarioNode: initialBlockType.leftNode, yPosition: yPosition, position: .left, count: i)
